@@ -1,0 +1,188 @@
+{
+    "data": {
+        "capanias": [
+            {
+                "avance": 2,
+                "compromiso": 22000,
+                "fecha": "2022-07-14",
+                "id_incentivo": 12,
+                "incentivo": 4500,
+                "nombre": "Impulso x4",
+                "variables": [
+                    {
+                        "avance": 1,
+                        "componentes": [
+                            {
+                                "b_negritas": true,
+                                "id_componente": 122,
+                                "nombre": "% De Retención",
+                                "pipe": "currency",
+                                "valor": 78
+                            },
+                            {
+                                "b_negritas": true,
+                                "id_componente": 122,
+                                "nombre": "Subsecuentes",
+                                "pipe": "porcentaje",
+                                "valor": 24
+                            }
+                        ],
+                        "compromiso": 22000,
+                        "icono": "https://incentivos-dev.gc.gentera.com.mx/back/servicios/archivos/?ruta=clara%2Bnuevo.png",
+                        "id_variable": 122,
+                        "incentivo": 14500,
+                        "nombre": "Colocaciones",
+                        "pdf": "https://incentivos-dev.gc.gentera.com.mx/back/servicios/archivos/?ruta=Exception%20Report%20Flow%20chart.pdf"
+                    }
+                ]
+            },
+            {
+                "avance": 2,
+                "compromiso": 22000,
+                "fecha": "2022-07-14",
+                "id_incentivo": 12,
+                "incentivo": 4500,
+                "nombre": "Monto Campana Comercios Referidos Yastas Para Prospeccion Inteligente",
+                "variables": [
+                    {
+                        "avance": 1,
+                        "componentes": [
+                            {
+                                "b_negritas": true,
+                                "id_componente": 122,
+                                "nombre": "% De Retención",
+                                "pipe": "currency",
+                                "valor": 78
+                            },
+                            {
+                                "b_negritas": true,
+                                "id_componente": 122,
+                                "nombre": "Subsecuentes",
+                                "pipe": "porcentaje",
+                                "valor": 24
+                            }
+                        ],
+                        "compromiso": 22000,
+                        "icono": "https://incentivos-dev.gc.gentera.com.mx/back/servicios/archivos/?ruta=clara%2Bnuevo.png",
+                        "id_variable": 122,
+                        "incentivo": 14500,
+                        "nombre": "Colocaciones",
+                        "pdf": "https://incentivos-dev.gc.gentera.com.mx/back/servicios/archivos/?ruta=Exception%20Report%20Flow%20chart.pdf"
+                    }
+                ]
+            }
+        ],
+        "nombre_jefe": "Juan García García",
+        "nomina_jefe": 45678,
+        "plan": [
+            {
+                "actual": true,
+                "avance": 2,
+                "compromiso": 22000,
+                "fecha": "2022-07-14",
+                "id_incentivo": 12,
+                "incentivo": 4500,
+                "nombre": "Plan Julio 2022",
+                "variables": [
+                    {
+                        "avance": 1,
+                        "componentes": [
+                            {
+                                "b_negritas": true,
+                                "id_componente": 122,
+                                "nombre": "% De Retención",
+                                "pipe": "currency",
+                                "valor": 78
+                            },
+                            {
+                                "b_negritas": true,
+                                "id_componente": 122,
+                                "nombre": "Subsecuentes",
+                                "pipe": "porcentaje",
+                                "valor": 24
+                            }
+                        ],
+                        "compromiso": 22000,
+                        "icono": "https://incentivos-dev.gc.gentera.com.mx/back/servicios/archivos/?ruta=clara%2Bnuevo.png",
+                        "id_variable": 122,
+                        "incentivo": 14500,
+                        "nombre": "Colocaciones",
+                        "pdf": "https://incentivos-dev.gc.gentera.com.mx/back/servicios/archivos/?ruta=Exception%20Report%20Flow%20chart.pdf"
+                    }
+                ]
+            },
+            {
+                "actual": false,
+                "avance": 2,
+                "compromiso": 22000,
+                "fecha": "2022-07-14",
+                "id_incentivo": 12,
+                "incentivo": 4500,
+                "nombre": "Plan Junio 2022",
+                "variables": [
+                    {
+                        "avance": 1,
+                        "componentes": [
+                            {
+                                "b_negritas": true,
+                                "id_componente": 122,
+                                "nombre": "% De Retención",
+                                "pipe": "currency",
+                                "valor": 78
+                            },
+                            {
+                                "b_negritas": true,
+                                "id_componente": 122,
+                                "nombre": "Subsecuentes",
+                                "pipe": "porcentaje",
+                                "valor": 24
+                            }
+                        ],
+                        "compromiso": 22000,
+                        "icono": "https://incentivos-dev.gc.gentera.com.mx/back/servicios/archivos/?ruta=clara%2Bnuevo.png",
+                        "id_variable": 122,
+                        "incentivo": 14500,
+                        "nombre": "Colocaciones",
+                        "pdf": "https://incentivos-dev.gc.gentera.com.mx/back/servicios/archivos/?ruta=Exception%20Report%20Flow%20chart.pdf"
+                    }
+                ]
+            }
+        ],
+        "total": {
+            "avance": 2,
+            "compromiso": 22000,
+            "fecha": "2022-07-14",
+            "incentivo": 14500,
+            "planes": [
+                {
+                    "monto": 14500,
+                    "nombre": "Monto Plan"
+                },
+                {
+                    "monto": 14500,
+                    "nombre": "Monto Campañas"
+                },
+                {
+                    "monto": 14500,
+                    "nombre": "Decuentos Por Aplicar"
+                },
+                {
+                    "monto": 14500,
+                    "nombre": "Retroactivos Por Aplicar"
+                },
+                {
+                    "monto": 14500,
+                    "nombre": "Bono Capacitación"
+                },
+                {
+                    "monto": 14500,
+                    "nombre": "Bono Respaldo"
+                }
+            ]
+        }
+    },
+    "error": false,
+    "exception": "",
+    "message": "",
+    "status": 200
+}

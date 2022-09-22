@@ -1,0 +1,323 @@
+.background-panel{
+  background-color: white;
+  padding-bottom: 1px;
+  padding-top: 10px;
+}
+
+
+.segundaseccion{
+  padding-bottom: 1px;
+  padding-top: -2px;
+  background-color: #ebf3f7;
+  border-radius: 2em;
+  width: 103%;
+  background-color: #e8e5e5 !important;
+  box-shadow: 5px 5px 7px #949494;
+  position: relative;
+}
+
+.button{
+  border-radius: 20px !important;
+  height: 36px !important;
+  font-weight: 700 !important;
+  color: black;
+  border: 0;
+  background-color: white;
+
+}
+.button-visto{
+  border-radius: 20px !important;
+  height: 36px !important;
+  font-weight: 700 !important;
+  color: black;
+  border: 0;
+  background-color: #ebf3f7;
+
+}
+
+
+.overlay {
+  padding: 1rem;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 0.5em;
+}
+.card-img-overlayVariables {
+  padding: 1rem;
+  padding-top: 3.5em;
+  padding-bottom: 0.5em;
+  padding-left: 0.5em;
+}
+
+.overlayVariables {
+  padding: 1rem;
+  padding-top: 3.5em;
+  padding-bottom: 0.5em;
+  padding-left: 0.5em;
+}
+.card-img-overlay-Total{
+  padding: 5rem;
+    padding-top: 3.5em;
+    padding-bottom: 0.5em;
+    padding-left: 0.5em;
+}
+
+.cardTitle {
+  font-size: 1.5em;
+  font-family: BreeBold;
+  padding-bottom: 0.4em;
+
+}
+.title {
+  font-size: 1.5em;
+  font-family: BreeBold;
+  padding-bottom: 0.4em;
+
+}
+
+.cartTitleTotal {
+  font-size: 18px;
+  font-family: BreeBold;
+  padding-bottom: 0.4em;
+}
+
+.card-micompromiso {
+  font-size: 1.3em;
+  font-family: BreeBold;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.label-micompromiso {
+  font-size: 0.7em;
+}
+.label-Fomula {
+  font-size: 13px;
+  font-family: BreeBold;
+}
+
+.stepsClass {
+  --bs-gutter-x: 0;
+  border-bottom: 1px solid #9d9c9c;
+  height: 1.1em;
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+}
+
+.formula {
+  border-radius: 9px;
+  justify-content: center;
+  height: 3em !important;
+  width: 100%;
+  background-color: #D9D9D9 !important;
+}
+.cardPorcentajes {
+  border-radius: 5px;
+  justify-content: center;
+  height: 20px !important;
+  width: 30%;
+  background-color: #D9D9D9;
+}
+
+.cardPdf {
+  border-radius: 5px;
+  justify-content: center;
+  height: 25px !important;
+  width: 8%;
+  background-color: #D9D9D9 !important;
+  margin-top: -10px;
+  background-size: 100% 100% !important;
+}
+
+.variables {
+  border-radius: 2em;
+  justify-content: center;
+  width: 97%;
+  background-color: #e8e5e5 !important;
+  box-shadow: 0px 4px 0px #949494;
+  margin-left: 0px;
+  margin-top: -45px;
+}
+
+.totales {
+  border-radius: 2em;
+  justify-content: center;
+  height: 23em !important;
+  width: 104%;
+  background-color: #e8e5e5 !important;
+  box-shadow: 0px 4px 0px #949494;
+  margin-top: -51px;
+}
+
+
+.plan {
+  border-radius: 2em;
+  justify-content: center;
+  width: 97%;
+  background-color: #e8e5e5 !important;
+  box-shadow: 0px 4px 0px #949494;
+  margin-left: 1px;
+  margin-top: -41px;
+}
+
+.montosTotal{
+  font-size: calc(1.7rem + -1.8vw);
+  font-family: BreeBold;
+  color: #e20077;
+
+}
+
+.labelHoy {
+  margin: auto;
+  width: 6em;
+  font-size: 0.7em;
+  padding-top: 0.7em;
+}
+
+.centerSymbol {
+  margin: auto;
+  width: 5.3em;
+}
+.centerIncentivo {
+  margin: auto;
+}
+
+.card-incentivo {
+  font-size: calc(2.7rem + 0.2vw);
+  font-family: BreeBold;
+  color: #e20077;
+}
+.card-incentivoVar {
+  font-size: calc(1.7rem + -0.8vw);
+  font-family: BreeBold;
+  color: #e20077;
+}
+
+.incentivoVar {
+  font-size: calc(1.7rem + -0.8vw);
+  font-family: BreeBold;
+  color: #e20077;
+}
+
+.circle {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+}
+
+.rightIncentivo {
+  text-align: right;
+  width: 100%;
+  color: #e20077;
+  font-family: BreeBold;
+  padding-top: 1em;
+  font-size: 1.7em;
+}
+
+.botonestilos{
+  bottom: 5px;
+  right: 10px;
+  color:#022538;
+  background-color: white;
+  border: 1px solid #022538;
+  width: 100px;
+  margin:auto;
+}
+
+
+.panel {
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.button-grafica{
+  border-radius: 2em;
+    height: 3em;
+    width: 21em;
+}
+
+.pdfStyle{
+  position: fixed;
+  background: white;
+  width: 95%;
+  list-style-type: none;
+  padding: 0.5em 1em 1em 1em;
+  border-radius: 24px;
+  box-shadow: -2px -2px 7px #858484;
+  top: 0;
+  margin-top: 3px;
+}
+.booton-Compromiso {
+  border-radius: 30px;
+  height: 52px;
+  width: 259px;
+  background-color: #218bc7;
+  border-color: #218bc7;
+  font-size: 20px;
+  color: white;
+  border: 0;
+}
+.booton-aplicar {
+  border-radius: 30px;
+  height: 48px;
+  width: 33%;
+  background-color: #218bc7;
+  border-color: #218bc7;
+  font-size: 20px;
+  color: white;
+  border: 0;
+  font-size: 20px;
+  margin-left: 12px;
+}
+
+.booton-cancelar {
+  border-radius: 30px;
+  height: 48px;
+  width: 33%;
+  font-size: 20px;
+  color: #919090;
+  border: 3px solid #919090;
+  background-color: white;
+  font-size: 20px;
+  margin-left: 30%;
+}
+
+.flotante-Monto{
+  position: fixed;
+  background: white;
+  width: 80%;
+  list-style-type: none;
+  padding: 11px;
+  border-radius: 20px;
+  box-shadow: -2px -2px 2px #cbc9c9;
+  top: 360px;
+}
+
+.booton-compromiso {
+  border-radius: 30px;
+  height: 44px;
+  width: 100%;
+  background-color: #218bc7;
+  border-color: #218bc7;
+  color: white;
+  border: 0;
+  font-size: 14px;
+  margin-top: 40px;
+
+}
+
+.booton-descargar {
+  border-radius: 30px;
+  height: 44px;
+  width: 100%;
+  color: #919090;
+  border: 3px solid #919090;
+  background-color: white;
+  font-size: 14px;
+  margin-top: 39px;
+
+}

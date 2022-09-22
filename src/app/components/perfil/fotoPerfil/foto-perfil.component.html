@@ -1,0 +1,7 @@
+<div class="col-4 align-items-center">
+  <a (click)="perfil()">
+    <img alt="" *ngIf="!iconoDefault" [ngClass]="opacity? 'opacity': ''" [style.border]="borderColor" class="perfil" src="{{iconoPerfil}}" />
+    <img alt="" *ngIf="iconoDefault" [ngClass]="opacity? 'opacity': ''" [style.border]="borderColor" class="perfil" style="background-color: white;"
+      src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iY3VycmVudENvbG9yIiBjbGFzcz0iYmkgYmktcGVyc29uIiB2aWV3Qm94PSIwIDAgMTYgMTYiPgogIDxwYXRoIGQ9Ik04IDhhMyAzIDAgMSAwIDAtNiAzIDMgMCAwIDAgMCA2em0yLTNhMiAyIDAgMSAxLTQgMCAyIDIgMCAwIDEgNCAwem00IDhjMCAxLTEgMS0xIDFIM3MtMSAwLTEtMSAxLTQgNi00IDYgMyA2IDR6bS0xLS4wMDRjLS4wMDEtLjI0Ni0uMTU0LS45ODYtLjgzMi0xLjY2NEMxMS41MTYgMTAuNjggMTAuMjg5IDEwIDggMTBjLTIuMjkgMC0zLjUxNi42OC00LjE2OCAxLjMzMi0uNjc4LjY3OC0uODMgMS40MTgtLjgzMiAxLjY2NGgxMHoiLz4KPC9zdmc+' />
+  </a>
+</div>

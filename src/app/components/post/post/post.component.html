@@ -1,0 +1,123 @@
+<mat-card style="margin: 10px" style="padding-bottom: var(--bs-gutter-x, 5rem);">
+    <div class="row">
+        <div class="col-6">
+            <mat-card-title>{{data.titulo}}</mat-card-title>
+            <mat-card-subtitle>{{data.fecha_publicacion | fecha}}</mat-card-subtitle>
+        </div>
+        <div class="col-4">
+            <mat-chip-list aria-label="Fish selection" *ngIf="data.marca_actual == 1">
+                <mat-chip class="notifica" selected>Nuevo</mat-chip>
+            </mat-chip-list>
+            <mat-chip-list aria-label="Fish selection" *ngIf="data.marca_actual == 2">
+                <mat-chip class="notifica" selected>Actualizado</mat-chip>
+            </mat-chip-list>
+        </div>
+        <div class="col-2 clasificacion">
+            <a type="button" (click)="marca()" class="btnNotificacion btn position-relative">
+                <label *ngIf="_favorito == '0'" class="material-icons">
+                    star_rate
+                </label>
+                <label *ngIf="_favorito == '1'" class="material-icons" style="color: #fccc44;">
+                    star_rate
+                </label>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{data.texto_corto}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            &nbsp;
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12" *ngIf="data.tipo_contenido_id == 1">
+            <img alt="" [src]="data.url">
+        </div>
+        <div class="col-12" *ngIf="data.tipo_contenido_id == 2">
+            <vg-player>
+                <video #media id="singleVideo" preload="auto" controls>
+                    <source [src]="data.url" type="video/mp4">
+                </video>
+            </vg-player>
+        </div>
+
+        <div class="col-12" *ngIf="data.tipo_contenido_id == 3 && id_youtube !=''">
+            <iframe width="100%"  [src]="urlYou"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            &nbsp;
+        </div>
+    </div>
+    <div class="row" *ngIf="data.tipo_contenido_id == 4 && data.mensaje_accion != ''">
+        <div class="col-12" class="buttonCenter">
+            <mat-chip-list aria-label="Fish selection">
+                <button (click)="abreAccion()" class="notifica"
+                    style="border-radius:3em">{{data.mensaje_accion}}</button>
+            </mat-chip-list>
+        </div>
+    </div>
+    <div class="row" *ngIf="data.tipo_contenido_id == 5 ">
+        <div class="col-12">
+            <mat-chip-list aria-label="Fish selection">
+                <button (click)="abreArchivo()" class="notifica"
+                    style="border-radius:3em">Abrir archivo</button>
+            </mat-chip-list>
+            <br>
+        </div>
+    </div>
+    <mat-card-actions class="botones">
+        <mat-chip-list aria-label="Fish selection">
+            <mat-chip color="primary" (click)="me_gusta()" class="azul" *ngIf="data.me_gusta">
+                <span class="material-icons">thumb_up</span>&nbsp;&nbsp;
+                Me gusta
+            </mat-chip>
+            <mat-chip color="primary" (click)="me_gusta()" class="blanco" *ngIf="!data.me_gusta">
+                <span class="material-icons">thumb_up</span>&nbsp;&nbsp;
+                Me gusta
+            </mat-chip>
+
+
+            <mat-chip color="primary" (click)="no_me_gusta()" class="azul" *ngIf="data.no_megusta">
+                <span class="material-icons">thumb_down</span>&nbsp;&nbsp;
+                No me gusta
+            </mat-chip>
+            <mat-chip color="primary" (click)="no_me_gusta()" class="blanco" *ngIf="!data.no_megusta">
+                <span class="material-icons">thumb_down</span>&nbsp;&nbsp;
+                No me gusta
+            </mat-chip>
+
+            <mat-chip color="primary" [ngClass]="data.comentarios? 'azul' : 'blanco'" (click)="mostrarComentario()">
+                <span class="material-icons">forum</span>&nbsp;&nbsp;
+                Comentarios
+            </mat-chip>
+            <mat-chip color="primary" class="blanco" (click)="openShareModal()">
+                <span class="material-icons">share</span>
+            </mat-chip>
+        </mat-chip-list>
+    </mat-card-actions>
+    <div *ngIf="showComentario" id="comentario">
+        <div class="row">
+            <div class="col-12" style="padding-bottom: 0.5em;">
+                <span style="font-family: BreeBold;">{{noComentarios}} Comentarios</span>
+            </div>
+            <div class="col-12">
+                <textarea class="form-control" [(ngModel)]="comentario" placeholder="Comenta aquí" rows="3"></textarea>
+            </div>
+            <div class="col-12 d-flex justify-content-end" style="padding-top: 1em;">
+                <button (click)="postComentarios()" class="btn azul" style="border-radius:3em">Publicar</button>
+            </div>
+        </div>
+        <div style="padding-top: 1em" *ngFor="let comentario of comentariosIn">
+            <comment-template [respuestas]="true" [comentario]="comentario" [postid]="data.post_id"></comment-template>
+        </div>
+    </div>
+</mat-card>

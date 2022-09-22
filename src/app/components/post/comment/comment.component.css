@@ -1,0 +1,66 @@
+
+input[type="radio"] {
+    display: none;
+}
+
+.clasificacion {
+    direction: rtl;
+    /* right to left */
+    unicode-bidi: bidi-override;
+    /* bidi de bidireccional */
+}
+
+mat-card {
+    font-family: BreeThin !important;
+}
+
+mat-chip{
+    font-size: 12px;
+}
+
+span {
+    font-size: 11px;
+}
+
+.notifica {
+    color: #006699 !important;
+    background-color: #ebf3f7 !important;
+    border-width: thin  !important;
+    border-style: solid !important;
+    border-color: #006699 !important;
+    width: 100px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.azul{
+    background-color: #006699!important;
+    color: #fff;
+}
+.blanco{
+    background-color: #fff!important;
+    border-width: thin  !important;
+    border-style: solid !important;
+    border-color: gray !important;
+    color: gray !important;
+}
+
+.btnNotificacion{
+    padding-top: 0%;
+}
+
+.btnCommentAzul{
+    background-color: transparent;
+    border: none;
+    color: #006699 !important;
+    font-size: 1em;
+}
+
+.btnCommentGris{
+    background-color: transparent;
+    border: none;
+    color: gray;
+    font-size: 1em;
+}

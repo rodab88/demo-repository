@@ -1,0 +1,82 @@
+<div *ngIf="!displayProgressSpinner">
+  <header-template *ngIf="showComponents" [iconoPerfil]="iconoPerfil" [fechaHora]="fechaHora" [nombre]="nombre"
+    [colorperfil]="colorperfil" [colorletra]="colorletra" [meimpulsa]="meimpulsa" [banner]="banner"></header-template>
+  <div *ngIf="showComponents" class="container" style="padding-bottom: var(--bs-gutter-x, 9rem);">
+    <div *ngIf="seccionesPermitidas.acceso_simulador" style="padding: 1.5em 0.5em 1em 0.5em;">
+      <a class="cmidia" href="midia">
+        <div class="card" [ngStyle]="{'box-shadow':boxshadow}">
+          <div class="card-img-overlay">
+            <div class="row" style="padding-left: 1em; padding-top: 1em;">
+              <div class="col-4">
+                <div class="row">
+                  <span class="cardTitle">Mi Día</span>
+                  <p class="card-micompromiso">{{micompromiso | currency:"$":"symbol"}}</p>
+                </div>
+                <div class="row">
+                  <span class="label-micompromiso">Mi compromiso</span>
+                </div>
+                <div class="row"></div>
+              </div>
+              <div class="col-8">
+                <div class="row" style="padding-top: 1.5em;">
+                  <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
+                    <span class="card-incentivo centerSymbol">$</span>
+                    <span class="card-incentivo centerIncentivo">{{incentivo | currency:'':''}}</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <span class="label labelHoy">Hoy</span>
+                </div>
+                <div class="row" style="padding-bottom: 0.5em;">
+                  <div class="stepsClass" style="padding-top: 0.5em;">
+                    <div *ngFor="let step of steps" [style.background-color]="step.class" class="circle">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 rightIncentivo">
+                    Ver más
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div *ngIf="seccionesPermitidas.banner" style="padding: 1.5em 0.5em 1em 0.5em;">
+
+      <ngb-carousel id="carouselPost">
+        <ng-template ngbSlide *ngFor="let post of posts">
+          <a href="variables">
+            <img alt="" class="imgPost" src="{{post.miniatura_banner}}" />
+          </a>
+        </ng-template>
+      </ngb-carousel>
+    </div>
+
+
+    <div *ngIf="seccionesPermitidas.favoritos" class="container" style="padding: 1.5em 1.5em;">
+      <div class="row">
+        <div class="col-md-12 py-3 cardFavs">
+          <span class="labelFav">Favoritos</span>
+          <ngb-carousel *ngIf="favoritosG.length > 0">
+            <ng-template ngbSlide *ngFor="let fav of favoritosG">
+              <a href="favoritos">
+                <div class="carousel-caption">
+                  <div class="favDiv" *ngFor="let favorito of fav">
+                    <img alt="" src="{{favorito.miniatura}}" class="img-responsive">
+                  </div>
+                </div>
+              </a>
+            </ng-template>
+          </ngb-carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="displayProgressSpinner" class="d-flex justify-content-center" style="padding-top: 50%;background-color: #f3f3f2;">
+  <img src="/assets/img/spinner.gif" alt="">
+</div>

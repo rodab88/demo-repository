@@ -1,0 +1,75 @@
+#chart {
+  max-width: 450px;
+  margin: 35px auto;
+}
+
+.content {
+  display: flex;
+  padding-top: 0em;
+  width: 100%;
+  max-width: 100%;
+  flex-direction: column;
+  align-items: center;
+/*   padding-left: 10px;
+  padding-right: 10px; */
+}
+
+
+.card {
+  /*all: unset;*/
+  border-radius: 20px;
+  height: 40px;
+  /*width: 100%;*/
+  margin: 0 8px 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
+}
+
+.cardTitle {
+  font-size: 1.5em;
+  font-family: BreeBold;
+  padding-bottom: 0.4em;
+}
+
+
+.card{
+height: 29em !important;
+width: 95%;
+background-color: white !important;
+}
+
+.input_container {
+  position: relative;
+  padding: 0 0 0 20px;
+  width: 200px;
+}
+
+.meimpulsa{
+  background-color: white;
+  border-radius: 1em 1em;
+  margin-top: 1em;
+  height: 29em !important;
+  height: 38em !important;
+  margin-left: -9px;
+  margin-right: -11px;
+}
+
+
+.booton-inicio{
+  border-radius: 30px;
+  height: 52px;
+  width: 259px;
+  margin-left: 50px;
+  margin-right: 50px;
+  background-color: #e1f2f3;
+  border-color: #218bc7;
+  font-size: 20px;
+  color: #218bc7;
+
+}
+

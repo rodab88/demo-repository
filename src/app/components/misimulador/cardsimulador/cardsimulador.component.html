@@ -1,0 +1,243 @@
+<div id="pdfTable" #pdfTable *ngIf="showComponents" class="scrooll-design background-panel">
+
+  <div style="padding: 1.5em 19px 1em 5px;">
+    <div class="segundaseccion" [ngStyle]="{'box-shadow':boxshadow}">
+      <div class="overlay">
+        <div class="row" style="padding-left: 1em; padding-top: 1em;">
+          <div class="col-4 text-center" style="margin-top: 13px;">
+            <span class="title">Mi Propuesta</span>
+          </div>
+
+          <div class="col-8" style="margin-top: 20px;">
+            <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
+              <span class="card-incentivo centerSymbol">$</span>
+              <span class="card-incentivo centerIncentivo">{{total.incentivo | currency:'':''}}</span>
+            </div>
+          </div>
+          <div style="margin-top: 15px;"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div style="padding: 1.5em 7px 1em 15px;">
+    <div class="row segundaseccion">
+      <div class="overlay">
+        <div class="row" style="padding-left: 1em; padding-top: 1em;">
+          <div class="col-4" style="margin-top: 13px;">
+            <span class="title">Monto Plan</span>
+          </div>
+          <div class="col-8" style="margin-top: 20px;">
+            <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
+              <span class="card-incentivo centerSymbol">$</span>
+              <span class="card-incentivo centerIncentivo">{{plan.incentivo | currency:'':''}}</span>
+            </div>
+          </div>
+          <div class="col-12 rightIncentivo">
+            <article *ngIf="!variablesPlan" (click)="mostrarVarPlan()" style="margin-right: 10px;margin-top: -12px;">Ver
+              más
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngFor="let itemVar of plan.variables; let indicevar = index;">
+      <div class="row plan" *ngIf="variablesPlan">
+        <div class="overlayVariables">
+          <div class="row" style="padding-left: 1em; padding-top: 1em;">
+            <div class="col-1">
+            </div>
+            <div class="col-5" style="margin-top: 13px;">
+              <span class="title">{{itemVar.nombre}}</span>
+            </div>
+            <div class="col-4" style="margin-top: 13px;">
+              <div style="--bs-gutter-x: 0;display: flex; width: 95%; ">
+                <span class="incentivoVar centerSymbol">$</span>
+                <span id="{{itemVar.id_variable}}" class="incentivoVar centerIncentivo">{{itemVar.incentivo |
+                  currency:'':''}}</span>
+              </div>
+            </div>
+            <div class="col-2" *ngIf="!itemVar.acordion" style="margin-top: 10px;">
+              <img alt="" style="width: 20px; 
+                  margin-left: 24px;
+                  margin-top: 1px;" (click)="activarAcordionPlan(itemVar)" src="/assets/img/scrollarrow.png" />
+            </div>
+            <div class="col-2" *ngIf="itemVar.acordion" style="margin-top: 10px;">
+              <img alt="" style="width: 20px; 
+                margin-left: 24px;
+                margin-top: 1px;" (click)="activarAcordionPlan(itemVar)" src="/assets/img/upscroll.png" />
+            </div>
+            <div (click)="activarPdfIncentivo(itemVar)" class="col-1 cardPdf"
+              style="background-size: 100% 100% !important; margin-top: -24px;"
+              [style.background]="'url('+itemVar.icono+') no-repeat scroll 0 0 transparent'">
+            </div>
+            <div *ngIf="itemVar.acordion">
+              <br>
+              <div class="col-12 formula"></div>
+              <br>
+              <div class="row" *ngFor="let itemCom of itemVar.componentes; let indiceCom = index;">
+                <div class="col-1">
+                  <img (click)="onShowDescription(itemCom)" src="/assets/img/Group.png" alt="" />
+                </div>
+                <div class="col-7">
+                  <span class="label-Fomula">{{itemCom.nombre}}</span>
+                </div>
+                <div id="elemento1" class="flotante-Monto" *ngIf="itemCom.seleccionamMonto">
+                  <div class="col-12" style="font-family: BreeBold; margin-top: 10px; font-size: 20px; color: #919090;">
+                    <span>Ingresa el Monto</span>
+
+                  </div>
+                  <div class="col-12" style="font-family: BreeBold; margin-top: 13px;font-size: 20px;">
+
+                    <input currencyMask [(ngModel)]="montoSim" [options]="amountOptions" style="width: 100%;margin-top: 8px;height: 50px;color: #919090;"/>
+                  </div>
+
+                  <div class="col-12 " style=" font-family: BreeBold; margin-top: 13px;">
+                    <button (click)="activarMonto(itemCom, itemVar.id_variable);"
+                      class="booton-cancelar"><span>Cancelar</span>
+                    </button>
+                    <button (click)="aplicarMontoCamp();" class="booton-aplicar"><span>Aplicar</span>
+                    </button>
+                  </div>
+
+                </div>
+                <div class="col-4 cardPorcentajes" [style.background-color]="itemCom.color" style="text-align: right;">
+                  <span id="{{itemCom.id_componente}}" class="label-Fomula"
+                    (click)="activarMonto(itemCom, itemVar.id_variable);">{{itemCom.valor | valorFormat: itemCom.tiposCampo}} </span>
+                </div>
+                <br><br>
+              </div>
+            </div>
+            <div class="col-12 rightIncentivo">
+              <article *ngIf="variablesPlan" (click)="mostrarVarPlan()">Ver menos
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <button (click)="onExport()" class="booton-descargar">Descargar Compromiso</button>
+      </div>
+      <div class="col-6" *ngIf="plan.status_compromiso !== 'ACEPTADA'  && plan.status_compromiso !== 'GUARDADA'">
+        <button (click)="generarCompromiso()" class="booton-compromiso">Generar Mi Compromiso</button>
+      </div>
+    </div>
+  </div>
+  <div class="row m-1 " *ngFor="let item of arreglo;let indice = index;">
+    <div style="padding: 1.5em 3px 1em 10px;">
+      <div class="row segundaseccion">
+        <div class="overlay">
+          <div class="row" style="padding-left: 1em; padding-top: 1em;">
+            <div class="col-4" style="margin-top: 13px;">
+              <span class="cardTitle">{{item.nombre}}</span>
+            </div>
+            <div class="col-8" style="margin-top: 20px;">
+              <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
+                <span class="card-incentivo centerSymbol">$</span>
+                <span class="card-incentivo centerIncentivo">{{item.incentivo | currency:'':''}}</span>
+              </div>
+            </div>
+            <div class="col-12 rightIncentivo">
+              <article *ngIf="item.idIncentiv !== varibleIncen" style="margin-right: 10px; margin-top: -12px;"
+                (click)="mostrarVar(item)">Ver más
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngFor="let itemVar of item.variables; let indicevar = index;">
+        <div class="row variables" *ngIf="itemVar.idVariable == varibleCampanias">
+          <div class="overlayVariables">
+            <div class="row" style="padding-left: 1em; padding-top: 1em;">
+              <div class="col-1">
+              </div>
+              <div class="col-5" style="margin-top: 13px;">
+                <span class="title">{{itemVar.nombre}}</span>
+              </div>
+              <div class="col-4" style="margin-top: 13px;">
+                <div style="--bs-gutter-x: 0;display: flex; width: 95%; ">
+                  <span class="incentivoVar centerSymbol">$</span>
+                  <span class="incentivoVar centerIncentivo">{{itemVar.incentivo | currency:'':''}}</span>
+                </div>
+              </div>
+              <div class="col-2" *ngIf="!acordion" style="margin-top: 10px;">
+                <img alt="" style="width: 20px; 
+                    margin-left: 24px;
+                    margin-top: 1px;" (click)="activarAcordion(itemVar)" src="/assets/img/scrollarrow.png" />
+              </div>
+              <div class="col-2" *ngIf="acordion" style="margin-top: 10px;">
+                <img alt="" style="width: 20px; 
+                  margin-left: 24px;
+                  margin-top: 1px;" (click)="activarAcordion(itemVar)" src="/assets/img/upscroll.png" />
+              </div>
+
+              <div (click)="activarPdfIncentivo(itemVar)" class="col-1 cardPdf"
+                style="background-size: 100% 100% !important; margin-top: -24px;"
+                [style.background]="'url('+itemVar.icono+') no-repeat scroll 0 0 transparent'">
+              </div>
+              <div id="elemento1" class="flotante-Monto" *ngIf="seleccionamMontoCamp">
+                <div class="col-12" style="font-family: BreeBold; margin-top: 10px; font-size: 20px; color: #919090;">
+                  <span>Ingresa el Monto</span>
+
+                </div>
+                <div class="col-12" style="font-family: BreeBold; margin-top: 13px;font-size: 20px;">
+                  <input placeholder="$ 0.00" style="width: 100%;margin-top: 8px;height: 50px;color: #919090;"
+                    type="text">
+
+                </div>
+
+                <div class="col-12 " style=" font-family: BreeBold; margin-top: 13px;">
+                  <button (click)="activarMontoCam(undefined);" class="booton-cancelar"><span>Cancelar</span>
+                  </button>
+                  <button (click)="activarMontoCam(undefined);" class="booton-aplicar"><span>Aplicar</span>
+                  </button>
+                </div>
+
+              </div>
+              <div *ngIf="itemVar.idVariable == varibleCompo">
+                <br>
+                <div class="col-12 formula"></div>
+                <br>
+                <div class="row" *ngFor="let itemCom of itemVar.componentes; let indiceCom = index;">
+                  <div class="col-8">
+                    <span class="label-Fomula">{{itemCom.nombre}}</span>
+                  </div>
+                  <div class="col-4 cardPorcentajes">
+                    <span class="label-Fomula" style="margin-left: 45px;"
+                      (click)="activarMontoCam(itemCom);">{{itemCom.valor | valorFormat: itemCom.tiposCampo}} </span>
+                  </div>
+                  <br><br>
+                </div>
+                <div class="col-12" style="text-align: center;font-family: BreeBold;">
+                  <button class="booton-Compromiso"><span>Generar Mi Compromiso</span>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 rightIncentivo">
+                <article *ngIf="variables" (click)="mostrarVar(item)">Ver menos
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-12 pdfStyle" *ngIf="actiPDFIncent">
+    <img alt="" style="width: 30px;
+          margin-left: 92%;" (click)="activarPdfIncentivo(undefined)" src="/assets/img/close.png" />
+
+    <div id="outerContainer" style="margin-top: 3px;">
+      <div class="pdf-container">
+        <pdf-viewer [src]="url" [rotation]="0" [original-size]="false" [show-all]="true" [fit-to-page]="false"
+          [zoom]="1" [zoom-scale]="'page-fit'" [stick-to-page]="false" [render-text]="true"
+          [external-link-target]="'blank'" [autoresize]="true" [show-borders]="false"
+          style="width: 100%; height: 770px;"></pdf-viewer>
+      </div>
+    </div>
+  </div>
+</div>

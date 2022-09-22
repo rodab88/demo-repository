@@ -1,0 +1,14 @@
+<div class="toolbarFull" [style.background-image]="'url('+banner+')'"
+[style.padding-bottom]="banner==''? '1em': '0em'">
+  <div class="row" style="padding-top: 0.3em; margin-right: 0px;margin-left: 0px;">
+
+    <div class="col-4 align-items-center" class="classPerfil">
+      <fotoperfil-template [colorPerfil]="colorperfil" [iconoPerfil]="iconoPerfil"></fotoperfil-template>
+    </div>
+    <div class="col-8" style="padding-top: 0.9em;">
+      <p [style.color]="colorletra" class="saludo">Hola {{username}}</p>
+      <p *ngIf="seccionesPermitidas.me_impulsa" class="msg">Me impulsa: <span class="black">{{meimpulsa}}</span></p>
+      <p *ngIf="fechaHora!==''" class="date">Fecha actualización: <span class="black">{{fechaHora | fecha:'hora' }}</span></p>      
+    </div>
+  </div>
+</div>

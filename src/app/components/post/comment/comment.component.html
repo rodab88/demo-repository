@@ -1,0 +1,43 @@
+<div class="row" style="margin-right: 1em;">
+    <div class="col-10">
+        <p style="font-family: BreeBold;">{{comentario.nombre }}</p>
+    </div>
+    <div class="col-2" >
+        <p>{{comentario.fecha | fecha}}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <p>{{comentario.comentario}}</p>
+    </div>
+</div>
+<div class="row">
+    <div [ngClass]="respuestas ? 'col-6' : 'col-8'"></div>
+    <div class="col-2 d-flex justify-content-end" style="padding: 0 !important;">
+        <button [ngClass]="comentario.me_gusta=='1'? 'btnCommentAzul' : 'btnCommentGris'"
+            (click)="megustaComentario(comentario.id)"
+            class="material-icons">thumb_up</button>{{comentario.total_megusta}}
+    </div>
+    <div class="col-2 d-flex justify-content-end" style="padding: 0 !important;">
+        <button [ngClass]="comentario.no_megusta=='1'? 'btnCommentAzul' : 'btnCommentGris'"
+            (click)="nomegustaComentario(comentario.id)"
+            class="material-icons">thumb_down</button>{{comentario.total_no_megusta}}
+    </div>
+    <div class="col-2 d-flex justify-content-end" style="padding: 0 !important;">
+        <button *ngIf="respuestas" (click)="mostrarComentarios()" class="material-icons" 
+        [ngClass]="comentario.respuestas.length>0 ? 'btnCommentAzul' : 'btnCommentGris'">forum</button>
+    </div>    
+</div>
+<div *ngIf="showComentarios" style="padding: 2em 0em 2em 2em;">
+    <div class="row">    
+        <div class="col-12">
+            <textarea class="form-control" [(ngModel)]="respuesta" placeholder="Comenta aquí" rows="3"></textarea>
+        </div>
+        <div class="col-12 d-flex justify-content-end" style="padding-top: 1em;">
+            <button (click)="postComentarios()" class="btn azul" style="border-radius:3em">Publicar</button>
+        </div>
+    </div>  
+    <div style="padding-top: 1em" *ngFor="let comentario of comentario.respuestas">
+        <comment-template [respuestas]="false" [comentario]="comentario" [postid]="postid"></comment-template>
+    </div>  
+</div>

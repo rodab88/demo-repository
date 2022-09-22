@@ -1,0 +1,77 @@
+a:link { text-decoration: none; }
+
+.imgPortada{
+    background-repeat: no-repeat;
+    background-size: 20em 30em;
+    background-position: right top;
+}
+.portadaHeight{
+    height: calc(50vh - 5em);
+}
+.videoHeight{
+    height: calc(75vh - 1em);
+    
+}
+
+.video{
+    padding-top: 5em;
+    height: calc(85vh - 5em);
+    align-items: center;
+    padding-left: 3em;
+    padding-right: 3em;
+    height: calc(80vh - 1em);
+}
+.label {
+    color: #0d6efd;
+    text-decoration: none;
+    font-size: 1.5em;
+    text-align: center;
+    font-family: BreeBold;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.bottom-control {
+    justify-content: center;
+    display: flex;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.buttonCircular {
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    border: none;
+    margin: 4px;
+}
+
+.btnColorDisabled{
+    background-color: #c9c9c9;
+}
+
+.btnColorEnabled{
+    background-color: rgb(226, 1, 118);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.buttonA {
+    background-color: #0d6efd;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    width: 10em;
+}

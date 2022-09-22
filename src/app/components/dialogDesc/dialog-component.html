@@ -1,0 +1,14 @@
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+  <mat-icon class="close-icon" color="warn">close</mat-icon>
+</button>
+
+<div mat-dialog-content>
+  <div style="text-align:left;padding-bottom: 1em;">
+    <img src="/assets/img/GroupL.png" alt="" />
+  </div>
+  <span class="label">{{data.name}} : {{data.description}}</span>
+</div>
+<div mat-dialog-actions *ngIf="false">
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div>

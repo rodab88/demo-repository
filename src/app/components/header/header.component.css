@@ -1,0 +1,105 @@
+.toolbarFull {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    background-color: #ffffff;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    color: black;
+    padding-left: 10px;
+    padding-top: 10px;
+    border-bottom-left-radius: 3em 2em;
+    border-bottom-right-radius: 3em 2em;
+  }
+
+  .toolbar{
+      position: relative;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4.5em;
+      align-items: center;
+      background-color: #ffffff;
+      background-position: right bottom;
+      background-repeat: no-repeat;
+      color: black;
+      padding-right: 10px;
+      padding-top: 17px;
+  }
+  
+  .toolbar img {
+    margin: 0 5px;
+  }
+  
+  .toolbar #twitter-logo {
+    height: 40px;
+    margin: 0 8px;
+  }
+  
+  .toolbar #youtube-logo {
+    height: 40px;
+    margin: 0 16px;
+  }
+  
+  .toolbar #twitter-logo:hover,
+  .toolbar #youtube-logo:hover {
+    opacity: 0.8;
+  }
+
+  .btnNotificacion {
+    padding: 0 !important;
+  }
+
+  .urlClara{    
+    margin-right: 0.8em;
+  }
+
+  .userClass{
+    font-family: BreeBold;
+  }
+
+  .black {
+    font-weight: 600;
+  }
+  
+  .date {
+    font-size: 12px;
+  }
+  
+  .msg {
+    font-size: 18px;
+    margin-bottom: 0rem;
+  }
+  
+  .saludo{
+    font-family: BreeBold;
+    font-size: 2.5em;
+    margin-bottom: 0.1em;
+  }
+
+  .perfil{
+    width: 4.5em;
+    height: 4.5em;
+    border-radius: 50% !important;
+  }
+
+  .classPerfil{
+    width: 6em;
+    padding-left: 1.5em;
+  }
+
+ .badge {
+      padding: 0.5em 0.5em !important;
+      font-size: 0.6em !important;
+  
+  }
+
+  .start-100 {
+    left: 80% !important;
+}
+
+.top-0 {
+  top: 2.5em !important;
+}

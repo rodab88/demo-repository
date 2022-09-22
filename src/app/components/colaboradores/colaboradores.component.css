@@ -1,0 +1,239 @@
+.segundaseccion {
+  padding-bottom: 15px;
+  padding-top: 50px;
+  background-color: white;
+
+}
+
+.card {
+
+  background-image: url(/assets/img/fondoCol.png);
+  height: 65vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: white;
+}
+
+
+.cardPadre{
+  margin-right: 22px;
+  width: 368px;
+
+}
+
+.cardNum {
+  font-size: 4em;
+  font-family: BreeBold;
+  padding-bottom: 0.4em;
+  margin-left: 17px;
+  color: rgb(226, 1, 118);
+}
+
+
+
+.cardPieNum {
+  font-size: 2em;
+  font-family: BreeBold;
+  margin-left: 17px;
+  /* color: rgb(94, 106, 113); */
+}
+
+.cardPieNumMenor {
+  font-size: 25px;
+  font-family: BreeBold;
+  margin-left: 17px;
+  /* color: rgb(94, 106, 113); */
+}
+
+.cardPieImgen {
+  font-size: 20px;
+  font-family: BreeBold;
+}
+
+.cardPieImgenMenor {
+  font-size: 19px;
+  font-family: BreeBold;
+}
+
+.cardPieImgenArreglo {
+  font-size: 18px;
+  font-family: BreeBold;
+}
+
+.cardGeneral {
+  font-size: 10.5px;
+  font-family: BreeBold;
+  /* color: rgb(94, 106, 113); */
+}
+
+.cardGeneralIma {
+  font-size: 18px;
+  font-family: BreeBold;
+  /* color: rgb(94, 106, 113); */
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  margin-top: 10px;
+
+}
+
+.wrapperSecundario {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 5px;
+/*   overflow-y: scroll; */
+  height: 6em;
+
+}
+
+.background-panel {
+  background-color: white;
+  padding: 1em;
+  border-top-left-radius: 1em 1em;
+}
+
+.foto {
+  position: absolute;
+  border-radius: 150px;
+  margin-top: 13px;
+  width: 240px;
+  height: 240px;
+}
+
+.tituloAzul{
+  color: #218bc7;
+}
+
+.fotoBajo {
+  width: 200px;
+  height: 3.3em;
+  border: 6px solid white;
+  margin-left: -9px;
+  background-color: white;
+  margin-top: 82px;
+  
+  }
+  .fotoLateral {
+    width: 219px;
+    height: 3em;
+    border: 6px solid white;
+    background-color: white;
+    margin-top: -170px;
+    transform: rotate(90deg);
+    margin-left: 77px;
+    
+    }
+
+
+.labelflotantemenu{
+  position: fixed;
+  right: 80px;
+  background: white;
+  width: 247px;
+  list-style-type: none;
+  padding: 11px;
+  border-radius: 24px;
+  box-shadow: -2px -2px 2px #cbc9c9;
+  top: 360px;
+
+}
+
+.labelflotanteOrden{
+
+  background: white;
+  color: black;
+  width: 400px;
+  list-style-type: none;
+  padding: 11px;
+  height: 5em !important;
+  margin-top: 10px;
+  border-radius: 8px;
+  box-shadow: -2px -2px 7px #555555;
+}
+.labelflotModOrden{
+
+  background: white;
+  color: black;
+  width: 209px;
+  list-style-type: none;
+  padding: 2px;
+  height: 6em !important;
+  border-radius: 8px;
+  box-shadow: -2px -2px 7px #555555;
+  size: 17px;
+  margin-left: 179px;
+  margin-top: -10px;
+}
+
+.li {
+  padding: 10px;
+}
+
+span {
+  display: block;
+  text-align: left;
+  font-size: 17px;
+  margin-top: 13px;
+  font-weight: bold;
+}
+
+span:hover {
+  color: black;
+  cursor: pointer;
+
+}
+
+p{
+  font-family: BreeBold;
+}
+
+.button {
+  border-radius: 20px !important;
+  color: black;
+  border: 0;
+  background-color: white;
+
+}
+
+.filtrado {
+  right: 88px;
+  background: white;
+  color: black;
+  width: 247px;
+  list-style-type: none;
+  padding: 11px;
+}
+
+.labelflotanteFiltrar{
+  background: white;
+  color: black;
+  width: 401px;
+  list-style-type: none;
+  padding: 5px;
+  height: 5em !important;
+  border-radius: 8px;
+  box-shadow: -2px -2px 7px #555555;
+  margin-left: 1px;
+  margin-top: 10px;
+}
+
+.deplega{
+  width: 106px;
+  border: white;
+  margin-top: 5px;
+}
+
+
+.subCardFondo {
+  position: relative;
+  overflow: hidden;
+  width: 210px;
+  height: 201px;
+  margin-top: 74px;
+  margin-left: -10px;
+      
+}
+
+

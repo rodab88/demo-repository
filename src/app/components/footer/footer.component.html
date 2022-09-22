@@ -1,0 +1,54 @@
+<footer *ngIf="color!== null && color!=='' && seccionesPermitidas!==null" class="footer" [style.background-color]="color">
+  <div class="otros" style="width: 100%;height: 3.5em;">
+    <div class="row">
+      <div *ngIf="seccionesPermitidas.mis_variables" [ngClass]="'col-'+numcol" class="col-variables">
+        <div style="display: grid; place-items: center;" routerLink="../variables">
+          <a href="variables">
+            <img alt="" src="../../../assets/img/variables.svg">
+          </a>
+          <span class="colorOtros">Mis Variables</span>
+        </div>
+      </div>
+      <div *ngIf="seccionesPermitidas.mi_incentivo && seccionesPermitidas.acceso_incentivo" [ngClass]="'col-'+numcol" class="col-variables">
+        <div style="display: grid; place-items: center;">
+            <a href="miincentivo">
+            <img alt="" src="../../../assets/img/incentivo.svg">
+          </a>
+          <span class="colorOtros">Mi Incentivo</span>
+        </div>
+      </div>
+      <div *ngIf="rutaPaginaIncen" [ngClass]="'col-'+numcol" class="col-variables">
+        <div style="display: grid; place-items: center;">
+            <a (click)="openPage('I')">
+            <img alt="" src="../../../assets/img/incentivo.svg">
+          </a>
+          <span class="colorOtros">Mi Incentivo</span>
+        </div>
+      </div>
+      <div *ngIf="seccionesPermitidas.mi_simulador && seccionesPermitidas.acceso_simulador" [ngClass]="'col-'+numcol" class="col-variables">
+        <div style="display: grid; place-items: center;">
+          <a href="misimulador">
+            <img alt="" src="../../../assets/img/simulador.svg">
+          </a>
+          <span class="colorOtros">Mi Simulador</span>
+        </div>
+      </div>
+      <div *ngIf="rutaPaginaSim" [ngClass]="'col-'+numcol" class="col-variables">
+        <div style="display: grid; place-items: center;">
+          <a (click)="openPage('')">
+            <img alt="" src="../../../assets/img/simulador.svg">
+          </a>
+          <span class="colorOtros">Mi Simulador</span>
+        </div>
+      </div>
+      <div *ngIf="seccionesPermitidas.mis_retos" [ngClass]="'col-'+numcol" class="col-variables">
+        <div style="display: grid; place-items: center;">
+          <a href="misretos">
+            <img alt="" src="../../../assets/img/retos.svg">
+          </a> 
+          <span class="colorOtros">Mis Retos</span>
+          </div>
+      </div>
+    </div>
+  </div>
+</footer>

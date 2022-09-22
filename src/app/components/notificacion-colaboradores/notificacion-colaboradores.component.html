@@ -1,0 +1,38 @@
+<!-- Crear una notificacion para un colaborador-->
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-10">
+            <p class="f-t1">Enviar mensaje</p>
+        </div>
+        <div class="col-1">
+            <span class="material-icons" (click)="help()">
+                help_outline
+            </span>
+        </div>
+        <div class="col-1">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-12">
+            <input type="text" placeholder="Titulo*" [(ngModel)]="titulo_notificacion" name="titulo"
+                class="form-control" required>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-12">
+            <input type="text" placeholder="Texto de notificación*" [(ngModel)]="texto_notificacion"
+                name="texto_notificacion" class="form-control" required>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-6">
+            <button class="button mt-2 boton" type="button" (click)="cerrarNotificacion()">Cancelar</button>
+        </div>
+        <div class="col-6">
+            <button class="button mt-2 boton2" type="button" (click)="envioNotificacion()"><em
+                    class="bi bi-window-desktop"></em>Enviar</button>
+        </div>
+
+    </div>
+</div>

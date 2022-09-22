@@ -1,0 +1,16 @@
+
+.cuerpo_post{
+    padding-top: 3em;
+}
+
+.boton{
+    /* width: 105px; */
+    height: 56px;
+    top: 186px;
+    color: #FFFFFF;
+    background: #5d87f3;
+    border: 1.5px solid #5d87f3;
+    border-radius: 10px;
+    font-size: 16px;
+}
+

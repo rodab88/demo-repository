@@ -1,0 +1,24 @@
+.bolsaL {
+    color: #0d6efd;
+    font-family: BreeBold;
+    padding-left: 1em;
+    text-decoration: none;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.miDiaLabel {
+    background-color: #FFF;
+    margin: 1em 2em 0em 1.8em;
+    border-radius: 0.8em;
+    height: 2.5em;
+    position:relative;
+}
+.perfilLabel{
+    margin: 0.5em 2em 0em 1.8em;    
+    height: 2.5em;
+    position:relative;
+}

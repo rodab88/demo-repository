@@ -1,0 +1,24 @@
+<div style="padding-bottom:2em;"> <!--class="meimpulsa m-1">-->
+  <br>
+
+  <div *ngIf="false" class="col-12">
+    <div class="row m-1">
+      <span class="cardTitle text-center">Categoría de desempeño</span>
+      <div>
+        <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+          [title]="chartOptions.title" [colors]="chartOptions.colors" [dataLabels]="chartOptions.dataLabels">
+        </apx-chart>
+      </div>
+    </div>
+  </div>
+  <div class="row m-1">
+    <div style="text-align: center;font-family: BreeBold;">
+      <button *ngIf="seccionesPermitidas.acceso_ucg" (click)="enviarPag()" class="booton-inicio "><span>Impulsa tu
+          desempeño</span>
+      </button>
+    </div>
+  </div>
+  <div *ngIf="false">
+    <br><br><br><br><br><br>
+  </div>
+</div>

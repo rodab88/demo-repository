@@ -1,0 +1,42 @@
+<div *ngIf="!displayProgressSpinner">
+<div class="row m-1 " *ngFor="let item of arreglo.componentes; let indice = index;">
+  <div style="padding: 1.5em 3px 1em 10px;">
+    <div class="row segundaseccion">
+      <div class="overlay">
+        <div class="row" style="padding-left: 1em; padding-top: 1em;">
+          <div class="col-9" style="margin-top: 13px;">
+            <span class="cardTitle">{{item.nombre}}</span>
+          </div>
+          <div class="col-3" style="margin-top: 13px;" >
+            <span class="cardTitle" [style.color]="item.color">{{item.diferencia}}%</span>
+          </div>
+          <div class="col-12">
+            <div class="row"> 
+                <div *ngIf = "cargo">
+                  <apx-chart 
+                  [series]="item.chartOptions.series"
+                  [chart]="item.chartOptions.chart"
+                  [xaxis]="item.chartOptions.xaxis"
+                  [yaxis]="item.chartOptions.yaxis"
+                  [dataLabels]="item.chartOptions.dataLabels"
+                  [grid]="item.chartOptions.grid"
+                  [stroke]="item.chartOptions.stroke"
+                  [title]="item.chartOptions.title"
+                  [labels]="item.chartOptions.labels"
+                  [annotations]="item.chartOptions.annotations"
+                ></apx-chart>
+              </div>
+            </div>
+         </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</div>
+
+<div *ngIf="displayProgressSpinner" class="d-flex justify-content-center" style="padding-top: 30%;background-color: #f3f3f2;">
+  <img src="/assets/img/spinner.gif" alt="">
+</div>

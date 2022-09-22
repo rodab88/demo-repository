@@ -1,0 +1,77 @@
+<div *ngIf="!displayProgressSpinner" class="margen-Ini" style="background-color: #FFF;">
+    <br>
+    <div class="content">
+        <div class="content-responsive">
+
+            <div class="col-8; text-center">
+                <img alt="" style="width: 230px;" src="/assets/si_icon2.png" />
+            </div>
+            <br>
+            <div class="margen">
+                <h3 class="cardTitle">¡Hola!</h3>
+            </div>
+        </div>
+
+        <div class="content" role="main">
+            <div class="card">
+                <div class="card-img-overlay">
+
+                    <h5 style="font-size: 16px;font-family: BreeBold;">Inicia sesión con tus datos</h5>
+
+                    <div class="row">
+                        <form class="form" [formGroup]="myForm" (ngSubmit)="enviarformulario()">
+                            <div class="form-group ">
+                                <input formControlName="username" (change)="validaBoton()" type="text"
+                                    class="form-control" id="usuariologin" placeholder="Usuario">
+                            </div>
+                            <br>
+                            <div class="input-group mb-2">
+                                <input type="password" class="form-control" (change)="validaBoton()"
+                                    formControlName="password" placeholder="Contraseña" id="txtPassword">
+                                <div (click)="mostrarContrasena()" class="input-group-append" style="cursor: pointer;">
+                                    <img alt="" src="https://cdn3.iconfinder.com/data/icons/show-and-hide-password/100/show_hide_password-09-256.png"
+                                        class="icon">
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <br>
+                            <span class="error">{{error}}</span>
+                            <span class="error">{{permisos}}</span>
+                            <br>
+                            <br>
+                            <div *ngIf="avtivaBot" class="d-flex justify-content-center booton-inicio"
+                                style="text-align: center;font-family: BreeBold;">
+                                <button id="ingresar" #ingresar type="submit" class="btn "
+                                    style="background-color: #71818a; margin-top: 5px;"><span>Iniciar sesión</span>
+                                </button>
+                            </div>
+                            <div *ngIf="!avtivaBot" class="booton-inicio "
+                                style="text-align: center;font-family: BreeBold;">
+                                <button id="ingresar" #ingresar type="submit" class="btn disabled"
+                                    style="background-color: #71818a;margin-top: 5px;"><span>Iniciar sesión</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br><br>
+        <div style="margin: 100px">
+            <div style="text-align: center;">
+                <a style="color: #006990;    font-size: 16px;"><small> <u>Si olvidaste tu contraseña, genera</u>
+                    </small></a>
+            </div>
+            <div style="text-align: center;">
+                <a style="color: #006990;    font-size: 16px;"><small> <u>un ticket en la Mesa de Servicio</u>
+                    </small></a>
+            </div>
+        </div>
+        <br><br><br><br>
+    </div>
+</div>
+<div *ngIf="displayProgressSpinner" class="d-flex justify-content-center" style="padding-top: 50%;background-color: #f3f3f2;">
+    <img src="/assets/img/spinner.gif" alt="">
+  </div>

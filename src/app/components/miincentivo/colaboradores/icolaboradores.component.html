@@ -1,0 +1,100 @@
+<div style="padding: 1.5em 0.5em 1em 0.5em;">
+    <div class="cardBolsa" style="padding: 1em;">
+        <div class="row">
+            <div class="col-6">
+                <span class="cardTitleBolsa">Bolsa De Liderazgo</span>
+                <p class="date">Última actualización: <br> <span *ngIf="array.fecha" class="black">{{array.fecha | fecha:'hora' }}</span>
+                </p>
+            </div>
+            <div class="col-6">
+                <div class="row" style="padding-top: 1.5em;">
+                    <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
+                        <span class="card-bolsa centerSymbol">$</span>
+                        <span class="card-bolsa centerIncentivo">{{array.liderazgo |currency:'':''}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngFor="let item of array.equipo">
+
+        <a class="cmidia" (click)="activarMenuCol(item)">
+            <div class="card" [ngClass]="item.opacity? 'cardOpacity': ''">
+                <div class="card-img-overlay">
+                    <div class="row" style="padding: 0.5em">
+                        <div class="col-2">
+                            <fotoperfil-template [noRedirect]="false" [iconoPerfil]="item.foto"
+                                [colorPerfil]="item.color_categoria" [opacity]="item.opacity">
+                            </fotoperfil-template>
+                        </div>
+                        <div class="col-10" style="padding: 1em 1em 1em 1.5em;">
+                            <span class="nombre">{{item.nombre}}</span>
+                            <br>
+                            <span class="puesto">{{item.puesto}}</span>
+                        </div>
+                        <div class="col-4">
+                            <div *ngIf="item.compromiso>0" class="row">
+                                <p class="card-micompromiso">{{item.compromiso | currency:"$":"symbol"}}</p>
+                            </div>
+                            <div *ngIf="item.compromiso>0" class="row">
+                                <span class="label-micompromiso">Compromiso</span>
+                            </div>
+                            <div *ngIf="item.compromiso<=0 && !item.compromiso_aceptado" class="row">
+                                <span class="label-micompromiso" style="font-family: BreeBold;">SIN
+                                    COMPROMISO</span>
+                            </div>
+                            <div class="row"></div>
+                        </div>
+                        <div class="col-8">
+                            <div *ngIf="item.compromiso>0" class="row">
+                                <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
+                                    <span class="card-incentivo centerSymbol"
+                                        [ngClass]="item.opacity? 'opacityColor':''">$</span>
+                                    <span class="card-incentivo centerIncentivo"
+                                        [ngClass]="item.opacity? 'opacityColor':''">{{item.incentivo |
+                                        currency:'':''}}</span>
+                                </div>
+                            </div>
+                            <div *ngIf="item.compromiso<=0 && !item.compromiso_aceptado" class="row">
+                                <span class="labelNodisponible d-flex justify-content-center">No disponible</span>
+                            </div>
+                            <div class="row">
+                                <span class="label labelHoy">Hoy</span>
+                            </div>
+                            <div class="row" style="padding-bottom: 0.5em;">
+                                <div class="stepsClass" style="padding-top: 0.5em;">
+                                    <div *ngFor="let step of item.steps" [style.background-color]="step.class"
+                                        class="circle">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>        
+
+        <ul id="elemento1" *ngIf="seleccionamenuCol" class="labelflotantemenu">
+            <a>
+                <ng-container>
+                    <li>
+                        <span><a (click)="modalNotificacion()">Enviar mensaje</a>
+                            <img alt="" style="width: 20px; margin-left: 7em;" src="/assets/img/mensaje.png" (click)="modalNotificacion()"/>
+                        </span>
+                    </li>
+                    <li>
+                        <span><a (click)="chatTeams()">Iniciar conversación</a>
+                            <img alt="" style="width: 25px; margin-left:4.7em;" src="/assets/img/chat.png" (click)="chatTeams()"/>
+                        </span>
+                    </li>
+                    <li>
+                        <span (click)="nuevoperfil()">Ver Detalle
+                            <img alt="" style="width: 25px; margin-left: 8.5em;" src="/assets/img/perfil.png" />
+                        </span>
+                    </li>
+                </ng-container>
+            </a>
+        </ul>
+
+    </div>
+</div>

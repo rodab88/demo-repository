@@ -1,0 +1,38 @@
+<div *ngIf="!displayProgressSpinner">
+    <header-template *ngIf="showComponents" [iconoPerfil]="iconoPerfil" [nombre]="nombre" [colorperfil]="colorperfil"
+        [colorletra]="colorletra" [meimpulsa]="meimpulsa"></header-template>
+
+    <div *ngIf="arrayColaboradores.length>1 && !componenteGrafica">
+        <div *ngFor="let item of arrayColaboradores; let id = index;">
+            <div class="perfilLabel">
+                <a class="bolsaL"> Perfil {{item.nombreColaborador}} </a>
+            </div>
+            <div *ngIf="id<arrayColaboradores.length-1 && !componenteGrafica" class="miDiaLabel">
+                <a (click)="regresarColaboradores(item)" class="bolsaL"> &#60; Bolsa de Liderazgo </a>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="divMiDia && arrayCMiDia.equipo.length>0 && !componenteGrafica" class="miDiaLabel">
+        <a (click)="abrirColaboradores()" class="bolsaL"> Ver Bolsa de Liderazgo &#62; </a>
+    </div>
+
+    <div *ngIf="divColaboradores || componenteGrafica" class="miDiaLabel">
+        <a (click)="abrirMiDia()" class="bolsaL"> &#60; Inicio Mi Día </a>
+    </div>
+
+    <div *ngIf="divMiDia && componentesMiDia && !componenteGrafica" class="container" style="padding-bottom: var(--bs-gutter-x, 9rem);">
+        <cardmidia-template [arreglo]="arreglo" [total]="total" [plan]="plan"></cardmidia-template>
+    </div>
+
+    <div *ngIf="divColaboradores && arrayCMiDia && !componenteGrafica" class="container" style="padding-bottom: var(--bs-gutter-x, 9rem);">
+        <midia-colaborades [array]="arrayCMiDia"></midia-colaborades>
+    </div>
+    <div class="container" *ngIf="componenteGrafica" style="padding-bottom: var(--bs-gutter-x, 9rem);">
+        <cardgraficas-template [datosGrafica] = 'datosGrafica'></cardgraficas-template>
+    </div>  
+
+</div>
+<div *ngIf="displayProgressSpinner" class="d-flex justify-content-center" style="padding-top: 50%;background-color: #f3f3f2;">
+    <img src="/assets/img/spinner.gif" alt="">
+  </div>

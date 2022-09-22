@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: POD_NAME
+spec:
+  replicas: POD_MIN_REPLICAS
+  selector:
+    matchLabels:
+      app: POD_NAME
+  template:
+    metadata:
+      labels:
+        app: POD_NAME
+    spec:
+      serviceAccountName: KSA_NAME
+      containers:
+      - name: POD_NAME
+        image: IMAGE
+        ports:
+          - containerPort: 8080
+        env:
+          - name: PORT
+            value: "8080"

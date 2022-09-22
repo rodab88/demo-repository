@@ -1,0 +1,36 @@
+project: "ent-prd-incentivos" # Project ID donde vive el cluster
+services:
+  gke:
+    # Requeridas:
+    cluster: "ent-prd-incetivos-gke-01" # Nombre del cluster donde mandaremos el deployment
+    appName: "incentivos-si" # Nombre de la aplicacione
+    # No obligatorio
+    clusterLocation: "us-east1" # Zona del cluster
+    buildImage: true # Automaticamente lanza el job de crear la imagen
+    substitutions:
+      - var: DB_NAME_VARS
+        value: incentivos
+        files:
+          - "gke/" 
+      - var: KSA_NAME
+        value: ksa-prd-incentivos
+        files:
+          - "gke/"
+      - var: POD_NAME
+        value: incentivos-si
+        files:
+          - "gke/"
+      - var: POD_MAX_REPLICAS
+        value: 10
+        files:
+          - "gke/"
+      - var: POD_MIN_REPLICAS
+        value: 10
+        files:
+          - "gke/"
+      - var: GSA_NAME
+        value: ent-prd-incentivos-gke-sa@ent-prd-incentivos.iam.gserviceaccount.com
+        files:
+          - "gke/"
+
+

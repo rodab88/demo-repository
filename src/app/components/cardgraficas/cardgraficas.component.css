@@ -1,0 +1,70 @@
+#chart {
+  max-width: 450px;
+  margin: 35px auto;
+}
+
+.content {
+  display: flex;
+  padding-top: 0em; 
+  width: 100%;
+  max-width: 100%;
+  flex-direction: column;
+  align-items: center;
+/*   padding-left: 10px;
+  padding-right: 10px; */
+}
+
+.cardTitle {
+  font-size: 1.5em;
+  font-family: BreeBold;
+  padding-bottom: 0.4em;
+
+}
+
+.overlay {
+  padding: 1rem;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 0.5em;
+}
+
+.segundaseccion{
+  padding-bottom: 1px;
+  padding-top: -2px;
+  border-radius: 2em;
+  width: 103%;
+  background-color: white !important;
+  box-shadow: 5px 5px 7px #949494;
+  position: relative;
+}
+
+.input_container {
+  position: relative;
+  padding: 0 0 0 20px;
+  width: 200px;
+}
+
+.meimpulsa{
+  background-color: white;
+  border-radius: 1em 1em;
+  margin-top: 1em;
+  height: 29em !important;
+  height: 38em !important;
+  margin-left: -9px;
+  margin-right: -11px;
+}
+
+
+.booton-inicio{
+  border-radius: 30px;
+  height: 52px;
+  width: 259px;
+  margin-left: 50px;
+  margin-right: 50px;
+  background-color: #e1f2f3;
+  border-color: #218bc7;
+  font-size: 20px;
+  color: #218bc7;
+
+}
+

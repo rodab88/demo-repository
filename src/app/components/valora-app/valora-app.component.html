@@ -1,0 +1,106 @@
+<div *ngIf="!displayProgressSpinner" style="overflow: hidden;position: fixed;">
+
+  <div class="box">
+      <div class="toolbarFull" [style.background-image]="'url('+banner+')'"
+          [style.padding-bottom]="banner==''? '1em': '0em'">
+            <div class="row" style="padding-top: 0.3em; margin-right: 0px;margin-left: 0px;">
+              <div class="col-4 align-items-center" class="classPerfil">
+                <fotoperfil-template [colorPerfil]="colorperfil" [iconoPerfil]="iconoPerfil"></fotoperfil-template>
+              </div>
+              <div class="col-8" style="padding-top: 0.9em;">
+                <p [style.color]="colorletra" class="saludo">Hola {{nombre_user}}</p>
+                <p class="msg">Cuéntanos tu experiencia</p>  
+              </div>
+            </div>
+      </div>
+      <div *ngIf="showComponents">
+      <div style="padding: 1.5em 1.5em;">
+        <div class="col-md-12 py-3 seccion1">
+            <div class="d-flex bd-highlight">
+              <div class="p-2 w-100 bd-highlight">
+                <span class="labelTitle mt-4">Calificaciones y opiniones</span>
+              </div>
+              <div class="p-2 flex-shrink-1 bd-highlight">
+                <em style="font-size: 1.5em;" class="material-icons">arrow_forward</em>
+              </div>
+            </div>
+            <div class="d-flex bd-highlight">
+                  <div class="p-2 mt-4 bd-highlight">
+                    <p class="labelNum">{{promedio}}</p>
+                      <ngb-rating class="estrellas_cal" [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating>
+                      <p class="labelTot">{{total}}</p>
+                  </div>
+                  <div class="p-3 flex-grow-1 bd-highlight">
+                      <div class="progress-bar-container">
+                        <div class="lower-limit">5</div>
+                          <mat-progress-bar mode="determinate" [value]="valor5"></mat-progress-bar>
+                      </div>
+                      <div class="progress-bar-container">
+                        <div class="lower-limit">4</div>
+                          <mat-progress-bar mode="determinate" [value]="valor4"></mat-progress-bar>
+                      </div>
+                      <div class="progress-bar-container">
+                        <div class="lower-limit">3</div>
+                          <mat-progress-bar mode="determinate" [value]="valor3"></mat-progress-bar>
+                      </div>
+                      <div class="progress-bar-container">
+                        <div class="lower-limit">2</div>
+                          <mat-progress-bar mode="determinate" [value]="valor2"></mat-progress-bar>
+                      </div>
+                      <div class="progress-bar-container">
+                        <div class="lower-limit">1</div>
+                          <mat-progress-bar mode="determinate" [value]="valor1"></mat-progress-bar>
+                      </div>
+              </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+          <a type="button" class="btn btn-califica mt-5" (click)="abreModalComentario()">Comparte tu opinión</a>          
+        </div>
+    </div>
+   </div>
+  </div>
+  <div *ngIf="showComponents" style="overflow-y: auto;height: calc(50vh - 8em);">
+      <div  *ngIf="comentarios" style="padding: 0em 1.5em;">
+        <div class="col-md-12 py-3 seccion2" *ngFor="let item of comentarios_conv">
+          <div class="d-flex bd-highlight">
+            <div class="p-2 bd-highlight">
+                <div class="col-4 px-3 align-items-center">
+                    <img alt="" *ngIf="item.foto != null" [ngClass]="opacity? 'opacity': ''" [style.border]="borderColor" class="perfil" src="{{item.foto}}" />
+                    <img alt="" *ngIf="item.foto == null" [ngClass]="opacity? 'opacity': ''" [style.border]="borderColor" class="perfil" style="background-color: white;"
+                      src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iY3VycmVudENvbG9yIiBjbGFzcz0iYmkgYmktcGVyc29uIiB2aWV3Qm94PSIwIDAgMTYgMTYiPgogIDxwYXRoIGQ9Ik04IDhhMyAzIDAgMSAwIDAtNiAzIDMgMCAwIDAgMCA2em0yLTNhMiAyIDAgMSAxLTQgMCAyIDIgMCAwIDEgNCAwem00IDhjMCAxLTEgMS0xIDFIM3MtMSAwLTEtMSAxLTQgNi00IDYgMyA2IDR6bS0xLS4wMDRjLS4wMDEtLjI0Ni0uMTU0LS45ODYtLjgzMi0xLjY2NEMxMS41MTYgMTAuNjggMTAuMjg5IDEwIDggMTBjLTIuMjkgMC0zLjUxNi42OC00LjE2OCAxLjMzMi0uNjc4LjY3OC0uODMgMS40MTgtLjgzMiAxLjY2NGgxMHoiLz4KPC9zdmc+' />
+                    <br>
+                    <ngb-rating class="estrellas_com" [max]="5" [(rate)]="item.valor" [readonly]="false"></ngb-rating>
+                </div>
+            </div>
+            <div class="p-2 bd-highlight w-100">
+              <div class="labelFotoCom py-2">{{item.nombre}}</div>
+              <br>
+              <div class="fechaCom">{{item.fecha_creacion}}</div>
+            </div>
+          </div>
+          <p class="d-flex px-4">{{ item.comentario }}</p>
+          <div class="d-flex bd-highlight">
+            <div class="p-2 bd-highlight">
+              <p class="px-2 labelInfo">¿Te resulto útil está información?</p>
+            </div>
+            <div class="p-2 bd-highlight">
+              <div class="reaction px-4">
+                <button [ngClass]="item.me_gusta=='1'? 'btnCommentAzul' : 'btnCommentGris'"
+                      (click)="megustaComentario(item.id)"
+                      class="material-icons espaciolike">thumb_up</button>{{item.total_me_gusta}}
+                <button [ngClass]="item.no_megusta=='1'? 'btnCommentAzul' : 'btnCommentGris'"
+                      (click)="nomegustaComentario(item.id)"
+                      class="material-icons espaciolike2">thumb_down</button>{{item.total_no_megusta}}
+              </div>
+             </div>
+          </div>
+      </div>
+      </div>
+  </div>
+
+  </div>
+
+  <div *ngIf="displayProgressSpinner" class="d-flex justify-content-center" style="padding-top: 50%;background-color: #f3f3f2;">
+    <img src="/assets/img/spinner.gif" alt="">
+  </div>

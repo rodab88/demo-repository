@@ -1,0 +1,64 @@
+
+<!-- Comentario y calificación de la app-->  
+<div class="row py-3">
+        <div class="col-2">
+            <img alt="" style="width: 80px;" src="/assets/img/si-plus.PNG" />
+        </div>
+        <div class="col-10 py-4 px-5">
+            <p class="f-t1">Sistema de Incentivos</p>
+        </div>
+    </div>
+    <div class="row mb-3 py-2">
+        <div class="col-12">
+            <p class="f-t2">Novedades</p>
+            <p class="f-t3">Ultima actualización: 17/08/2022</p>
+            <p class="f-t4">Sistema de Incentivos móvil Gentera.</p>
+        </div>
+    </div>
+    <div class="row mb-3 py-2">
+        <p class="f-t2">Califica está app:</p>
+        <p class="f-t3">Comparte tu opinión con otros usuarios</p>
+        <div class="d-flex justify-content-center py-3">
+            <ngb-rating class="estrellas" [max]="5" [(rate)]="starRatingCom" [readonly]="false"></ngb-rating>
+        </div>
+        <p class="f-t5">Escribe una opinión</p>
+        <textarea class="form-control" rows="5" cols="5" [(ngModel)]="comentario"></textarea>
+        <div class="d-flex justify-content-center">
+            <div class="row">
+                <div class="col-6">
+                    <button class="button mt-2 btn-cancela" (click)="cancela()" type="button">Cancelar</button>
+                </div>
+                <div class="col-6">
+                    <button class="button mt-2 btn-envia" type="button" (click)="enviar()">
+                        <em class="bi bi-send"></em>Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3 py-3">
+        <p class="f-t2">Acerca de está app</p>
+        <p class="f-t4">Sistema de Incentivos móvil Gentera.</p>
+        <div class="d-flex flex-row-reverse bd-highlight">
+            <div class="p-2 bd-highlight">
+                <button class="button mt-2 btn-cancela" type="button" (click)="cerrar()">
+                    Cerrar</button>
+            </div>
+        </div>
+</div>
+
+
+<ng-template #modal let-modal>
+    <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="cerrarModal()" aria-label="Close">
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="d-flex justify-content-center">
+            <div class="row">
+                <em style="font-size: 3em; color: #CA005D;" class="material-icons">check</em>
+            </div>
+        </div>
+        <br>
+        <p class="modalText">¡Gracias por tu opinión!</p>
+    </div>
+</ng-template>

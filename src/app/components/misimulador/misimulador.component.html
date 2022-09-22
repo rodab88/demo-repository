@@ -1,0 +1,81 @@
+<div *ngIf="!displayProgressSpinner">
+    <header-template *ngIf="showComponents" [iconoPerfil]="iconoPerfil" [nombre]="nombre" [colorperfil]="colorperfil"
+        [colorletra]="colorletra" [meimpulsa]="meimpulsa"></header-template>
+        
+        <div *ngIf="arrayColaboradores.length>1">
+            <div *ngFor="let item of arrayColaboradores; let id = index;">            
+                <div class="perfilLabel">
+                    <a class="bolsaL"> Perfil {{item.nombreColaborador}} </a>
+                </div>
+                <div *ngIf="id<arrayColaboradores.length-1" class="miDiaLabel">
+                    <a (click)="regresarColaboradores(item)" class="bolsaL"> &#60; Bolsa de Liderazgo
+                        <img alt="" style="width: 20px; " src="/assets/img/hand.png" /> </a>
+                </div>
+            </div>
+        </div>
+    
+        <div *ngIf="divMiSimulador && arrayCMiDia.equipo.length>0 && !equipo" class="miDiaLabel">
+            <a (click)="abrirColaboradores()" class="bolsaL"> Ver Bolsa de Liderazgo &#62; </a>
+        </div>
+
+        <div *ngIf="divMiSimulador && arrayCMiDia.equipo.length>0" class="miDiaLabel">
+            <a (click)="abrirCompromisos()" class="bolsaL"> Ver Mis Compromisos &#62;
+                <img alt="" style="width: 35px; margin-left: 164px; margin-top: 1px;" src="/assets/img/handshake.png" /> 
+                <div class="circle"></div></a>
+        </div>
+    
+        <div *ngIf="divColaboradores || divCompromiso" class="miDiaLabel">
+            <a (click)="abrirMiSimulador()" class="bolsaL"> &#60; Inicio Mi Simulador </a>
+        </div>    
+
+    <div style="margin-top: 1em;" *ngIf="!divColaboradores && !divCompromiso">
+        <mat-tab-group mat-stretch-tabs color="warn" style="z-index: -1;">
+            <mat-tab label="CALCULADORA" style="z-index: -1; ">
+                <div style="background-color: #fff;" >
+                    <div class="row" style="margin:0.5em;z-index: -1;">
+                        <div class="col-3" style="margin-top: 13px;">
+                            <mat-select [(ngModel)]="periodoSelected">
+                                <mat-option *ngFor="let periodo of periodos" [value]="periodo.id">
+                                    {{periodo.descripcion}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                        <div class="col-5" style="margin-top: 13px;">
+                            <mat-select [(ngModel)]="puestoSelected">
+                                <mat-option *ngFor="let puesto of puestos" [value]="puesto.id">
+                                    {{puesto.nombre}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                        <div class="col-4">
+                            <button class="booton-Buscar" (click)="buscarNominaPuesto()">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="divMiSimulador && componentesMiDia" class="container" style="padding-bottom: var(--bs-gutter-x, 9rem);">
+                    <cardsimulador-template [arreglo]="arreglo" [total]="total" [plan]="plan"  ></cardsimulador-template>
+                </div>
+            
+            </mat-tab>
+            <mat-tab label="PLAYBOOK" *ngIf="equipo">
+                <div style="height: calc(100vh - 14em);">
+
+                </div>
+            </mat-tab>
+
+        </mat-tab-group>
+
+    </div>
+    
+    <div *ngIf="divColaboradores" class="container" style="padding-bottom: var(--bs-gutter-x, 9rem);">
+        <colaboradoresSim-template [arregloGen]="arregloGen" ></colaboradoresSim-template>
+    </div>
+
+    <div *ngIf="divCompromiso" class="container" style="padding-bottom: var(--bs-gutter-x, 9rem);">
+        <colaboradoresComp-template ></colaboradoresComp-template>
+    </div>
+
+</div>
+<div *ngIf="displayProgressSpinner" class="d-flex justify-content-center" style="padding-top: 50%;background-color: #f3f3f2;">
+    <img src="/assets/img/spinner.gif" alt="">
+</div>

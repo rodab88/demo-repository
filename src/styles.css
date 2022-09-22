@@ -1,0 +1,194 @@
+.sb-wrapper,
+.sb-show-icon {
+  --sb-background: transparent;
+  --sb-min-width: fit-content;
+  --sb-height: fit-content;
+  --sb-icon-size: 1.4em;
+}
+
+.sb-facebook {
+  --sb-color: #4267B2;
+}
+
+.sb-twitter {
+  --sb-color: #00acee;
+}
+
+.sb-whatsapp {
+  --sb-color: #25d366;
+}
+
+.sb-messenger {
+  --sb-color: #0080FF;
+}
+
+.sb-telegram {
+  --sb-color: #0088cc;
+}
+
+.sb-email {
+  --sb-color: #FF961C;
+}
+
+.sb-copy {
+  --sb-color: #607D8B;
+}
+
+.sb-print {
+  --sb-color: #765AA2;
+}
+
+.sb-sms {
+  --sb-color: #20c16c;
+}
+
+.sb-expand {
+  --sb-color: #FF6651;
+}
+
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: BreeBold;
+  src: url("./assets/fonts/BreeBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: BreeExtrabold;
+  src: url("./assets/fonts/BreeExtrabold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: BreeLight;
+  src: url("./assets/fonts/BreeLight.otf") format("opentype");
+}
+
+@font-face {
+  font-family: BreeOblique_Bold;
+  src: url("./assets/fonts/BreeOblique_Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: BreeOblique_Bold;
+  src: url("./assets/fonts/BreeOblique_Extrabold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: BreeOblique_Light;
+  src: url("./assets/fonts/BreeOblique_Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: BreeOblique_Reg;
+  src: url("./assets/fonts/BreeOblique_Reg.otf") format("opentype");
+}
+
+@font-face {
+  font-family: BreeOblique_Thin;
+  src: url("./assets/fonts/BreeOblique_Thin.otf") format("opentype");
+}
+
+@font-face {
+  font-family: BreeRegular;
+  src: url("./assets/fonts/BreeRegular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: BreeThin;
+  src: url("./assets/fonts/BreeThin.otf") format("opentype");
+}
+
+@font-face {
+  font-family: BreeSerif-Regular;
+  src: url("./assets/fonts/BreeSerif-Regular.ttf") format("opentype");
+}
+
+.carousel-control-next-icon {
+  filter: invert(22%) sepia(3%) saturate(45%) hue-rotate(314deg) brightness(91%) contrast(90%);
+}
+
+.carousel-control-prev-icon {
+  filter: invert(22%) sepia(3%) saturate(45%) hue-rotate(314deg) brightness(91%) contrast(90%);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 1.5em;
+}
+
+.carousel-caption {
+  position: relative !important;
+}
+
+
+
+.mat-horizontal-stepper-header {
+  height: 20px !important;
+  padding: 0 !important;
+}
+
+.mat-step-icon {
+  height: 20px !important;
+  width: 20px !important;
+  /*background-color: rgb(117 111 111) !important;
+  color: rgb(117 111 111) !important;*/
+}
+
+.mat-step-label {
+  min-width: 0px !important;
+}
+
+.mat-horizontal-stepper-header::before,
+.mat-horizontal-stepper-header::after,
+.mat-stepper-horizontal-line {
+  border-top-color: rgb(0 0 0 / 19%) !important;
+}
+
+.mat-stepper-horizontal-line {
+  border-top-width: 2px !important;
+}
+
+.mat-tab-label-container {
+  background-color: #ffff;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: BreeThin !important;
+  margin: 0;
+  background-color: #F3F3F2 !important;
+
+}
+
+.loader {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 1s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

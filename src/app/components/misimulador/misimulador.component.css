@@ -1,0 +1,39 @@
+.bolsaL {
+  color: #0d6efd;
+  font-family: BreeBold;
+  padding-left: 1em;
+  text-decoration: none;
+  margin: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  
+}
+
+.circle {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 1rem;
+  background-color: #6acd0f;
+  margin-left: 364px;
+  margin-top: -12px;
+}
+
+
+.booton-Buscar {
+  border-radius: 30px;
+  height: 44px;
+  width: 103%;
+  background-color: #e20077;
+  font-size: 18px;
+  color: white;
+  border: 0;
+}
+
+.miDiaLabel {
+  background-color: #FFF;
+  margin: 1em 1em 0em 0.8em;
+  border-radius: 0.8em;
+  height: 3em;
+  position: relative;
+}

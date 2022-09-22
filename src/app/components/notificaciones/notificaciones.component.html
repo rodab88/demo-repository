@@ -1,0 +1,135 @@
+<div class="scrooll-design background-panel ">
+    <div class="form-group">
+        <div class="input-group-sm col-4" style="margin-left: 5px;">
+            <select matNativeControl requerid style="border: white;" (change)="filtroVisto()"
+                [(ngModel)]="filtroNotifica">
+                <option value="0">Todas</option>
+                <option value="1">Leídas</option>
+                <option value="2">No leídas</option>
+            </select>
+        </div>
+        
+        <div class="col-8"></div>
+    </div>
+
+    <div class="row m-2 " *ngFor="let item of arreglo;let indice = index;">
+        <div *ngIf="!item.visto" class="segundaseccion ">
+            <div class="row m-2 ">
+                <div class="col-2 text-center">
+                    <article><img alt="" style="width: 50px; margin-left: -15px; margin-top: 5px;"
+                            src="/assets/img/si.png" />
+                    </article>
+
+                </div>
+
+                <div class="col-7">
+                    <article>{{item.titulo}}
+                        <article></article>
+                        <article>{{item.texto}}</article>
+                    </article>
+
+                </div>
+                <div class="col-3 text-center">
+                    <button (click)="activarMenu(item,indice);" class=" button-visto">
+                        <img alt="" style="width: 50px; margin-top: 5px; margin-top: 5px;"
+                            src="/assets/img/3puntos.png" /></button>
+
+                </div>
+                <ul id="elemento1" class="labelflotantemenu" *ngIf="seleccionamenu && !objNotifica.visto ">
+                    <a>
+                        <ng-container>
+                            <li>
+                                <span (click)="eliminar();">Eliminar
+                                    <img alt="" style="width: 20px; margin-left: 91px;" src="/assets/img/eliminar.png" />
+                                </span>
+                            </li>
+                            <li>
+                                <span *ngIf='!objNotifica.visto' (click)="visto();">Marcar cómo leído
+                                    <img alt="" style="width: 25px; margin-left: 29px;" src="/assets/img/Read.png" />
+                                </span>
+                            </li>
+                            <li>
+                                <span>Ir a la publicación
+                                    <img alt="" style="width: 25px; margin-left: 36px;" src="/assets/img/Publicacion.png" />
+                                </span>
+                            </li>
+                        </ng-container>
+                    </a>
+                </ul>
+
+                <div class="col-2"></div>
+                <div class="col-10 mt-3" style="border-bottom-left-radius: 10px;">
+                    <article>
+
+                        <article style=" color:gray;">{{item.fecha|fecha: 'hora'}}</article>
+                    </article>
+
+                </div>
+
+            </div>
+        </div>
+        <div *ngIf="item.visto">
+            <div class="row m-2 ">
+                <div class="col-2 text-center">
+                    <article><img alt="" style="width: 50px; margin-left: -15px; margin-top: 5px;"
+                            src="/assets/img/si.png" />
+                    </article>
+
+                </div>
+
+                <div class="col-7">
+                    <article>{{item.titulo}}
+                        <article></article>
+                        <article>{{item.texto}}</article>
+                    </article>
+
+                </div>
+                <div class="col-3 text-center">
+                    <button (click)="activarMenu(item,indice);" class=" button">
+                        <img alt="" style="width: 50px; margin-top: 5px;" src="/assets/img/3puntos.png" /></button>
+
+                </div>
+                <ul id="elemento1" class="labelflotantemenu" *ngIf="seleccionamenu && objNotifica.visto">
+                    <a>
+                        <ng-container>
+                            <li>
+                                <span (click)="eliminar();">Eliminar
+                                    <img alt="" style="width: 20px; margin-left: 91px;" src="/assets/img/eliminar.png" />
+                                </span>
+                            </li>
+                            <li>
+                                <span *ngIf='!objNotifica.visto' (click)="visto();">Marcar cómo leído
+                                    <img alt="" style="width: 25px; margin-left: 29px;" src="/assets/img/Read.png" />
+                                </span>
+                            </li>
+                            <li>
+                                <span>Ir a la publicación
+                                    <img alt="" style="width: 25px; margin-left: 36px;" src="/assets/img/Publicacion.png" />
+                                </span>
+                            </li>
+                        </ng-container>
+                    </a>
+                </ul>
+
+                <div class="col-2"></div>
+                <div class="col-10 mt-3" style="border-bottom-left-radius: 10px;">
+                    <article>
+
+                        <article style=" color:gray;">{{item.fecha|fecha: 'hora'}}</article>
+                    </article>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="row  m-2 background-panel ">
+        <div *ngIf="arreglo == undefined" class="alert  col text-center">
+            <strong>En este momento no existen notificaciones</strong>
+        </div>
+    </div>
+
+</div>

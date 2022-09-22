@@ -1,0 +1,10 @@
+
+  .perfil{
+    width: 4.3em;
+    height: 4.3em;
+    border-radius: 50% !important;
+  }
+
+  .opacity{
+    filter: grayscale(100%);
+  }

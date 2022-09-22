@@ -1,0 +1,63 @@
+<div *ngIf="!displayProgressSpinner">
+    <div *ngIf="showComponents && seccionesPermitidas!==null" class="row divHeader">
+        <div class="col-4" *ngIf="completo" style="padding: 0.7em 1em 0em 0em;">
+            <button mat-button class="menu-button" *ngIf="seccionesPermitidas.menu" (click)="sidenav.toggle()">
+                <mat-icon style="font-size: 2em;">{{ isMenuOpen ? 'menu_open' : 'menu' }}</mat-icon>
+            </button>
+        </div>
+        <div style="padding-top: 0.2em;" [ngClass]="completo? 'col-4 d-flex justify-content-center': 'col-8'">
+            <img alt="" *ngIf="completo" style="width: 40px;height: 40px;" src="{{logosi}}" />
+            <div *ngIf="!completo" style="padding-top: 0.5em;">
+                <a href="{{back}}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black"
+                        class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+                    </svg>
+                </a>
+                <span style="padding-left:0.2em; font-weight: bold;">{{labelBack}}</span>
+            </div>
+        </div>
+        <div class="col-4 d-flex justify-content-end" style="    padding-top: 0.3em;">
+            <a *ngIf="seccionesPermitidas.acceso_clara" class="" href="{{urlClara}}" class="urlClara" target="_blank"
+                rel="noopener">
+                <img alt="" style="width: 38px;" src="{{iconoClara}}" />
+            </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a *ngIf="seccionesPermitidas.acceso_notificaciones" type="button" href="notificaciones"
+                class="btnNotificacion btn position-relative">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                    class="bi bi-bell-fill" height="35px" viewBox="0 0 16 16">
+                    <path
+                        d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
+                </svg>
+                <span *ngIf="hayNotificacion"
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    <span class="visually-hidden"></span>
+                </span>
+            </a>
+        </div>
+    </div>
+    <mat-sidenav-container class="sidenav-container">
+        <mat-sidenav #sidenav autoFocus="false" mode="over" [(opened)]="isMenuOpen" class="sidenav"
+            (click)="onSidenavClick()">
+            <a class="side-a" mat-button (click)="cerraSesion()">{{cerrar}}
+                <em style="padding-left: 0.2em;" class="material-icons">logout</em>
+            </a>
+<!--             <a class="side-a" mat-button (click)="valoraApp()">
+                Reseñas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {{promedio_app}}<em style="padding-left: 0.2em; font-size: 1em; padding-bottom: 0.3em;" class="material-icons">star</em>
+            </a> -->
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+            <footer-template *ngIf="showComponents && seccionesPermitidas!==null" [color]="colorsecundario">
+            </footer-template>
+            <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
+
+<div *ngIf="displayProgressSpinner" class="d-flex justify-content-center" style="padding-top: 70%;background-color: #f3f3f2;">
+    <img src="/assets/img/spinner.gif" alt="">
+</div>

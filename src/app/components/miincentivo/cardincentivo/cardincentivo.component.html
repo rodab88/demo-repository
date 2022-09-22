@@ -1,0 +1,333 @@
+<div id="pdfTable" #pdfTable *ngIf="showComponents" class="scrooll-design background-panel">
+  <div style="padding: 1.5em 19px 1em 5px;">
+    <div class="segundaseccion" [ngStyle]="{'box-shadow':boxshadow}">
+      <div class="overlay">
+        <div class="row" style="padding-left: 1em; padding-top: 1em;">
+          <div class="col-12 text-center">
+            <span class="title">Incentivo A Pagar</span>
+          </div>
+          <div class="col-12 text-center">
+            <article class="label-micompromiso">Última actualización: {{total.fecha|fecha: 'hora'}}
+            </article>
+          </div>
+          <div class="col-4"></div>
+          <div class="col-8" style="margin-top: 13px;">
+            <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
+              <span class="card-incentivo centerSymbol">$</span>
+              <span class="card-incentivo centerIncentivo">{{total.incentivo | currency:'':''}}</span>
+            </div>
+          </div>
+          <div class="col-4" style="margin-top: -13px">
+            <div>
+              <p class="card-micompromiso">{{total.compromiso | currency:"$":"symbol"}}</p>
+            </div>
+            <div>
+              <span class="label-micompromiso" style="margin-top: -1px">Mi compromiso</span>
+            </div>
+          </div>
+
+          <div class="col-8 text-center" style="margin-top: 8px;">
+            <span class="label labelHoy">Hoy</span>
+          </div>
+          <div class="col-4"></div>
+          <div class="col-8" style="padding-bottom: 0.5em; margin-top: -7px;">
+            <div class="stepsClass" style="padding-top: 0.5em;">
+              <div *ngFor="let step of total.steps" [style.background-color]="step.class" class="circle">
+
+              </div>
+            </div>
+          </div>
+          <div class="col-12 rightIncentivo">
+            <article *ngIf="!variablesTot" (click)="mostrarVarTot()" style="margin-right: 10px;margin-top: -12px;">Ver
+              más
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id='variables' class="totales" *ngIf="variablesTot">
+      <div class="card-img-overlay-Total">
+        <div class="row" *ngFor="let itemPla of total.planes; let planes = index;">
+
+          <div class="row" style="padding-left: 1em; padding-top: 1em;">
+            <div class="col-8">
+              <span class="label-Fomula">{{itemPla.nombre}}</span>
+            </div>
+            <div class="col-4 ">
+              <span class="montosTotal" style="margin-left: 90px;">${{itemPla.monto}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-10 rightIncentivo">
+        <article *ngIf="variablesTot" style="margin-right: 1em;padding-bottom: 0.3em;" (click)="mostrarVarTot()">Ver
+          menos
+        </article>
+      </div>
+    </div>
+
+  </div>
+  <div class="segundaseccionPdf" style="padding: 1.5em 7px 1em 15px;">
+    <div class="row segundaseccion">
+      <div class="overlay">
+        <div class="row" style="padding-left: 1em; padding-top: 1em;">
+          <div class="col-12">
+            <span class="title">Monto Plan</span>
+          </div>
+          <div class="col-4">
+            <article class="label-micompromiso">Última actualización:
+            </article>
+          </div>
+          <div class="col-8"></div>
+          <div class="col-4" style="margin-top: -6px;">
+            <article *ngIf="plan.fecha" class="label-micompromiso">{{plan.fecha|fecha: 'hora'}}</article>
+          </div>
+          <div class="col-8">
+            <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
+              <span class="card-incentivo centerSymbol">$</span>
+              <span class="card-incentivo centerIncentivo">{{plan.incentivo | currency:'':''}}</span>
+            </div>
+          </div>
+          <div class="col-4"></div>
+          <div class="col-8 text-center" style="margin-top: 8px;">
+            <span class="label labelHoy">Hoy</span>
+          </div>
+
+          <div class="col-4" style="margin-top: -14px">
+            <div>
+              <p class="card-micompromiso">{{plan.compromiso | currency:"$":"symbol"}}</p>
+            </div>
+            <div>
+              <span class="label-micompromiso">Mi compromiso</span>
+            </div>
+          </div>
+          <div class="col-8" style="padding-bottom: 0.5em;">
+            <div class="stepsClass" style="padding-top: 0.5em;">
+              <div *ngFor="let step of plan.steps" [style.background-color]="step.class" class="circle">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 rightIncentivo">
+            <article *ngIf="!variablesPlan" (click)="mostrarVarPlan()" style="margin-right: 10px;margin-top: -12px;">Ver
+              más
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="row planPdf" *ngFor="let itemVar of plan.variables; let indicevar = index;">
+      <div class="row plan" *ngIf="variablesPlan">
+        <div class="overlayVariables">
+          <div class="row" style="padding-left: 1em; padding-top: 1em;">
+            <div (click)="activarPdfIncentivo(itemVar)" class="col-1 cardPdf"
+              style="background-size: 100% 100% !important;"
+              [style.background]="'url('+itemVar.icono+') no-repeat scroll 0 0 transparent'">
+            </div>
+            <div class="col-5">
+              <span class="title">{{itemVar.nombre}}</span>
+            </div>
+            <div class="col-4">
+              <div style="--bs-gutter-x: 0;display: flex; width: 120%; ">
+                <span class="incentivoVar centerSymbol">$</span>
+                <span class="incentivoVar centerIncentivo">{{itemVar.incentivo | currency:'':''}}</span>
+              </div>
+            </div>
+            <div class="col-2" *ngIf="!itemVar.acordion">
+              <img alt="" style="width: 20px; 
+                  margin-left: 24px;
+                  margin-top: 1px;" (click)="activarAcordionPlan(itemVar)" src="/assets/img/scrollarrow.png" />
+            </div>
+            <div class="col-2" *ngIf="itemVar.acordion">
+              <img alt="" style="width: 20px; 
+                margin-left: 24px;
+                margin-top: 1px;" (click)="activarAcordionPlan(itemVar)" src="/assets/img/upscroll.png" />
+            </div>
+            <div class="col-1">
+            </div>
+            <div class="col-4">
+              <div>
+                <p class="card-micompromiso">{{itemVar.compromiso | currency:"$":"symbol"}}</p>
+              </div>
+              <div style="margin-top: -6px;">
+                <span class="label-micompromiso">Mi compromiso</span>
+              </div>
+            </div>
+            <div class="col-7" style="padding-bottom: 0.5em;">
+              <div class="text-center" style="margin-top: -6px;">
+                <span class="label labelHoy">Hoy</span>
+              </div>
+              <div class="stepsClass" style="padding-top: 0.5em; margin-top: -10px; margin-left: -5px;">
+                <div *ngFor="let step of itemVar.stpsVar" [style.background-color]="step.class" class="circle">
+                </div>
+              </div>
+            </div>
+            <div *ngIf="itemVar.acordion">
+              <br>
+              <div class="col-12 formula"></div>
+              <br>
+              <div class="row" *ngFor="let itemCom of itemVar.componentes; let indiceCom = index;">
+                <div class="col-1">
+                  <img (click)="onShowDescription(itemCom)" src="/assets/img/Group.png" alt="" />
+                </div>
+                <div class="col-7">
+                  <span class="label-Fomula">{{itemCom.nombre}}</span>
+                </div>
+                <div class="col-4 cardPorcentajes d-flex justify-content-end">
+                  <span class="label-Fomula">{{itemCom.valor}}</span>
+                </div>
+                <br><br>
+              </div>
+              
+              <div class="col-12 text-center">
+                <button class="button-grafica" (click)="avtivarGrafica(itemVar)">
+                  <img alt="" style="width: 24px; margin-right: 10px;" src="/assets/img/graph.png" />
+                  Ver gráfica de tendencia y proyección</button>
+              </div>
+            </div>
+            <div class="col-12 rightIncentivo">
+              <article *ngIf="variablesPlan" (click)="mostrarVarPlan()">Ver menos
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <div class="row m-1 " *ngFor="let item of arreglo;let indice = index;">
+    <div style="padding: 1.5em 3px 1em 10px;">
+      <div class="row segundaseccion">
+        <div class="overlay">
+          <div class="row" style="padding-left: 1em; padding-top: 1em;">
+            <div class="col-12">
+              <span class="cardTitle">{{item.nombre}}</span>
+            </div>
+            <div class="col-4">
+              <article class="label-micompromiso">Última actualización:
+              </article>
+            </div>
+            <div class="col-8"></div>
+            <div class="col-4">
+              <article *ngIf="item.fecha" class="label-micompromiso">{{item.fecha|fecha: 'hora'}}</article>
+            </div>
+            <div class="col-8">
+              <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
+                <span class="card-incentivo centerSymbol">$</span>
+                <span class="card-incentivo centerIncentivo">{{item.incentivo | currency:'':''}}</span>
+              </div>
+            </div>
+            <div class="col-4"></div>
+            <div class="col-8 text-center" style="margin-top: 8px;">
+              <span class="label labelHoy">Hoy</span>
+            </div>
+
+            <div class="col-4" style="margin-top: -14px">
+              <div>
+                <p class="card-micompromiso">{{item.compromiso | currency:"$":"symbol"}}</p>
+              </div>
+              <div>
+                <span class="label-micompromiso">Mi compromiso</span>
+              </div>
+            </div>
+            <div class="col-8" style="padding-bottom: 0.5em;">
+              <div class="stepsClass" style="padding-top: 0.5em;">
+                <div *ngFor="let step of item.stps" [style.background-color]="step.class" class="circle">
+                </div>
+              </div>
+            </div>
+            <div class="col-12 rightIncentivo">
+              <article *ngIf="item.idIncentiv !== varibleIncen" style="margin-right: 10px; margin-top: -12px;"
+                (click)="mostrarVar(item)">Ver más
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngFor="let itemVar of item.variables; let indicevar = index;">
+        <div class="row variables" *ngIf="itemVar.idVariable == varibleCampanias">
+          <div class="overlayVariables">
+            <div class="row" style="padding-left: 1em; padding-top: 1em;">
+              <div (click)="activarPdfIncentivo(itemVar)" class="col-1 cardPdf"
+                style="background-size: 100% 100% !important;"
+                [style.background]="'url('+itemVar.icono+') no-repeat scroll 0 0 transparent'">
+              </div>
+              <div class="col-5">
+                <span class="title">{{itemVar.nombre}}</span>
+              </div>
+              <div class="col-4">
+                <div style="--bs-gutter-x: 0;display: flex; width: 95%; ">
+                  <span class="incentivoVar centerSymbol">$</span>
+                  <span class="incentivoVar centerIncentivo">{{itemVar.incentivo | currency:'':''}}</span>
+                </div>
+              </div>
+              <div class="col-2" *ngIf="!acordion">
+                <img alt="" style="width: 20px; 
+                    margin-left: 24px;
+                    margin-top: 1px;" (click)="activarAcordion(itemVar)" src="/assets/img/scrollarrow.png" />
+              </div>
+              <div class="col-2" *ngIf="acordion">
+                <img alt="" style="width: 20px; 
+                  margin-left: 24px;
+                  margin-top: 1px;" (click)="activarAcordion(itemVar)" src="/assets/img/upscroll.png" />
+              </div>
+
+              <div class="col-1">
+
+              </div>
+              <div class="col-4">
+                <div>
+                  <p class="card-micompromiso">{{itemVar.compromiso | currency:"$":"symbol"}}</p>
+                </div>
+                <div style="margin-top: -6px;">
+                  <span class="label-micompromiso">Mi compromiso</span>
+                </div>
+              </div>
+              <div class="col-7" style="padding-bottom: 0.5em;">
+                <div class="text-center" style="margin-top: -6px;">
+                  <span class="label labelHoy">Hoy</span>
+                </div>
+                <div class="stepsClass" style="padding-top: 0.5em; margin-top: -10px; margin-left: -5px;">
+                  <div *ngFor="let step of itemVar.stpsVar" [style.background-color]="step.class" class="circle">
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="itemVar.idVariable == varibleCompo">
+                <br>
+                <div class="col-12 cardFormula"></div>
+                <br>
+                <div class="row" *ngFor="let itemCom of itemVar.componentes; let indiceCom = index;">
+                  <div class="col-8">
+                    <span class="label-Fomula">{{itemCom.nombre}}</span>
+                  </div>
+                  <div class="col-4 cardPorcentajes">
+                    <span class="label-Fomula" style="margin-left: 45px;">{{itemCom.valor}}</span>
+                  </div>
+                  <br><br>
+                </div>
+                <div class="col-12 text-center">
+                  <button class="button-grafica" (click)="avtivarGrafica(itemVar)">
+                    <img alt="" style="width: 24px; margin-right: 10px;" src="/assets/img/graph.png" />
+                    Ver gráfica de tendencia y proyección</button>
+                </div>
+              </div>
+              <div class="col-12 rightIncentivo">
+                <article *ngIf="variables" (click)="mostrarVar(item)">Ver menos
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-12 pdfStyle" *ngIf="actiPDFIncent">
+    <img alt="" style="width: 30px;
+          margin-left: 92%;" (click)="activarPdfIncentivo(undefined)" src="/assets/img/close.png" />
+
+    <iframe title="" [src]="urlI" style="width: 101%;
+          height: 96%;" allowfullscreen></iframe>
+  </div>
+</div>

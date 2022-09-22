@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Compartir</h1>
+<div mat-dialog-content>
+  <share-buttons [theme]="'circles-dark'"
+ [include]="['facebook','twitter','telegram','messenger','whatsapp','sms','email','print','copy']"
+ [show]="6"
+ [url]="'https://si-incentivos-dev.gc.gentera.com.mx/'"
+></share-buttons>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cerrar</button>
+</div>

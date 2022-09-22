@@ -1,0 +1,39 @@
+<div style="background-color:#fff;">
+    <div *ngFor="let tour of tours;">
+        <div *ngIf="tour.show && tour.tipo!=='fin'" style="height: calc(100vh - 2em);">
+            <div class="imgPortada" [ngClass]="tour.tipo=='video'? 'videoHeight': 'portadaHeight'"
+                [style.background-image]="tour.tipo=='video'? portadaD: portada">
+                <div *ngIf="tour.tipo=='video'" class="video">
+                    <vg-player>
+                        <video #media id="singleVideo" preload="auto" autoplay>
+                            <source [src]="tour.src" type="video/mp4">
+                        </video>
+                    </vg-player>
+                </div>
+            </div>
+            <div class="col-12 d-flex justify-content-center" style="margin-top: 5em;">
+                <a class="label">{{tour.text}}</a>
+            </div>
+        </div>
+        <div class="row" *ngIf="tour.show && tour.tipo=='fin'" style="padding: 10em 0em;margin: 0em 4em;">
+            <div class="col-12 d-flex justify-content-center">
+                <img alt="" style="width: 230px;" src="/assets/si_icon2.png" />
+            </div>
+            <div class="col-12 d-flex justify-content-center" style="margin-top: 8em;">
+                <a class="label">Disfruta de las mejoras de tu Sistema de Incentivos</a>
+            </div>
+            <div class="col-12 d-flex justify-content-center" style="margin-top: 8em;">
+                <button (click)="finalizar()" class="buttonA">Finalizar</button>
+            </div>
+            <div class="col-12 d-flex justify-content-center" style="margin-top:2em">
+                <a style="color: #0d6efd;" (click)="volverEmpezar()">Volver a empezar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-control">
+        <button *ngFor="let tour of tours;let i=index;" class="circular-button buttonCircular"
+            [ngClass]="tour.show==false? 'btnColorDisabled':'btnColorEnabled'" (click)="jumpToSlide(i)"></button>
+    </div>
+    
+</div>

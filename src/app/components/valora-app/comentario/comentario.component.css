@@ -1,0 +1,75 @@
+.f-t1{
+    font-style: BreeBold;
+    font-size: 19px;
+    color: #CA005D;
+}
+
+.f-t2{
+    margin: 0 0 0.5px;
+    font-family: BreeBold;
+    font-size: 14px;
+    color: #000000;
+}
+
+.f-t3{
+    font-family: BreeSerif-Regular;
+    font-size: 8px;
+    color: #252A2D;
+}
+
+.f-t4{
+    font-family: BreeSerif-Regular;
+    font-size: 16px;
+    color: #252A2D;
+    text-align: justify;
+}
+
+.f-t5{
+    font-family: BreeSerif-Regular;
+    font-size: 12px;
+    color: #3385AD;
+}
+
+.modalText{
+    font-family: BreeSerif-Regular;
+    font-size: 22px;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    color: #006699;
+    text-align: center;
+}
+
+.estrellas {
+    color: #E6CB3E;
+    font-size: 40px;
+}
+
+textarea{
+    margin: 0 0 0.5px;
+}
+
+.btn-envia{
+    width: 80px;
+    height: 38px;
+    padding: 10px 4px 10px 2px;
+    background: rgba(0, 102, 153, 0.8);
+    border: 1px solid #006699;
+    border-radius: 100px;
+    font-family: BreeRegular;
+    color: #FFFFFF;
+}
+
+.btn-cancela{
+    width: 80px;
+    height: 38px;
+    padding: 10px 4px 10px 2px;
+    background: transparent;
+    border: 1px solid #808080;
+    border-radius: 100px;
+    font-family: BreeRegular;
+    color: #808080;
+}
+
+.modal-lg .modal-sm {
+    max-width: 80%;
+  }

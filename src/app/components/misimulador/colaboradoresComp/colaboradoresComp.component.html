@@ -1,0 +1,116 @@
+<div style="padding: 1.5em 0.5em 1em 0.5em;">
+
+    <mat-tab-group mat-stretch-tabs color="warn" style="z-index: -1;">
+        <mat-tab style="z-index: -1; " >
+            <ng-template mat-tab-label>
+                <span>ACTUAL</span>
+                <div class="circleTab" *ngIf="activaActual"></div>
+            </ng-template>
+            <div *ngFor="let item of actual">
+                <a class="cmidia" >
+                    <div class="card" >
+                        <div class="card-img-overlay">
+                            <div class="row" style="padding: 0.5em">
+                                <div class="col-8" style="margin-top: 17px;">
+                                    <span class="nombre">Mi Compromiso</span>
+                                </div>
+                                <div class="col-4" style="text-align: right; margin-top: 17px;">
+                                    <span *ngIf="item.status != 'GUARDADA'" class="status">{{item.status}}</span>
+                                    <span *ngIf="item.status == 'GUARDADA'"  class="status">PENDIENTE</span>
+                                </div>
+                                <div class="col-12" >
+                                    <span class="puesto">{{item.nombre}} Puesto</span>
+                                </div>
+
+                                <div class="col-4" style="margin-top: 17px;">
+                                    <div *ngIf="item.monto>0" class="row">
+                                        <p class="card-micompromiso">{{item.monto | currency:"$":"symbol"}}</p>
+                                    </div>
+                                    <div *ngIf="item.monto>0" class="row">
+                                        <span class="puesto">Compromiso</span>
+                                    </div>
+                                    <div *ngIf="item.monto<=0" class="row">
+                                        <span class="label-micompromiso" style="font-family: BreeBold;">SIN
+                                            COMPROMISO</span>
+                                    </div>
+                                    <div class="row"></div>
+                                </div>
+                                <div class="col-8" style="    margin-top: 28px;">
+                                    <div *ngIf="item.monto>0" class="row">
+                                        <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
+                                            <span class="card-incentivo centerSymbol"
+                                                [ngClass]="item.opacity? 'opacityColor':''">$</span>
+                                            <span class="card-incentivo centerIncentivo"
+                                                [ngClass]="item.opacity? 'opacityColor':''">{{item.monto_sugerido |
+                                                currency:'':''}}</span>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="item.monto<=0" class="row">
+                                        <span class="labelNodisponible d-flex justify-content-center">No disponible</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>        
+
+        
+            </div>
+        </mat-tab>
+        <mat-tab >
+            <ng-template mat-tab-label>
+                <span>HISTORIAL</span>   
+                <div class="circleTab" *ngIf="activaHist"></div>
+            </ng-template>
+            <div *ngFor="let item of historial">
+                    <a class="cmidia" >
+                        <div class="card" >
+                            <div class="card-img-overlay">
+                                <div class="row" style="padding: 0.5em">
+                                    <div class="col-12" style="text-align: right;">
+                                        <span class="status">{{item.status}}</span>
+                                    </div>
+                                    <div class="col-10" style="padding: 1em 1em 1em 1.5em;">
+                                        <span class="nombre">{{item.nombre}}</span>
+                                        <br>
+                                        <span class="puesto">{{item.puesto}}</span>
+                                    </div>
+                                    <div class="col-4">
+                                        <div *ngIf="item.monto>0" class="row">
+                                            <p class="card-micompromiso">{{item.monto | currency:"$":"symbol"}}</p>
+                                        </div>
+                                        <div *ngIf="item.monto>0" class="row">
+                                            <span class="label-micompromiso">Compromiso</span>
+                                        </div>
+                                        <div *ngIf="item.monto<=0" class="row">
+                                            <span class="label-micompromiso" style="font-family: BreeBold;">SIN
+                                                COMPROMISO</span>
+                                        </div>
+                                        <div class="row"></div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div *ngIf="item.monto>0" class="row">
+                                            <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
+                                                <span class="card-incentivo centerSymbol"
+                                                    [ngClass]="item.opacity? 'opacityColor':''">$</span>
+                                                <span class="card-incentivo centerIncentivo"
+                                                    [ngClass]="item.opacity? 'opacityColor':''">{{item.monto |
+                                                    currency:'':''}}</span>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="item.monto<=0" class="row">
+                                            <span class="labelNodisponible d-flex justify-content-center">No disponible</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>        
+
+            </div>
+
+        </mat-tab>
+
+    </mat-tab-group>
+
+</div>

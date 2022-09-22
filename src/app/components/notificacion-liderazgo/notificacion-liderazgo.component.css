@@ -1,0 +1,63 @@
+.form-control, .form-label{
+    font-family: 'Open Sans', sans-serif;
+    color: #808080;
+    font-size: 16px;
+    height: 56px;
+    left: 0px;
+    right: 0px;
+    top: 12px;
+    border: 1px solid #000000;
+    border-radius: 8px;
+}
+
+.f-t1{
+    font-style: normal;
+    font-size: 32px;
+    letter-spacing: -0.01em;
+    color: #495564;
+}
+
+.f-t2{
+    font-style: normal;
+    font-size: 14px;
+    color: #4D4D4D;
+}
+
+.cuerpo_post{
+    padding-top: 3em;
+}
+
+.boton{
+    /* width: 105px; */
+    height: 56px;
+    top: 186px;
+    color: #808080;
+    background: #FFFFFF;
+    border: 1.5px solid #808080;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+
+.boton2{
+    /* width: 105px; */
+    height: 56px;
+    top: 186px;
+    color: #FFFFFF;
+    background: #E6863E;
+    border: 1.5px solid #E6863E;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.boton3{
+    /* width: 105px; */
+    height: 56px;
+    top: 186px;
+    color: #FFFFFF;
+    background: #5d87f3;
+    border: 1.5px solid #5d87f3;
+    border-radius: 10px;
+    font-size: 16px;
+}
+

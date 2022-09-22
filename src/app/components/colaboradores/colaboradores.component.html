@@ -1,0 +1,260 @@
+<div class="background-panel m-1">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+      <p class="tituloAzul" style="font-size: 2em;">Mi Equipo</p>
+    </div>
+    <div class="col-6">
+      <button (click)="seccionFiltros();" class=" button">Filtrar por
+        <img alt="" src="/assets/img/filter.png" style="width: 15px; margin-left: 4px;">
+      </button>
+    </div>
+    <div class="col-6" style="    text-align: right;">
+      <button (click)="activarMenuOrden();" class=" button">Ordenar por
+        <img alt="" style="width: 15px; margin-left: 4px;" src="/assets/img/ordenar.png" />
+      </button>
+    </div>
+
+  </div>
+  <div class="row ">
+  <ul id="elemento1" class="labelflotanteOrden" *ngIf="seleccionamenuOrden">
+    <ng-container>
+      <li>
+        <div class="row m-2">
+        <div class="col-4" >
+          <select matNativeControl requerid class="deplega" (change)="activarPor()"
+            [(ngModel)]="ordenPrincipal">
+            <option value="0">Seleccionar</option>
+            <option value="1">Incentivo Promedio</option>
+            <option value="2">Incentivos ganados</option>
+            <option value="3">Categoría del Desempeño</option>
+            <option value="4">Estrategia</option>
+            <option value="5">Nombre</option>
+            <option value="6">Oficina</option>
+            <option value="7">Subdirección</option>
+            <option value="8">Dirección</option>
+          </select>
+        </div>
+        <div class="col-8">
+          <div style="border-radius: 8px;
+          box-shadow: -2px -2px 7px #555555;
+          width: 175px;
+          height: 42px;
+          margin-left: 38px;
+          margin-top: -6px;">
+          <input [(ngModel)]="selecionadoOrden" style="    width: 150px;
+          margin-left: 13px;
+          margin-top: 8px;" type="text">
+          </div>
+        </div>
+      </div>
+      </li>
+
+    </ng-container>
+  </ul>
+  <div>
+    <ul id="elemento1" class="labelflotModOrden" *ngIf="selactivarPor">
+      <ng-container>
+        <li>
+          <div class="row m-2">
+          <div *ngIf="ordenPrincipal == 4 || ordenPrincipal == 5 || ordenPrincipal == 6 || ordenPrincipal == 7 || ordenPrincipal == 8" class="input-group-sm col-12">
+              <label style="margin-top: 15px;" ><input (change)="ordenar(valor.value)" #valor value="0"  type="checkbox">
+                Alfabéticamente A-Z
+              </label>
+              <label style="margin-top: 15px;" ><input (change)="ordenar(valor1.value)" #valor1 value="1" type="checkbox">
+                Alfabéticamente Z-A
+            </label>
+          </div>
+          <div *ngIf="ordenPrincipal == 3" class="input-group-sm col-12">
+            <label style="margin-top: 15px;" ><input (change)="ordenar(valor2.value)" #valor2 value="2"  type="checkbox">
+              Muy Alto a Muy Bajo
+            </label>
+            <label style="margin-top: 15px;" ><input (change)="ordenar(valor3.value)" #valor3 value="3" type="checkbox">
+              Muy Bajo a Muy Alto
+          </label>
+        </div>
+        <div *ngIf="ordenPrincipal == 1 || ordenPrincipal == 2" class="input-group-sm col-12">
+          <label style="margin-top: 15px;" ><input (change)="ordenar(valor4.value)" #valor4 value="4"  type="checkbox">
+            Mayor a Menor
+          </label>
+          <label style="margin-top: 15px;" ><input (change)="ordenar(valor5.value)" #valor5 value="5" type="checkbox">
+            Menor a Mayor
+        </label>
+      </div>
+        </div>
+        </li>
+        </ng-container>
+  
+    </ul>
+    </div>
+  </div>
+
+<div class="row " *ngIf="seleccionamenu ">
+  <div class="row labelflotanteFiltrar">
+  <div class="col-6">
+    <ul id="elemento1" class="filtrado" style="margin-left: -16px;">
+      <ng-container>
+        <li>
+          <span>
+            <select matNativeControl style="border: white;font-size: 0.7em;" [(ngModel)]="filtroselected"
+              (click)="changeFiltros()">
+              <option *ngFor="let f of filtros" [value]="f.id" style="font-size: 1.2em;">
+                {{ f.value }}
+              </option>
+            </select>
+          </span>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+  <div class="col-3" *ngIf="filtroselected==0 || filtroselected==1">
+    <div style="border-radius: 8px;
+    box-shadow: -2px -2px 7px #555555;
+    width: 121px;
+    height: 42px;
+    margin-left: -30px;
+    margin-top: 10px;">
+    <select matNativeControl [(ngModel)]="tipo" style="margin-top: 11px;
+    margin-left: 3px;" (click)="onChangePromedio()">
+      <option value="menor">Menor o igual a</option>
+      <option value="mayor">Meyor o igual a</option>
+    </select>
+    </div>
+  </div>
+  
+  <div class="col-3" *ngIf="filtroselected==0 || filtroselected==1">
+    <div style="    border-radius: 8px;
+    box-shadow: -2px -2px 7px #555555;
+    width: 80px;
+    height: 42px;
+    margin-left: 5px;
+    margin-top: 10px;">
+    <input type="text" [(ngModel)]="promedio" style="    width: 70px;
+    margin-left: 5px;
+    margin-top: 7px;" (ngModelChange)="onChangePromedio()"
+      (keypress)="keyPressNumbers($event)" />
+    </div>  
+  </div>
+  <div class="col-6"  *ngIf="filtroselected==2">
+    <div style="    border-radius: 8px;
+    box-shadow: -2px -2px 7px #555555;
+    width: 173px;
+    height: 42px;
+    margin-left: -4px;
+    margin-top: 10px;">
+    <mat-form-field style="width: 157px;
+    margin-top: -7px;
+    margin-left: 7px;">
+      <mat-select (ngModelChange)="filtrarCategoria()" [formControl]="categoriaSelected" multiple>
+        <mat-option *ngFor="let c of categorias" [value]="c">{{c}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    </div>
+  </div>
+  <div class="col-6" style="margin-top: 20px;" *ngIf="filtroselected>2" >
+    <div style="border-radius: 8px;
+    box-shadow: -2px -2px 7px #555555;
+    width: 151px;
+    height: 42px;
+    margin-left: -4px;
+    margin-top: -12px;">
+    <input type="text" [(ngModel)]="valor" style="margin-top: 7px;
+    margin-left: 7px;" (ngModelChange)="onChangeValor()" />
+    </div>
+  </div>
+</div>
+</div>
+<br>
+<div class="cardPadre">
+  
+    <div *ngFor="let item of arreglo;let indice = index;">
+   <div class="card" [style.background-image]="'url('+fondoImg+')'">
+      <div class="row m-2" >
+        <div class="col-5">
+          <div class="col-12" style="margin-top: 83px;">
+            <article class="cardNum">{{item.nivel_categoria}}
+            </article>
+            <article *ngIf="!item.cambioLetraCat" class="cardPieNum">{{item.categoria}}</article>
+            <article *ngIf="item.cambioLetraCat" class="cardPieNumMenor">{{item.categoria}}</article>
+          </div>
+          <div class="col-12 text-center" style="margin-top: 25px;">
+            <article class="cardGeneral">INCENTIVOS GENERADOS
+            </article>
+            <article class="cardGeneral " >{{item.num_incentivos}} MESES</article>
+          </div>
+          <div class="col-11 text-center" style="margin-top: 15px;">
+            <article class="cardGeneral">INCENTIVO PROMEDIO
+            </article>
+            <article class="cardGeneral" >${{item.incentivo_prom}}</article>
+          </div>
+        </div>
+        <div class="col-7">
+          <div class="subCardFondo" >
+
+            <img alt="" class="foto" *ngIf="item.userCarDefault" src="{{item.foto}}" [style.border]="'7px solid' + item.color_categoria" (click)="activarMenuCol(item);" />
+            <img alt="" class="foto" *ngIf="!item.userCarDefault" src="/assets/img/userFondo.png" [style.border]="'4px solid' + item.color_categoria" (click)="activarMenuCol(item);" />
+
+          </div>
+        </div>
+        <ul id="elemento1" class="labelflotantemenu" *ngIf="seleccionamenuCol">
+          <a>
+            <ng-container>
+              <li>
+                <span><a (click)="modalNotificacion()">Enviar mensaje</a>
+                  <img alt="" style="width: 20px; margin-left: 80px;" src="/assets/img/mensaje.png" (click)="modalNotificacion()"/>
+                </span>
+              </li>
+              <li>
+                <span><a (click)="chatTeams()">Iniciar conversación</a>
+                  <img alt="" style="width: 25px; margin-left: 45px;" src="/assets/img/chat.png" (click)="chatTeams()"/>
+                </span>
+              </li>
+              <li>
+                <span (click)="nuevoperfil()">Ir al perfil
+                  <img alt="" style="width: 25px; margin-left: 115px;" src="/assets/img/perfil.png" />
+                </span>
+              </li>
+            </ng-container>
+          </a>
+        </ul>
+
+        <div class="col-12 text-center" style="margin-top: 24px;">
+          <article *ngIf="!item.cambioLetra" class="cardPieImgen">{{item.nombre}}
+          </article>
+          <article *ngIf="item.cambioLetra" class="cardPieImgenMenor">{{item.nombre}}
+          </article>
+        </div>
+        <div class="col-12 text-center" style="margin-top: 5px;">
+          <article class="cardGeneralIma">{{item.puesto}}
+          </article>
+        </div>
+        <div class="col-12 text-center" style="margin-top: 2px;">
+          <article class="cardGeneralIma">{{item.ubicacion}}</article>
+        </div>
+        <div class="col-12 text-center" >
+          <article class="cardGeneralIma">{{item.subdireccion}}•{{item.direccion}}</article>
+        </div>
+        <div class="col-5 " style="margin-top: 11px; text-align: right;">
+          <article class="cardPieImgen">ESTRATEGIA</article>
+        </div>
+        <div class="col-7 text-center" style="margin-top:11px; margin-left: -15px;">
+          <article class=" cardPieImgen tituloAzul">{{item.estrategia}}</article>
+        </div>
+        <div class="wrapperSecundario">
+          <div *ngFor="let itemVariable of item.variables; ">
+            <div class="row m-2">
+              <div class="col-6" >
+                <article class="cardPieImgenArreglo" style="text-align: right;">{{itemVariable.nombre}}</article>
+              </div>
+              <div class="col-6">
+                <article class="cardPieImgenArreglo" style="text-align: left;">{{itemVariable.valor}}</article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+</div>
+<div style="margin-top: 80px;"></div>
+</div>

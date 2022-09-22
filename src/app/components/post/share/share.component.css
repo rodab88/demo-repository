@@ -1,0 +1,7 @@
+.sb-group, .sb-button{
+    --sb-color: rgb(221, 24, 24) !important;
+    --sb-background: transparent;
+    --sb-min-width: fit-content;
+    --sb-height: fit-content;
+    --sb-icon-size: 1.4em;
+}

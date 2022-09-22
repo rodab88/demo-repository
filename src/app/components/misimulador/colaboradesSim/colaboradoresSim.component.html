@@ -1,0 +1,154 @@
+<div style="padding: 1.5em 0.5em 1em 0.5em;">
+    <div class="cardBolsa" style="padding: 1em;">
+        <div class="row">
+            <div class="col-6" style="    margin-top: 20px;">
+                <span class="cardTitleBolsa">Bolsa De Liderazgo</span>
+            </div>
+            <div class="col-6">
+                <div class="row" style="padding-top: 1.5em;">
+                    <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
+                        <span class="card-bolsa centerSymbol">$</span>
+                        <span class="card-bolsa centerIncentivo">{{montoTotalAceptados |currency:'':''}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <mat-tab-group mat-stretch-tabs color="warn" style="z-index: -1;">
+        <mat-tab style="z-index: -1; " >
+            <ng-template mat-tab-label>
+                <span>ACEPTADOS</span>
+            </ng-template>
+
+            <div  *ngFor="let item of aceptados">
+                <a class="cmidia" >
+                    <div class="card" >
+                        <div class="card-img-overlay">
+                            <div class="row" style="padding: 0.5em">
+                                <div class="col-12" style="text-align: right;">
+                                    <span class="status">{{item.status}}</span>
+                                </div>
+                                <div class="col-2">
+                                    <fotoperfil-template [noRedirect]="false" [iconoPerfil]="item.foto"
+                                        [colorPerfil]="item.color_categoria">
+                                    </fotoperfil-template>
+                                </div>
+                                <div class="col-10" style="padding: 1em 1em 1em 1.5em;">
+                                    <span class="nombre">{{item.nombre}}</span>
+                                    <br>
+                                    <span class="puesto">{{item.puesto}}</span>
+                                </div>
+                                <div class="col-4" style="margin-top: 15px;">
+                                    <div *ngIf="item.monto>0" class="row">
+                                        <p class="card-micompromiso">{{item.monto | currency:"$":"symbol"}}</p>
+                                    </div>
+                                    <div *ngIf="item.monto>0" class="row">
+                                        <span class="label-micompromiso">Compromiso</span>
+                                    </div>
+                                    <div *ngIf="item.monto<=0" class="row">
+                                        <span class="label-micompromiso" style="font-family: BreeBold;">SIN
+                                            COMPROMISO</span>
+                                    </div>
+                                    <div class="row"></div>
+                                </div>
+                                <div class="col-8" style="margin-top: 20px;">
+                                    <div *ngIf="item.monto>0" class="row">
+                                        <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
+                                            <span class="card-incentivo centerSymbol"
+                                                [ngClass]="item.opacity? 'opacityColor':''">$</span>
+                                            <span class="card-incentivo centerIncentivo"
+                                                [ngClass]="item.opacity? 'opacityColor':''">{{item.monto_sugerido |
+                                                currency:'':''}}</span>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="item.monto<=0" class="row">
+                                        <span class="labelNodisponible d-flex justify-content-center">No disponible</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>        
+        
+            </div>
+        </mat-tab>
+        <mat-tab >
+            <ng-template mat-tab-label>
+                <span>EN CURSO</span>   
+                <div class="circleTab"></div>
+            </ng-template>
+            <div *ngFor="let item of pendientes">
+                    <a class="cmidia" >
+                        <div class="card" >
+                            <div class="card-img-overlay">
+                                <div class="row" style="padding: 0.5em">
+                                    <div class="col-12" style="text-align: right;">
+                                        <span *ngIf="item.status != 'GUARDADA'" class="status">{{item.status}}</span>
+                                        <span *ngIf="item.status == 'GUARDADA'"  class="status">PENDIENTE</span>
+                                    </div>
+                                    <div class="col-2" style="margin-top: -18px;">
+                                        <fotoperfil-template [noRedirect]="false" [iconoPerfil]="item.foto"
+                                            [colorPerfil]="item.color_categoria">
+                                        </fotoperfil-template>
+                                    </div>
+                                    <div class="col-10" style="padding: 1em 1em 1em 1.5em; margin-top: -20px;">
+                                        <span class="nombre">{{item.nombre}}</span>
+                                        <br>
+                                        <span class="puesto">{{item.puesto}}</span>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="row">
+                                            <p class="card-micompromiso">{{item.monto | currency:"$":"symbol"}}</p>
+                                        </div>
+                                        <div  class="row">
+                                            <span class="label-micompromiso">Compromiso</span>
+                                        </div>
+                                        <div class="row"></div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="row">
+                                            <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
+                                                <span class="card-incentivo centerSymbol"
+                                                    [ngClass]="item.opacity? 'opacityColor':''">$</span>
+                                                <span class="card-incentivo centerIncentivo"
+                                                    [ngClass]="item.opacity? 'opacityColor':''">{{item.monto_sugerido |
+                                                    currency:'':''}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="elemento1" class="flotante-Monto" *ngIf="seleccionamMontoCamp">
+                                        <div class="col-12" style="font-family: BreeBold; margin-top: 10px; font-size: 20px; color: #919090;">
+                                          <span>Ingresa el Monto</span>
+                                          
+                                        </div>
+                                        <div class="col-12" style="font-family: BreeBold; margin-top: 13px;font-size: 20px;">
+                                          <input [(ngModel)]="montoSim" placeholder=""  style="width: 100%;margin-top: 8px;height: 50px;color: #919090;" type="text">
+                                         
+                                        </div>
+                      
+                                        <div class="col-12 " style=" font-family: BreeBold; margin-top: 13px;">
+                                          <button (click)="activarMonto(item);" class="booton-cancelar"><span>Cancelar</span>
+                                          </button>
+                                          <button (click)="actualizarCompromiso(item);" class="booton-aplicar"><span>Aplicar</span>
+                                          </button>
+                                        </div>
+                      
+                                      </div>
+                                    <div class="col-12 " *ngIf="item.status !== 'RECHAZADA' && item.status !== 'EN PROCESO'"  style="text-align: right; font-family: BreeBold; margin-top: 13px;">
+                                        <button (click)="activarModCompromiso(item);" class="booton-cancelar"><span>Modificar Compromiso</span>
+                                        </button>
+                                        <button (click)="activarAceptarCompro(item);" *ngIf="item.status !== 'SIN COMPROMISO'" class="booton-aplicar"><span>Aceptar Compromiso</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>        
+            </div>
+
+        </mat-tab>
+
+    </mat-tab-group>
+
+</div>
