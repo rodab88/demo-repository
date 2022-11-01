@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Services } from 'src/app/services/services';
 import { CommonServiceService } from '../../../services/common.service'
 
 
@@ -15,13 +16,14 @@ export class CommentComponent {
   @Input() postid: number = 0;
   @Input() respuestas: boolean = false;
 
-  constructor(public s: CommonServiceService) { }
+  constructor(public s: CommonServiceService, private services: Services) { }
 
   megustaComentario(id: number) {
     let body = {
       "comentario_id": id,
       "nomina": localStorage.getItem('nomina')
     }
+    this.services.analitica('megustaComentarioPost').subscribe();
     this.megustaNomegusta('si/comentario/megusta/', body);
   }
 
@@ -30,6 +32,7 @@ export class CommentComponent {
       "comentario_id": id,
       "nomina": localStorage.getItem('nomina')
     }
+    this.services.analitica('nomegustaComentarioPost').subscribe();
     this.megustaNomegusta('si/comentario/nomegusta/', body);
   }
 
@@ -61,6 +64,7 @@ export class CommentComponent {
       }
       this.s.servicePost('si/comentario/', body).subscribe((ok: any) => {
         if (!ok.error) {
+          this.services.analitica('publicarComentarioPost').subscribe();
           console.log(ok);
           this.respuesta = "";
           this.getComentario();

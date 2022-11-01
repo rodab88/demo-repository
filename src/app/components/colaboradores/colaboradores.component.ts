@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import { Services } from 'src/app/services/services';
 import { PerfilComponent } from 'src/app/components/perfil/perfil.component';
 import { AppComponent } from "src/app/app.component";
@@ -7,8 +7,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { NotificacionColaboradoresComponent } from 'src/app/components/notificacion-colaboradores/notificacion-colaboradores.component';
 import { environment } from "src/environments/environment";
 import { AuthService } from 'src/app/services/auth.service';
-
-
 
 @Component({
   selector: 'colaboradores-template',
@@ -56,6 +54,8 @@ export class ColaboradoresComponent {
   valor: string = "";
   user: string = "";
 
+  public verFiltros: boolean= false;
+
   constructor(public services: Services,
     public perfil: PerfilComponent, private app: AppComponent, private matDialog: MatDialog, public auth: AuthService ) {
 
@@ -72,6 +72,7 @@ export class ColaboradoresComponent {
     localStorage.setItem('nominaColaborador', String(this.objCol.nomina))
     this.app.back = 'perfil';
     this.seleccionamenuCol = false;
+    this.services.analitica('irPerfilColaborador').subscribe();
     this.traerListaNominaIni(true);
     window.scroll({
       top: 0,
@@ -272,7 +273,7 @@ export class ColaboradoresComponent {
     }
 
     this.selactivarPor = false;
-    this.ordenPrincipal = 0;
+    //this.ordenPrincipal = 0;
   }
 
   public activarMenuOrden() {
@@ -297,7 +298,7 @@ export class ColaboradoresComponent {
   }
 
   public activarPor() {
-
+    
     this.selactivarPor = false;
     if (this.ordenPrincipal == 0) {
       this.selactivarPor = false;
@@ -363,6 +364,8 @@ export class ColaboradoresComponent {
     this.arreglo = this.auxColaboradores.filter(x => this.categoriaSelected.value!.includes(x.categoria));
   }
 
+
+
   onChangePromedio() {
     if (this.filtroselected == 0) {
       if (this.tipo == "menor") {
@@ -415,6 +418,7 @@ export class ColaboradoresComponent {
           let colaborador = 'true';
           localStorage.setItem('boolColaborador', colaborador);
           this.arreglo = datos.data.colaboradores;
+          this.verFiltros = true;
           for (let item of this.arreglo) {
 
             if (item.estrategia) {
@@ -590,7 +594,10 @@ export class ColaboradoresComponent {
         }else if(resp[0].empresaId == 4){
          this.user = resp[0].nombreUsuario+"@compartamos.com";
         }
-        window.open(environment.urlTeams+this.user)
+        this.services.analitica('iniciarTeamsColaborador').subscribe(datos=>{
+          window.open(environment.urlTeams+this.user);
+        });
+        
       });
   }
 

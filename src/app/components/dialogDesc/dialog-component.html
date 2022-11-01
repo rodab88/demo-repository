@@ -1,14 +1,25 @@
-<button mat-icon-button class="close-button" [mat-dialog-close]="true">
-  <mat-icon class="close-icon" color="warn">close</mat-icon>
-</button>
+<div [ngClass]="data.title!==undefined? 'backgroundImg': ''">
+  <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+  </button>
 
-<div mat-dialog-content>
-  <div style="text-align:left;padding-bottom: 1em;">
-    <img src="/assets/img/GroupL.png" alt="" />
-  </div>
-  <span class="label">{{data.name}} : {{data.description}}</span>
-</div>
-<div mat-dialog-actions *ngIf="false">
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+  <div mat-dialog-content>
+    <div *ngIf="data.title==undefined">
+      <div *ngIf="data.icon==undefined" style="text-align:left;padding-bottom: 1em;">
+        <img src="/assets/img/GroupL.png" alt="" />
+      </div>
+      <div *ngIf="data.icon!==undefined" style="text-align:center;padding-bottom: 1em;padding-left: 3.5em;">
+        <img src="/assets/img/ad.png" alt="" />
+      </div>
+    </div>
+    <div *ngIf="data.title!== undefined" style="text-align: center;padding-bottom: 4em;">
+      <span class="lblTitle">{{data.title}}</span>
+    </div>
+    <span *ngIf="data.icon==undefined && data.title== undefined" class="label">{{data.name}} :
+      {{data.description}}</span>
+    <div *ngIf="data.icon!==undefined || data.title!== undefined" style="text-align: center;">
+      <span class="lblSaldo">{{data.description}}</span>
+    </div>
+
+  </div>  
 </div>

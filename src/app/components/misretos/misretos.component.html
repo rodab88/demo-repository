@@ -1,8 +1,26 @@
 <div *ngIf="!displayProgressSpinner" class="scrooll-design background-panel">
-    <header-template *ngIf="showComponents" [iconoPerfil]="iconoPerfil" [nombre]="nombre" [colorperfil]="colorperfil"
-        [colorletra]="colorletra" [meimpulsa]="meimpulsa"></header-template>    
+  <header-template *ngIf="showComponents" [iconoPerfil]="iconoPerfil" [nombre]="nombre" [colorperfil]="colorperfil"
+    [colorletra]="colorletra" [meimpulsa]="meimpulsa"></header-template>
 
-        <div *ngIf="!resumenReto" style="padding: 1.5em 23px 1em 9px;">
+  <div *ngIf="!mostrarTienda">
+    <div class="row tienda">
+      <div class="col-6" style="margin: auto;">
+        <button (click)="irTienda(true)" class="btnTienda"><span>Ir a la tienda</span>
+        </button>
+      </div>
+      <div class="col-6">
+        <div class="row">
+          <span class="saldo">{{saldoDisponible | currency}}</span>
+        </div>
+        <div class="row">
+          <span style="text-align: center;">SALDO DISPONIBLE</span>
+        </div>
+      </div>
+    </div>
+
+    <mat-tab-group mat-stretch-tabs style="background-color: #F3F3F2;padding-bottom: var(--bs-gutter-x, 6rem);" [selectedIndex]="0">
+      <mat-tab label="MIS RETOS" style="background-color: #F3F3F2;">
+        <div style="padding: 1.5em 23px 1em 9px;">
           <div class="segundaseccion">
             <div class="overlay">
               <div class="row" style="padding-left: 1em; padding-top: 1em;">
@@ -11,7 +29,7 @@
                 </div>
 
                 <div class="col-12 ">
-                  <ngb-carousel >
+                  <ngb-carousel>
                     <ng-template ngbSlide *ngFor="let post of arreglo.posts">
                       <div class="row">
                         <img alt="" (click)="abreModalResumen()" class="imgPost" src="{{post.miniatura_banner}}" />
@@ -28,7 +46,7 @@
                         </div>
                         <div class="col-6 text-center">
                           <div>
-                            <span class="tituloDesmbol">{{post.titulo2}}</span>
+                            <span class="tituloDesmbol" [style.color]="colorletra">{{post.titulo2}}</span>
                           </div>
                           <div>
                             <span class="labelNeg">{{post.nombre2}}</span>
@@ -38,7 +56,7 @@
                           </div>
                         </div>
                       </div>
-                      </ng-template>
+                    </ng-template>
                   </ngb-carousel>
                 </div>
                 <div class="col-12" style="margin-top: 70px;"></div>
@@ -47,86 +65,91 @@
                   <span class="titulo">Mis Retos Terminados</span>
                 </div>
                 <div class="col-6" style="margin-top: 14px; text-align: center;">
-                      <img alt="" class="imgPostDesembol" src="/assets/img/retoTerminado.png" />
-                    </div>
-                <div class="col-6" style="margin-top: 14px; text-align: center;">
-                      <img alt="" class="imgPostDesembol" src="/assets/img/desembolTerm.png" />
+                  <img alt="" class="imgPostDesembol" src="/assets/img/retoTerminado.png" />
                 </div>
-                <div class="col-6 text-center" >
+                <div class="col-6" style="margin-top: 14px; text-align: center;">
+                  <img alt="" class="imgPostDesembol" src="/assets/img/desembolTerm.png" />
+                </div>
+                <div class="col-6 text-center">
                   <span class="retoTer">Mi reto terminado</span>
                 </div>
                 <div class="col-6 text-center">
                   <div class="col-12" style="size: 14px;">
-                  <span class="desembolTer">Desembolsómetro</span>
+                    <span class="desembolTer">Desembolsómetro</span>
                   </div>
                   <div class="col-12" style="size: 12px;">
-                  <span class="desembolTer">Desembolsos</span>
+                    <span class="desembolTer">Desembolsos</span>
                   </div>
                   <div class="col-12" style="size: 12px;">
                     <span class="desembolTer">$89K/$410K</span>
                   </div>
                 </div>
 
-                <div class="col-12 rightIncentivo">
-                  <article  (click)="abrirResumen()" style="margin-right: 10px;margin-top: 12px;">
-                    <div >
-                      Ver más
-                    </div>
-                   
-                  </article>
-                </div>
+
                 <div style="margin-top: 10px;"></div>
               </div>
             </div>
           </div>
-      
+
+
         </div>
 
-        <div *ngIf="resumenReto " class="container" style="padding-bottom: var(--bs-gutter-x, 9rem);">
-          <resumen-template ></resumen-template>
+      </mat-tab>
+      <mat-tab label="MI SALDO" style="font-size: 20px;">
+        <div class="container">
+          <resumen-template (changeSaldo)="changeSaldo($event)"></resumen-template>
         </div>
+      </mat-tab>
+    </mat-tab-group>
 
-        <div class="col-12 retos " *ngIf="cardReto"></div> 
-        <div class="col-12 retosPrincipal" *ngIf="cardReto">
-            <div style="margin-top: -20px;margin-left: 88%; position: absolute;">
-              <button (click)="abreModalResumen()" class="booton-inicio"><span>X</span>
-              </button>
-            </div>
-            <div class="col-12" style="margin-top: 20px;">
-                  <span class="title">Mi Reto</span>
-            </div>
-            <div style="margin-top: 20px;" ></div>
-            <div class="row m-1 " *ngFor="let item of misretos.reto;let indice = index;">
-                <div class="row overlay cardPorcentajes">
-                  <div class="col-6" style="margin-top: -5px;">
-                    <span class="label-Fomula">{{item.nombre}}</span>
-                  </div>
-                  <div class="col-6" style="text-align: left; margin-top: -5px;">
-                    <span  class="label-FomulaDet">{{item.descripcion}}</span>
-                  </div>
-                </div>
-                <div style="margin-top: 5px;" ></div>
-                
-            </div>    
-            <div class="col-12 text-center">
-              <span class="titleFin">¡Vas muy bien, lo vas a lograr!</span>
-            </div>
-            <div class="col-12 text-center" style="margin-top: 10px;">
-              <span class="titleInter">Mi Reto Hoy</span>
-            </div>
-            <div class="row">
-              <div class="col-3"></div>
-              <div class="col-6">
-                  <div class="stepsClass" style="padding-top: 0.5em; text-align: center;">
-                    <div *ngFor="let step of steps" [style.background-color]="step.class" class="circle">
-                    </div>
-                  </div>
-              </div>
-            </div>
+    <div class="col-12 retos " *ngIf="cardReto"></div>
+    <div class="col-12 retosPrincipal" *ngIf="cardReto">
+      <div style="margin-top: -20px;margin-left: 88%; position: absolute;">
+        <button (click)="abreModalResumen()" class="booton-inicio"><span>X</span>
+        </button>
+      </div>
+      <div class="col-12" style="margin-top: 20px;">
+        <span class="title">Mi Reto</span>
+      </div>
+      <div style="margin-top: 20px;"></div>
+      <div class="row m-1 " *ngFor="let item of misretos.reto;let indice = index;">
+        <div class="row overlay cardPorcentajes">
+          <div class="col-6" style="margin-top: -5px;">
+            <span class="label-Fomula">{{item.nombre}}</span>
+          </div>
+          <div class="col-6" style="text-align: left; margin-top: -5px;">
+            <span class="label-FomulaDet">{{item.descripcion}}</span>
+          </div>
         </div>
+        <div style="margin-top: 5px;"></div>
 
- 
-</div>
-<div *ngIf="displayProgressSpinner" class="d-flex justify-content-center" style="padding-top: 50%;background-color: #f3f3f2;">
-    <img src="/assets/img/spinner.gif" alt="">
+      </div>
+      <div class="col-12 text-center">
+        <span class="titleFin">¡Vas muy bien, lo vas a lograr!</span>
+      </div>
+      <div class="col-12 text-center" style="margin-top: 10px;">
+        <span class="titleInter">Mi Reto Hoy</span>
+      </div>
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <div class="stepsClass" style="padding-top: 0.5em; text-align: center;">
+            <div *ngFor="let step of steps" [style.background-color]="step.class" class="circle">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <div *ngIf="mostrarTienda" style="padding-bottom: var(--bs-gutter-x, 6rem);">
+    <carrito-template [saldoDisponible]="saldoDisponible" (changeSaldo)="changeSaldo($event)"
+      (returnFn)="irTienda($event)"></carrito-template>
+  </div>
+
+</div>
+
+<div *ngIf="displayProgressSpinner" class="d-flex justify-content-center"
+  style="padding-top: 50%;background-color: #f3f3f2;">
+  <img src="/assets/img/spinner.gif" alt="">
+</div>

@@ -8,7 +8,6 @@
 .segundaseccion{
   padding-bottom: 1px;
   padding-top: -2px;
-  background-color: #ebf3f7;
   border-radius: 2em;
   width: 103%;
   background-color: #e8e5e5 !important;
@@ -161,13 +160,6 @@
   margin-top: -41px;
 }
 
-.montosTotal{
-  font-size: calc(1.7rem + -1.8vw);
-  font-family: BreeBold;
-  color: #e20077;
-
-}
-
 .labelHoy {
   margin: auto;
   width: 6em;
@@ -186,18 +178,11 @@
 .card-incentivo {
   font-size: calc(2.7rem + 0.2vw);
   font-family: BreeBold;
-  color: #e20077;
-}
-.card-incentivoVar {
-  font-size: calc(1.7rem + -0.8vw);
-  font-family: BreeBold;
-  color: #e20077;
 }
 
 .incentivoVar {
   font-size: calc(1.7rem + -0.8vw);
   font-family: BreeBold;
-  color: #e20077;
 }
 
 .circle {
@@ -210,7 +195,6 @@
 .rightIncentivo {
   text-align: right;
   width: 100%;
-  color: #e20077;
   font-family: BreeBold;
   padding-top: 1em;
   font-size: 1.7em;
@@ -267,7 +251,6 @@
   width: 33%;
   background-color: #218bc7;
   border-color: #218bc7;
-  font-size: 20px;
   color: white;
   border: 0;
   font-size: 20px;
@@ -278,7 +261,6 @@
   border-radius: 30px;
   height: 48px;
   width: 33%;
-  font-size: 20px;
   color: #919090;
   border: 3px solid #919090;
   background-color: white;

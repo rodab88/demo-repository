@@ -209,6 +209,7 @@ export class MiIncentivoComponent implements OnInit {
     this.divMiDia = false;
     this.divColaboradores = true;
     this.componenteGrafica = false;
+    this.services.analitica('verBolsaLiderazgoMiIncentivo').subscribe();
   }
 
   abrirMiDia() {

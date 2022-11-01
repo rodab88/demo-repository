@@ -1,0 +1,71 @@
+.buttonI {
+    background: rgba(0, 102, 153, 0.8);
+    border: 1px solid #006699;
+    border-radius: 100px;
+    color: #fff;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 14em;
+}
+
+.lbl1 {
+    font-family: 'BreeRegular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 32px;
+    text-align: center;
+    color: #2C678D;
+}
+
+.lbl2 {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 26px;
+    text-align: center;
+    color: #000000;
+}
+
+.cuadro {
+    background: #ECECEC;
+    border-radius: 3px;
+    margin-left: 2.5em;
+    margin-right: 10em;
+    width: 15em;
+}
+
+.lbl3 {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 32px;
+    text-align: center;
+    color: #2C678D;
+}
+
+.lbl4 {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 32px;
+    text-align: center;
+    color: #000000;
+}
+
+.lbl5 {
+    font-family: 'BreeRegular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 32px;
+    text-align: center;
+    color: #2C678D;
+}

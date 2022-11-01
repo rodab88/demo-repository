@@ -22,6 +22,8 @@ export class AppComponent implements OnInit, OnDestroy {
   labelBack: string = "";
   urlClara: string = "";
   iconoClara: string = "";
+
+  
   hayNotificacion: boolean = false;
   colorsecundario: string = "";
   cerrar: string = "Cerrar Sesión";
@@ -33,7 +35,6 @@ export class AppComponent implements OnInit, OnDestroy {
   seccionesPermitidas: any = [];
 
   displayProgressSpinner = false;
-  // Display progress spinner for 3 secs on click of button  
 
   constructor(
     public toastService: ToastService, 
@@ -44,10 +45,21 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.listen();
+    this.promedio_app = String(localStorage.getItem('promedio_app')!);
+    if(this.promedio_app == "null" || this.promedio_app == ''){
+      this.homeservice.getCalificacion().subscribe(promedio => {
+        if (!promedio.error) {
+          localStorage.setItem('promedio_app', promedio.data.promedio);
+          this.promedio_app = String(localStorage.getItem('promedio_app')!);
+        } else {
+          console.log("error, no hay datos que mostrar.");
+        }
+      });
+    }
 
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
-        if (event.url == "/error" || event.url == "/" || event.url =="/tour") {
+        if (event.url == "/error" || event.url == "/" || event.url =="/tour" || event.url =="/sondeo") {
           this.showProgressSpinner(false);
           this.showComponents = false;
         } else {
@@ -59,9 +71,7 @@ export class AppComponent implements OnInit, OnDestroy {
           this.getDatosDinamicos();
         }
       }
-    });
-    
-    this.promedio_app = String(localStorage.getItem('promedio_app'));
+    });        
   }
 
   configPage() {
@@ -69,7 +79,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   configLogAuto() {
-    if(this.seccionesPermitidas.accesoLeyendaCerrar){
+    if(this.seccionesPermitidas!== null && this.seccionesPermitidas.accesoLeyendaCerrar){
       if (localStorage.getItem('sistema') !== null &&
         localStorage.getItem('sistema') !== undefined) {
         //this.cerrar = "Regresar a";
@@ -93,10 +103,13 @@ export class AppComponent implements OnInit, OnDestroy {
         }
         this.toastService.show(not);
       });
-    } catch { }
+    } catch(e) {
+
+     }
   }
 
   cerraSesion() {
+    this.analitica('cerrarSesion');
     if (this.cerrar == "Cerrar Sesión") {
       this.auth.SignOut();
     } else {
@@ -108,6 +121,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   valoraApp() {
+    this.analitica('irValoraApp')
     this.router.navigate(['/encuesta']);
   }
 
@@ -158,6 +172,9 @@ export class AppComponent implements OnInit, OnDestroy {
         break;
       case "/misretos":
         this.labelBack = "Mis Retos";
+        break;
+      case "/ranking":
+        this.labelBack = "Mi Día";
         break;
       case "/error":
         this.showProgressSpinner(false);
@@ -224,5 +241,9 @@ export class AppComponent implements OnInit, OnDestroy {
   showProgressSpinner(value: boolean) {
     this.displayProgressSpinner = value;
     this.isMenuOpen = false;
+  }
+
+  analitica(selector: string){    
+    this.homeservice.analitica(selector).subscribe();
   }
 }

@@ -1,18 +1,29 @@
-<div style="background-color:#fff;">
+<div style="background-color:#f3f3f2;">
+    <!--<div class="progress"  *ngIf="!progress">
+        <div class="progress-bar controlInterval" role="progressbar" [style.width]="porcentaje+'%'" aria-valuenow="75" aria-valuemin="1" aria-valuemax="100">{{porcentaje}}+'%'</div>
+    </div>-->
     <div *ngFor="let tour of tours;">
-        <div *ngIf="tour.show && tour.tipo!=='fin'" style="height: calc(100vh - 2em);">
-            <div class="imgPortada" [ngClass]="tour.tipo=='video'? 'videoHeight': 'portadaHeight'"
-                [style.background-image]="tour.tipo=='video'? portadaD: portada">
-                <div *ngIf="tour.tipo=='video'" class="video">
+        <div *ngIf="tour.show && tour.tipo!=='fin'">
+            <div class="imgPortada" [ngClass]="tour.tipo=='2' || tour.tipo=='1'? 'videoHeight': 'portadaHeight'"
+                [style.background-image]="tour.tipo=='2' || tour.tipo=='1'? portadaD: portada">
+                <div *ngIf="tour.tipo=='1'" class="item video">
                     <vg-player>
                         <video #media id="singleVideo" preload="auto" autoplay>
                             <source [src]="tour.src" type="video/mp4">
                         </video>
                     </vg-player>
                 </div>
-            </div>
-            <div class="col-12 d-flex justify-content-center" style="margin-top: 5em;">
-                <a class="label">{{tour.text}}</a>
+                <div *ngIf="tour.tipo=='2'" class="item">
+                    <img alt="" src="{{tour.src}}" class="img">
+                </div>
+                <div *ngIf="tour.show && tour.tipo!=='portada'" class="col-12 d-flex justify-content-center"
+                    style="margin-top: 1em;">
+                    <a class="label">{{tour.text}}</a>
+                </div>
+                <div *ngIf="tour.show && tour.tipo=='portada'" class="col-12 d-flex justify-content-center"
+                    style="padding-top: 35em;">
+                    <a class="label">{{tour.text}}</a>
+                </div>
             </div>
         </div>
         <div class="row" *ngIf="tour.show && tour.tipo=='fin'" style="padding: 10em 0em;margin: 0em 4em;">
@@ -35,5 +46,5 @@
         <button *ngFor="let tour of tours;let i=index;" class="circular-button buttonCircular"
             [ngClass]="tour.show==false? 'btnColorDisabled':'btnColorEnabled'" (click)="jumpToSlide(i)"></button>
     </div>
-    
+
 </div>

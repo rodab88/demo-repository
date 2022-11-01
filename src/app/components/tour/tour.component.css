@@ -1,26 +1,31 @@
-a:link { text-decoration: none; }
+a:link {
+    text-decoration: none;
+}
 
-.imgPortada{
+.imgPortada {
     background-repeat: no-repeat;
-    background-size: 20em 30em;
-    background-position: right top;
-}
-.portadaHeight{
-    height: calc(50vh - 5em);
-}
-.videoHeight{
-    height: calc(75vh - 1em);
-    
 }
 
-.video{
-    padding-top: 5em;
-    height: calc(85vh - 5em);
+.portadaHeight {
+    height: 100%;
+}
+
+.item {
+    padding-top: 3em;
     align-items: center;
     padding-left: 3em;
-    padding-right: 3em;
-    height: calc(80vh - 1em);
+    height: 660px;
 }
+
+.video {
+    width: 370px;
+}
+
+.img {
+    width: 330px;
+    height: 615px;
+}
+
 .label {
     color: #0d6efd;
     text-decoration: none;
@@ -42,6 +47,16 @@ a:link { text-decoration: none; }
     z-index: 1;
 }
 
+.controlInterval {
+    justify-content: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    bottom: 0;
+    z-index: 1;
+    background-color: rgb(226, 1, 118);
+    display: block;
+}
+
 .buttonCircular {
     width: 16px;
     height: 16px;
@@ -50,11 +65,11 @@ a:link { text-decoration: none; }
     margin: 4px;
 }
 
-.btnColorDisabled{
+.btnColorDisabled {
     background-color: #c9c9c9;
 }
 
-.btnColorEnabled{
+.btnColorEnabled {
     background-color: rgb(226, 1, 118);
 }
 
@@ -74,4 +89,13 @@ button:hover {
     cursor: pointer;
     border-radius: 16px;
     width: 10em;
+}
+
+
+.progress {
+    position: relative;
+    margin-top: 28px;
+    margin-left: 25%;
+    max-width: 50%;
+    height: 5px;
 }

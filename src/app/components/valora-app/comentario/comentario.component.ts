@@ -13,11 +13,13 @@ export class ComentarioComponent implements OnInit {
 
   starRatingCom = 0;
   comentario:string ="";
+  colorletra:string="";
   @ViewChild('modal') modal: ElementRef | undefined;
 
   constructor(private matDialog: MatDialog, public services: Services,  private modalService: NgbModal, private router: Router) {  }
 
   ngOnInit():void{
+    this.colorletra = localStorage.getItem('colorletra')!;
     let nomina = localStorage.getItem('nomina');
     let objenviar = {
       nomina: nomina
@@ -42,6 +44,7 @@ export class ComentarioComponent implements OnInit {
     }
     this.services.postComentariosCalifica(objenviar).subscribe(datos => {
       if (!datos.error) {
+        this.services.analitica('publicarComentarioValorar').subscribe();
         console.log("registro exitoso");
               //modal exito
               this.modalService.open(this.modal, {

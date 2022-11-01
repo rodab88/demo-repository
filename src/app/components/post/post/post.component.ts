@@ -4,6 +4,7 @@ import { Post } from '../../../models/post'
 import { CommonServiceService } from '../../../services/common.service'
 import { MatDialog } from '@angular/material/dialog';
 import { ShareComponent } from '../share/share.component';
+import { Services } from 'src/app/services/services';
 
 
 @Component({
@@ -34,7 +35,7 @@ export class PostComponent implements OnInit {
     post_id: 0
   };
 
-  constructor(public s: CommonServiceService, private sanitizer: DomSanitizer, public dialog: MatDialog) {
+  constructor(public s: CommonServiceService, private sanitizer: DomSanitizer, public dialog: MatDialog, private services: Services) {
     this._favorito = this.data.favoritos == null ? "0" : this.data.favoritos;
   }
 
@@ -97,7 +98,8 @@ export class PostComponent implements OnInit {
       }
       this.s.servicePost('si/comentario/', body).subscribe((ok: any) => {
         if (!ok.error) {
-          console.log(ok);
+          console.log(ok);          
+          this.services.analitica('publicarComentarioPost').subscribe();
           this.getComentarios();
           this.comentario = "";
         }
@@ -115,6 +117,7 @@ export class PostComponent implements OnInit {
     }
     this.s.servicePost('si/favorito/', body).subscribe((ok: any) => {
       console.log(ok)
+      this.services.analitica('marcarFavoritoPost').subscribe();
 
     })
   }
@@ -126,6 +129,7 @@ export class PostComponent implements OnInit {
     }
     this.s.servicePost('si/megusta/', body).subscribe((ok: any) => {
       console.log(ok)
+      this.services.analitica('meGustaPost').subscribe();
       this.data.me_gusta = !this.data.me_gusta
       if (this.data.me_gusta) this.data.no_megusta = false;
     })
@@ -138,6 +142,7 @@ export class PostComponent implements OnInit {
     }
     this.s.servicePost('si/nomegusta/', body).subscribe((ok: any) => {
       console.log(ok)
+      this.services.analitica('noGustaPost').subscribe();
       this.data.no_megusta = !this.data.no_megusta
       if (this.data.no_megusta) this.data.me_gusta = false;
     })
@@ -165,6 +170,7 @@ export class PostComponent implements OnInit {
   }
 
   openShareModal() {
+    this.services.analitica('compartirPost').subscribe();
     const dialogRef = this.dialog.open(ShareComponent, {
       width: '250px',
       data: {},

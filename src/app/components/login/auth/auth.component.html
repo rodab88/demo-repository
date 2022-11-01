@@ -21,15 +21,19 @@
                     <div class="row">
                         <form class="form" [formGroup]="myForm" (ngSubmit)="enviarformulario()">
                             <div class="form-group ">
-                                <input formControlName="username" (change)="validaBoton()" type="text"
+                                <input formControlName="username" autocomplete="off" (mouseout)="validaBoton()" type="text"
                                     class="form-control" id="usuariologin" placeholder="Usuario">
                             </div>
                             <br>
                             <div class="input-group mb-2">
-                                <input type="password" class="form-control" (change)="validaBoton()"
+                                <input type="password" autocomplete="off" class="form-control" (mouseout)="validaBoton()"
                                     formControlName="password" placeholder="Contraseña" id="txtPassword">
-                                <div (click)="mostrarContrasena()" class="input-group-append" style="cursor: pointer;">
-                                    <img alt="" src="https://cdn3.iconfinder.com/data/icons/show-and-hide-password/100/show_hide_password-09-256.png"
+                                <div *ngIf="!actiVerContra" (click)="mostrarContrasena()" class="input-group-append" style="cursor: pointer;">
+                                    <img alt=""  style="z-index: 100;" src="https://cdn3.iconfinder.com/data/icons/show-and-hide-password/100/show_hide_password-09-256.png"
+                                        class="icon">
+                                </div>
+                                <div *ngIf="actiVerContra" (click)="mostrarContrasena()" class="input-group-append" style="cursor: pointer;">
+                                    <img alt=""  style="z-index: 100;" src="https://cdn3.iconfinder.com/data/icons/show-and-hide-password/100/show_hide_password-10-256.png"
                                         class="icon">
                                 </div>
                             </div>

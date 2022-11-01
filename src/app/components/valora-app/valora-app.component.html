@@ -27,7 +27,9 @@
             <div class="d-flex bd-highlight">
                   <div class="p-2 mt-4 bd-highlight">
                     <p class="labelNum">{{promedio}}</p>
-                      <ngb-rating class="estrellas_cal" [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating>
+                    <div class="col-12 d-flex justify-content-center" style="padding-top: 2em;">
+                      <img *ngFor="let e of estrellas" alt="" class="imgCalif" src="{{e.ruta}}">
+                    </div>
                       <p class="labelTot">{{total}}</p>
                   </div>
                   <div class="p-3 flex-grow-1 bd-highlight">

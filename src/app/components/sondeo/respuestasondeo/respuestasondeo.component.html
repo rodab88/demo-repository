@@ -1,0 +1,58 @@
+<div class="background-panel m-1">
+  <div class="row" *ngIf="arreglo.idTipoPregunta==1">
+    <div class="row m-1" *ngFor="let item of arreglo.respuestas; let indice = index;">
+      <div style="margin-left: -2px;">
+        <div class="row segundaseccion" (click)="selectValueOpc1(item)"
+          [style.background-color]="item.backgroundonpress+'!important'">
+          <div class="col-12" style="text-align: left; margin-top: 10px;">
+            <span class="preTipoa"
+              [style.color]="item.coloronpress+'!important'">{{item.nombreradio}}{{item.nombre}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="arreglo.idTipoPregunta==2">
+    <div style="margin-left: -2px;">
+      <div class="row">
+        <div *ngFor="let nivel of arreglo.respuestas" class="col-1 seccionTipo3 d-flex justify-content-center"
+          [style.background-color]="nivel.backgroundonpress+'!important'"
+          [style.background-image]="'url('+nivel.src+')'" (click)="selectValueOpc2(nivel)">
+          <span *ngIf="arreglo.id_simbolo==2" style="margin-top: 0.3em;">{{nivel.id}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="arreglo.idTipoPregunta==3 && inputRadio.length>0">
+    <div class="row">
+      <div [ngClass]="'col-'+col"></div>
+      <div [ngClass]="'col-'+col" *ngFor="let columna of this.arreglo.respuestas.columnas">
+        <span>{{columna.columnasnombre}}</span>
+      </div>
+    </div>
+    <div class="row" *ngFor="let fila of this.arreglo.respuestas.filas;let f=index">
+      <div [ngClass]="'col-'+col">
+        <span>{{fila.filasnombre}}</span>
+      </div>
+      <div [ngClass]="'col-'+col" *ngFor="let colum of this.arreglo.respuestas.columnas; let c=index">
+        <input type="radio" id="radio-{{inputRadio[c][f].col}}-{{inputRadio[c][f].fila}}" [value]="inputRadio[c][f].estatus" (change)="changeInput($event, inputRadio[c][f])">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="arreglo.idTipoPregunta==4">
+    <div style="margin-left: 5px;">
+      <div class="col-12" style="text-align: left; margin-top: 10px;">
+        <textarea class="secciontextarea codigo" cols=53 rows=6 maxlength="50" style="border: none; outline: none;"
+          [(ngModel)]="respOpc4" (change)="selectValueOpc4()"></textarea>
+
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;"></div>
+</div>

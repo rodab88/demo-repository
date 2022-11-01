@@ -152,7 +152,16 @@ export class Services {
       this.httpOptions
     )
     .pipe(retry(1), catchError(this.errorHandl));
-  } 
+  }
+  
+  public postRanking(obj: any): Observable<any>{
+    return this.http.post<any>(
+      environment.serviceUrl + 'si/perfil/ranking/',
+      JSON.stringify(obj),
+      this.httpOptions
+    )
+    .pipe(retry(1), catchError(this.errorHandl));
+  }
   
   public postlistCaolaborador(obj: any): Observable<any>{
     return this.http.post<any>(
@@ -267,6 +276,71 @@ export class Services {
     return this.http.post<any>(
       environment.serviceUrl + 'si/tour/',
       JSON.stringify(obj),
+      this.httpOptions
+    )
+    .pipe(retry(1), catchError(this.errorHandl));
+  } 
+
+  public vistoTour(obj: any): Observable<any>{
+    return this.http.post<any>(
+      environment.serviceUrl + 'si/tour/visto/',
+      JSON.stringify(obj),
+      this.httpOptions
+    )
+    .pipe(retry(1), catchError(this.errorHandl));
+  } 
+
+  public saldos(obj: any): Observable<any>{
+    return this.http.post<any>(
+      environment.serviceUrl + 'si/mis-retos/saldo/',
+      JSON.stringify(obj),
+      this.httpOptions
+    )
+    .pipe(retry(1), catchError(this.errorHandl));
+  } 
+
+  public productos(): Observable<any>{
+    return this.http.get<any>(
+      environment.serviceUrl + 'si/mis-retos/productos/'
+    )
+    .pipe(retry(1), catchError(this.errorHandl));
+  } 
+
+  public canjear(obj: any): Observable<any>{
+    return this.http.post<any>(
+      environment.serviceUrl + 'si/mis-retos/canje/',
+      JSON.stringify(obj),
+      this.httpOptions
+    )
+    .pipe(retry(1), catchError(this.errorHandl));
+  } 
+
+  public quizz(obj: any): Observable<any>{
+    return this.http.post<any>(
+      environment.serviceUrl + 'si/quizz/',
+      JSON.stringify(obj),
+      this.httpOptions
+    )
+    .pipe(retry(1), catchError(this.errorHandl));
+  }
+  
+  public quizz_respuestas(obj: any): Observable<any>{
+    return this.http.post<any>(
+      environment.serviceUrl + 'si/quizz/respuestas/',
+      JSON.stringify(obj),
+      this.httpOptions
+    )
+    .pipe(retry(1), catchError(this.errorHandl));
+  }
+
+  public analitica(selector: any): Observable<any>{
+    let req = {
+      "nomina": Number(localStorage.getItem('nomina')),
+      "selector": selector
+    }
+    return this.http.post<any>(
+      environment.serviceUrl + 'analitica/',
+      JSON.stringify(req),
       this.httpOptions
     )
     .pipe(retry(1), catchError(this.errorHandl));

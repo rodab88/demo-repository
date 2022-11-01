@@ -1,24 +1,23 @@
-.centrarLogo{
-    width: 250px;
-    margin: auto;
-    display: inherit;
+.centrarLogo {
+  width: 250px;
+  margin: auto;
+  display: inherit;
 }
 
-.margen{
+.margen {
   margin-right: 112px;
   width: 100%;
   max-width: 100%
-
 }
 
-.margen-respoonsive{
+.margen-respoonsive {
   margin-left: 72px;
   width: 100%;
   max-width: 100%;
 
 }
 
-.margen-Ini{
+.margen-Ini {
   margin-top: 0em;
   margin-left: 0px;
   margin-right: 0px;
@@ -75,6 +74,7 @@ p {
   padding-left: 10px;
   padding-right: 10px;
 }
+
 svg.material-icons {
   height: 24px;
   width: auto;
@@ -101,6 +101,9 @@ svg.material-icons {
   align-items: center;
   transition: all 0.2s ease-in-out;
   line-height: 24px;
+  height: 18em !important;
+  width: 95%;
+  background-color: #F58025 !important;
 }
 
 .card-container .card:not(:last-child) {
@@ -139,7 +142,7 @@ svg.material-icons {
   margin-left: 60px;
 }
 
-.booton-inicio{
+.booton-inicio {
   background-color: #71818a;
   border-radius: 30px;
   height: 45px;
@@ -160,16 +163,16 @@ svg.material-icons {
   align-items: center;
   font-size: 12px;
   padding: 3px 10px;
-  border: 1px solid rgba(27,31,35,.2);
+  border: 1px solid rgba(27, 31, 35, .2);
   border-radius: 3px;
-  background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
+  background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
   margin-left: 4px;
   font-weight: 600;
 }
 
 .github-star-badge:hover {
-  background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
-  border-color: rgba(27,31,35,.35);
+  background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%);
+  border-color: rgba(27, 31, 35, .35);
   background-position: -.5em;
 }
 
@@ -189,7 +192,8 @@ svg#clouds {
 
 /* Responsive Styles */
 @media screen and (max-width: 767px) {
-  .card-container > *:not(.circle-link) ,
+
+  .card-container>*:not(.circle-link),
   .terminal {
     width: 100%;
   }
@@ -216,18 +220,18 @@ svg#clouds {
   }
 }
 
-.spaceimg{
+.spaceimg {
   padding-left: 30%;
 }
 
-.date{
+.date {
   font-weight: 600;
 }
 
-.card{
-height: 18em !important;
-width: 95%;
-background-color: #F58025 !important;
+.card {
+  height: 18em !important;
+  width: 95%;
+  background-color: #F58025 !important;
 }
 
 .cardTitle {
@@ -257,7 +261,6 @@ background-color: #F58025 !important;
   height: 28px;
 }
 
-.error{
+.error {
   color: red;
 }
-

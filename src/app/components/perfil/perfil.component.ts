@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { environment } from "../../../environments/environment";
 import { Services } from 'src/app/services/services';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { FotoPerfilComponent } from './fotoPerfil/foto-perfil.component';
+import { DesempenioComponent } from '../desempenio/desempenio.component';
 
 @Component({
   selector: 'portada-template',
@@ -11,6 +13,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 
 export class PerfilComponent implements OnInit {
+
+  @ViewChild(FotoPerfilComponent, { static: false }) componentFoto: FotoPerfilComponent | undefined;
+  @ViewChild(DesempenioComponent, { static: false }) desempenioComponent: DesempenioComponent | undefined;
 
   username: string = "";
   puesto: string = "";
@@ -34,23 +39,23 @@ export class PerfilComponent implements OnInit {
   public envairDatosPer: any = [];
   public colaborador: boolean = true;
   public perfilCol: boolean = false;
-
+  public iconoDefault: boolean = false;
   seccionesPermitidas: any = [];
 
   pleca: string = "";
 
   uploadForm!: FormGroup;
-
+  colorletra: string = "";
   constructor(public services: Services, private router: Router, public formBuilder: FormBuilder) {
 
   }
 
   ngOnInit() {
-
+    this.colorletra = localStorage.getItem('colorletra')!;
     this.uploadForm = this.formBuilder.group({
       profile: ['']
     });
-    this.iconoPerfil=localStorage.getItem('iconoPerfil')!;
+    this.iconoPerfil = localStorage.getItem('iconoPerfil')!;
     this.nominaLogin = String(localStorage.getItem('nomina'));
     this.getDatos();
     this.obtenerDatosPeril();
@@ -108,6 +113,7 @@ export class PerfilComponent implements OnInit {
       formData.append('nomina', this.nomina);
       formData.append('tipo', '2'); // perfil
       this.updatePhoto(formData);
+      this.services.analitica('actualizarFotoPortada').subscribe();
 
       let myReader: FileReader = new FileReader();
       myReader.onloadend = () => {
@@ -127,6 +133,7 @@ export class PerfilComponent implements OnInit {
       formData.append('nomina', this.nomina);
       formData.append('tipo', '1'); // perfil
       this.updatePhoto(formData);
+      this.services.analitica('actualizarFotoPerfil').subscribe();
       let myReader: FileReader = new FileReader();
       myReader.onloadend = () => {
         console.log(myReader.result)
@@ -166,8 +173,16 @@ export class PerfilComponent implements OnInit {
         this.pleca = datos.data.pleca;
         this.iconPortada = datos.data.portada;
         localStorage.setItem('imgenFondo', datos.data.pleca);
-        if (actualizaFoto)
+        if (actualizaFoto) {
           this.iconoPerfil = datos.data.foto;
+          if (this.iconoPerfil == null || this.iconoPerfil == 'null' || this.iconoPerfil == 'foto' || this.iconoPerfil == '') {
+            this.iconoDefault = true;
+          } else {
+            this.iconoDefault = false;
+          }
+        }
+        this.componentFoto?.update(this.iconoDefault, this.iconoPerfil, this.colorPerfil);
+        this.desempenioComponent?.categoria();
       }
 
     });
@@ -222,6 +237,7 @@ export class PerfilComponent implements OnInit {
 
   activeImpulsa() {
     if (this.editImpulsa) {
+      this.services.analitica('cambiarMeImpulsa').subscribe();
       this.updatePerfil(this.meimpulsa);
     }
     this.editImpulsa = !this.editImpulsa;

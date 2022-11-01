@@ -4,8 +4,7 @@ import { CommonServiceService } from '../../../services/common.service'
 
 @Component({
   selector: 'app-favoritos',
-  templateUrl: './favoritos.component.html',
-  styleUrls: ['./favoritos.component.css']
+  templateUrl: './favoritos.component.html'
 })
 export class FavoritosComponent {
   favoritos: Post[] = []

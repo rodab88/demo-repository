@@ -39,6 +39,15 @@ export class AuthService {
             .pipe(retry(1), catchError(this.errorHandl));
     }
 
+    public registro(obj: any): Observable<any>{
+        return this.http.post<any>(
+          environment.serviceUrl + 'auth/registro/',
+          JSON.stringify(obj),
+          this.httpOptions
+        )
+        .pipe(retry(1), catchError(this.errorHandl));
+      }
+
     public idTipoEmpresa(obj: any): Observable<any> {
         return this.http.post<any>(
             environment.serviceColaboradoresUrl,

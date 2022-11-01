@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Services } from 'src/app/services/services';
 import { MiDiaComponent } from 'src/app/components/midia/midia.component'
+import { DialogComponent } from '../dialogDesc/dialog-component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -37,12 +39,12 @@ export class CardMiDiaComponent implements OnInit {
   public arregloIncent: any = [];
 
   showComponents: boolean = false;
-
-  constructor(public services: Services, public midia: MiDiaComponent
+  public colorletra: string ="";
+  constructor(public dialog: MatDialog, public services: Services, public midia: MiDiaComponent
   ) { }
 
   ngOnInit(): void {
-
+    this.colorletra = localStorage.getItem('colorletra')!;
     console.log(this.plan);
     this.traerListaMidia();
     this.openPage('I');
@@ -56,7 +58,9 @@ export class CardMiDiaComponent implements OnInit {
   }
   public avtivarGrafica(_obj:any){
     this.midia.activaGraficas(_obj);
+    this.analitica('abrirGraficaMiDia');
   }
+
   openPage(_origin: string) {
     this.services.getDatosinentivos().subscribe(datos => {
       if (!datos.err) {
@@ -196,9 +200,24 @@ export class CardMiDiaComponent implements OnInit {
 
       this.url = 'https://vinculacion.gentera.com.mx:9088/inc_api_gen/api/' + obj.documento;
       this.actiPDF = true;
+      this.analitica('abrirPdfMiDia');
     } else {
       this.actiPDF = false;
     }
+  }
+
+  onShowDescription(title: string){
+    //this.showDescription = true;
+
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '350px',
+      data: { name: title, description: "Descripción Pendiente" }
+    });
+
+  }
+
+  analitica(selector: string){    
+    this.services.analitica(selector).subscribe();
   }
 
 

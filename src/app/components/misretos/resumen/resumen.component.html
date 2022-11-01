@@ -1,92 +1,145 @@
-<div style="padding: 2.5em 0px 1em 15px;">
-        <div class="row segundaseccion">
-          <div class="overlay">
-            <div class="row" style="padding-left: 1em; padding-top: 1em;">
-                  <div class="col-12" >
-                    <span class="title" (click)="activarModPuntos()">
-                       {{arreglo.titulo}}</span>
-                  </div>
-                  <br>
-                  <div style="margin-top: 20px;"></div>
-                  <div class="col-8">
-                    <img src="/assets/img/Group.png" (click)="onShowDescription('Saldo Inicial')" alt="">
-                    <span class="label-Fomula">  Saldo Inicial</span>
-                  </div>
-                  <div class="col-4 cardPorPrincipal" style="text-align: right;">
-                    <span  class="label-Fomula"> {{arreglo.saldo_inicial}}</span>
-                  </div>
-                  <br><br>
-                  <div class="col-8" style="margin-top: 10px;">
-                    <img src="/assets/img/Group.png" alt="" (click)="onShowDescription('Puntos Abonados')">
-                    <span class="label-Fomula"> Puntos Abonados</span>
-                  </div>
-                  <div class="col-4 cardPorcentajes" style="text-align: right; margin-top: 10px;">
-                    <span  class="label-Fomula">{{arreglo.puntos_abonados}} </span>
-                  </div>
-                  <br><br>
-                  <div class="col-8" style="margin-top: 10px;">
-                    <img src="/assets/img/Group.png" alt="" (click)="onShowDescription('Punto Cangeados')">
-                    <span class="label-Fomula"> Punto Cangeados</span>
-                  </div>
-                  <div class="col-4 cardPorcentajes " style="text-align: right; margin-top: 10px;">
-                    <span  class="label-Fomula">{{arreglo.puntos_cangeados}} </span>
-                  </div>
-                  <br><br>
-                  <div style="margin-top: 40px;"></div>
-                  <hr>
-                  <div style="margin-top: 20px;"></div>
-                  <div class="col-12" >                    
-                    <span class="title" (click)="activarModPuntos()">
-                      {{arreglo.titulo2}}</span>
-                  </div>
-                  <br>
-                  <div style="margin-top: 20px;"></div>
-                  <div *ngFor="let item of arreglo.movimientos; let indiceCom = index;">
-                    <div class="row">
-                      <div class="col-12">
-                        <img src="/assets/img/Group.png"  (click)="onShowDescription(item.nombre)" alt="">
-                        <span class="label-Fomula" style="padding-left: 0.2em;">{{item.nombre}}</span>
-                      </div>
-                      <div class="col-5">
-                        <span class="label-FomulaDet">Fecha: {{item.nombre}}</span>
-                      </div>
-                      <div class="col-3">
-                        <span class="label-FomulaDet">Puntos abonados</span>
-                      </div>
-                      <div class="col-4 cardPorcentajes" style="text-align: right;">
-                        <span class="label-Fomula">{{item.valor}} </span>
-                      </div>
-                    </div>
-                    <br>
-                  </div>
-                <div style="margin-top: 20px;"></div>
-                <div class="col-12 rightIncentivo">
-                <article (click)="activarRetos()" style="margin-right: 10px;margin-top: -12px;">Regresar
-                </article>
-                </div>
-                <div style="margin-top: 12px;"></div>
-    
+<div class="row divResumen">
+  <div class="col-4">
+    <span class="resumen">Resumen</span>
+  </div>
+  <div class="col-4" style="text-align: right;">
+    <div class="select-holder">
+      <select class="select" onmousedown="if(this.options.length>6){this.size=6;}" onchange='this.size=0;'
+        onblur="this.size=0;" name="select1" [(ngModel)]="anioSelected" (click)="changeValue()">
+        <option value="0">Año</option>
+        <option *ngFor="let a of anios" [value]="a.value">
+          {{ a.value }}
+        </option>
+      </select>
+
+    </div>
+  </div>
+  <div class="col-4" style="text-align: right;">
+    <div class="select-holder">
+      <select class="select" onmousedown="if(this.options.length>6){this.size=6;}" (change)="changeValue()"
+        onchange='this.size=0;' onblur="this.size=0;" name="selectanios" [(ngModel)]="mesSelected"
+        (click)="changeValue()">
+        <option value="0">Mes</option>
+        <option value="1">Enero</option>
+        <option value="2">Febrero</option>
+        <option value="3">Marzo</option>
+        <option value="4">Abril</option>
+        <option value="5">Mayo</option>
+        <option value="6">Junio</option>
+        <option value="7">Julio</option>
+        <option value="8">Agosto</option>
+        <option value="9">Septiembre</option>
+        <option value="10">Octubre</option>
+        <option value="11">Noviembre</option>
+        <option value="12">Diciembre</option>
+      </select>
+
+    </div>
+  </div>
+</div>
+<div style="padding: 1em 0px 1em 15px;">
+  <div class="row segundaseccion">
+    <div class="overlay">
+      <div class="row" style="padding-left: 1em; padding-top: 1em;">        
+        <br>
+        <div style="margin-top: 20px;"></div>
+        <div class="col-8">
+          <img src="/assets/img/Group.png" (click)="onShowDescription('Saldo Inicial')" alt="">
+          <span class="label-Fomula"> Saldo Inicial</span>
+        </div>
+        <div class="col-4 cardPorPrincipal" style="text-align: right;">
+          <span class="label-Fomula"> {{arreglo.saldo_inicial | currency}}</span>
+        </div>
+        <br><br>
+        <div class="col-8" style="margin-top: 10px;">
+          <img src="/assets/img/Group.png" alt="" (click)="onShowDescription('Puntos Abonados')">
+          <span class="label-Fomula"> Saldo Abonado</span>
+        </div>
+        <div class="col-4 cardPorcentajes" style="text-align: right; margin-top: 10px;">
+          <span class="label-Fomula">{{arreglo.saldo_abonado | currency}} </span>
+        </div>
+        <br><br>
+        <div class="col-8" style="margin-top: 10px;">
+          <img src="/assets/img/Group.png" alt="" (click)="onShowDescription('Punto Canjeados')">
+          <span class="label-Fomula"> Saldo Canjeado</span>
+        </div>
+        <div class="col-4 cardPorcentajes " style="text-align: right; margin-top: 10px;">
+          <span class="label-Fomula">{{arreglo.saldo_canjeado | currency}} </span>
+        </div>
+        <br><br>
+        <div style="margin-top: 40px;"></div>
+        <hr>
+        <div style="margin-top: 20px;"></div>
+        <div class="col-12">
+          <span class="title">Abonos</span>
+        </div>
+        <br>
+        <div style="margin-top: 20px;"></div>
+        <div *ngFor="let item of arreglo.abonos; let indiceCom = index;">
+          <div class="row">
+            <div class="col-12">
+              <img src="/assets/img/Group.png" (click)="onShowDescription(item.nombre)" alt="">
+              <span class="label-Fomula" style="padding-left: 0.2em;">{{item.nombre}}</span>
+            </div>
+            <div class="col-5">
+              <span class="label-FomulaDet">Fecha: {{item.fecha}}</span>
+            </div>
+            <div class="col-3">
+              <span class="label-FomulaDet">Saldo abonado</span>
+            </div>
+            <div class="col-4 cardPorcentajes" style="text-align: right;">
+              <span class="label-Fomula">{{item.saldo | currency}} </span>
             </div>
           </div>
+          <br>
         </div>
+        <div style="margin-top: 1em;"></div>
+        <hr>
+        <div style="margin-top: 20px;"></div>
+        <div class="col-12">
+          <span class="title">Canjes</span>
+        </div>
+        <br>
+        <div style="margin-top: 20px;"></div>
+        <div *ngFor="let item of arreglo.canjes; let indiceCom = index;">
+          <div class="row">
+            <div class="col-12">
+              <img src="/assets/img/Group.png" (click)="onShowDescription('Canje '+(indiceCom+1))" alt="">
+              <span class="label-Fomula" style="padding-left: 0.2em;">Canje {{indiceCom+1}}</span>
+            </div>
+            <div class="col-5">
+              <span class="label-FomulaDet">Fecha: {{item.fecha}}</span>
+            </div>
+            <div class="col-3">
+              <span class="label-FomulaDet">Saldo Canjeado</span>
+            </div>
+            <div class="col-4 cardPorcentajes" style="text-align: right;">
+              <span class="label-Fomula">{{item.total | currency}} </span>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>
 
-<div class="col-12 retos " *ngIf="modalPuntos"></div> 
+<div class="col-12 retos " *ngIf="modalPuntos"></div>
 <div class="col-12 retosPrincipal" *ngIf="modalPuntos">
-    <div style="margin-top: 1px; margin-left: 324px;">
-      <button (click)="activarModPuntos()" class="booton-inicio"><span>X</span>
-      </button>
+  <div style="margin-top: 1px; margin-left: 324px;">
+    <button class="booton-inicio"><span>X</span>
+    </button>
+  </div>
+  <div class="col-12 text-center">
+    <img src="/assets/img/polygon.png" style="width: 15%;" alt="">
+  </div>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8" style="margin-top: 20px; padding-left: 1em; color: #006699; text-align: center;">
+      <span class="title">Has excedido la cantidad
+        de puntos disponibles</span>
     </div>
-    <div class="col-12 text-center">
-          <img src="/assets/img/polygon.png" style="width: 15%;" alt="" >
-    </div>
-    <div class="row">
-      <div class="col-2"></div>
-      <div class="col-8" style="margin-top: 20px; padding-left: 1em; color: #006699; text-align: center;">
-            <span class="title" >Has excedido la cantidad
-              de puntos disponibles</span>
-      </div>
-    </div>  
-    <div style="margin-top: 20px;" ></div>
+  </div>
+  <div style="margin-top: 20px;"></div>
 </div>

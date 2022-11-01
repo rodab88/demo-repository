@@ -1,53 +1,38 @@
-<footer *ngIf="color!== null && color!=='' && seccionesPermitidas!==null" class="footer" [style.background-color]="color">
+<footer *ngIf="color!== null && color!=='' && seccionesPermitidas!==null" class="footer">
   <div class="otros" style="width: 100%;height: 3.5em;">
     <div class="row">
       <div *ngIf="seccionesPermitidas.mis_variables" [ngClass]="'col-'+numcol" class="col-variables">
-        <div style="display: grid; place-items: center;" routerLink="../variables">
-          <a href="variables">
+        <div (click)="valida(1);" style="display: grid; place-items: center;" [ngClass]="menuactivo==1? 'filter-active': 'filter-icon'">
+          <a>
             <img alt="" src="../../../assets/img/variables.svg">
           </a>
-          <span class="colorOtros">Mis Variables</span>
+          <span>Mis Variables</span>
         </div>
       </div>
-      <div *ngIf="seccionesPermitidas.mi_incentivo && seccionesPermitidas.acceso_incentivo" [ngClass]="'col-'+numcol" class="col-variables">
-        <div style="display: grid; place-items: center;">
-            <a href="miincentivo">
+      <div *ngIf="seccionesPermitidas.mi_incentivo" [ngClass]="'col-'+numcol" class="col-variables">
+        <div (click)="valida(2);" style="display: grid; place-items: center;" [ngClass]="menuactivo==2? 'filter-active': 'filter-icon'">
+          <a>
             <img alt="" src="../../../assets/img/incentivo.svg">
           </a>
-          <span class="colorOtros">Mi Incentivo</span>
+          <span>Mi Incentivo</span>
         </div>
       </div>
-      <div *ngIf="rutaPaginaIncen" [ngClass]="'col-'+numcol" class="col-variables">
-        <div style="display: grid; place-items: center;">
-            <a (click)="openPage('I')">
-            <img alt="" src="../../../assets/img/incentivo.svg">
-          </a>
-          <span class="colorOtros">Mi Incentivo</span>
-        </div>
-      </div>
-      <div *ngIf="seccionesPermitidas.mi_simulador && seccionesPermitidas.acceso_simulador" [ngClass]="'col-'+numcol" class="col-variables">
-        <div style="display: grid; place-items: center;">
-          <a href="misimulador">
+
+      <div *ngIf="seccionesPermitidas.mi_simulador" [ngClass]="'col-'+numcol" class="col-variables">
+        <div (click)="valida(3);" style="display: grid; place-items: center;" [ngClass]="menuactivo==3? 'filter-active': 'filter-icon'">
+          <a>
             <img alt="" src="../../../assets/img/simulador.svg">
           </a>
-          <span class="colorOtros">Mi Simulador</span>
-        </div>
-      </div>
-      <div *ngIf="rutaPaginaSim" [ngClass]="'col-'+numcol" class="col-variables">
-        <div style="display: grid; place-items: center;">
-          <a (click)="openPage('')">
-            <img alt="" src="../../../assets/img/simulador.svg">
-          </a>
-          <span class="colorOtros">Mi Simulador</span>
+          <span>Mi Simulador</span>
         </div>
       </div>
       <div *ngIf="seccionesPermitidas.mis_retos" [ngClass]="'col-'+numcol" class="col-variables">
-        <div style="display: grid; place-items: center;">
-          <a href="misretos">
+        <div (click)="valida(4);" style="display: grid; place-items: center;" [ngClass]="menuactivo==4? 'filter-active': 'filter-icon'">
+          <a>
             <img alt="" src="../../../assets/img/retos.svg">
-          </a> 
-          <span class="colorOtros">Mis Retos</span>
-          </div>
+          </a>
+          <span>Mis Retos</span>
+        </div>
       </div>
     </div>
   </div>

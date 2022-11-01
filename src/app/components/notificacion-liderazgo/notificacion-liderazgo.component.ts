@@ -48,6 +48,7 @@ export class NotificacionLiderazgoComponent {
     this.services.postNotificaColaboradorLiderazgo(objenviar).subscribe(datos => {
       if (!datos.error) {
         console.log("notificación exitosa");
+        this.services.analitica('enviarMsjIncentivo').subscribe();
         this.cerrarNotificacion()
 
       }else{

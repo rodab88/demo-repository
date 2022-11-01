@@ -35,6 +35,9 @@
                     <div class="row" style="margin:0.5em;z-index: -1;">
                         <div class="col-3" style="margin-top: 13px;">
                             <mat-select [(ngModel)]="periodoSelected">
+                                <mat-option [value]="0">
+                                    Mes
+                                </mat-option>
                                 <mat-option *ngFor="let periodo of periodos" [value]="periodo.id">
                                     {{periodo.descripcion}}
                                 </mat-option>
@@ -48,7 +51,7 @@
                             </mat-select>
                         </div>
                         <div class="col-4">
-                            <button class="booton-Buscar" (click)="buscarNominaPuesto()">Buscar</button>
+                            <button class="booton-Buscar" [style.background-color]="colorletra" (click)="buscarNominaPuesto()">Buscar</button>
                         </div>
                     </div>
                 </div>

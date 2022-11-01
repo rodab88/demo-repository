@@ -204,6 +204,7 @@ export class MiDiaComponent implements OnInit {
     this.divMiDia = false;
     this.divColaboradores = true;
     this.componenteGrafica = false;
+    this.services.analitica('verBolsaLiderazgoMiDia').subscribe();
   }
 
   abrirMiDia() {

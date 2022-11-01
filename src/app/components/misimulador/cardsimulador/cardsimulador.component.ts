@@ -61,15 +61,16 @@ export class CardSimuladorComponent implements OnInit {
   sumInsuredLimitModel: number = 5000000;
   limit = 5000000;
   amountOptions = { align: 'right', prefix: '$', thousands: ',', precision: 2, decimal: '.', suffix: '' };
-
+  public colorletra: string = "";
 
   @ViewChild('pdfTable', { static: false })
   pdfTable!: ElementRef;
 
-  constructor(public services: Services, public toastService: ToastService, private currencyPipe: CurrencyPipe, 
+  constructor(public services: Services, public toastService: ToastService, private currencyPipe: CurrencyPipe,
     private valorFormat: ValorFormat, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.colorletra = localStorage.getItem('colorletra')!;
     this.traerListaMidia();
   }
 
@@ -151,6 +152,7 @@ export class CardSimuladorComponent implements OnInit {
   public activarPdfIncentivo(obj: any) {
     if (!this.actiPDFIncent) {
       this.url = obj.pdf;
+      this.services.analitica('abrirPdfMiMiSimulador').subscribe();
       this.actiPDFIncent = true;
     } else {
       this.actiPDFIncent = false;
@@ -245,6 +247,7 @@ export class CardSimuladorComponent implements OnInit {
       this.seleccionamMontoCamp = false;
       this.objVarible = this.plan.variables;
       this.montoSim = '';
+      this.services.analitica('cambiarMonto').subscribe();
     }, 1000);
   }
 
@@ -280,7 +283,7 @@ export class CardSimuladorComponent implements OnInit {
       console.log('The dialog was closed' + resultado);
     });
   }
-  
+
   calculaFN(valor: any, calculos: string) {
     if (valor !== undefined) {
       let value = valor.toString().replace(/[%]/g, '').replace(/[$,]/g, '');
@@ -324,6 +327,7 @@ export class CardSimuladorComponent implements OnInit {
     }
     this.services.postCrearCompromiso(objEnviar).subscribe(datos => {
       if (!datos.error) {
+        this.services.analitica('generarCompromiso').subscribe();
         let not = {
           title: 'Mi Compromiso',
           body: 'El compromiso se género correctamente',
@@ -406,6 +410,7 @@ export class CardSimuladorComponent implements OnInit {
     };
     this.services.getPDF(obj).subscribe(datos => {
       if (!datos.error) {
+        this.services.analitica('descargarCompromiso').subscribe();
         console.log(datos);
         const source = `data:application/pdf;base64,${datos.b64}`;
         const link = document.createElement("a");

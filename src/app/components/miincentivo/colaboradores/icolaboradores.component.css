@@ -256,7 +256,6 @@ svg#clouds {
 .card-incentivo {
     font-size: calc(2.7rem + 0.2vw);
     font-family: BreeBold;
-    color: #e20077;
 }
 
 .cardTitle {
@@ -344,7 +343,7 @@ ngb-carousel .wrapper {
 
 
 .steps {
-
+    width: calc(18em + 2vw);
     display: flex;
     background-color: #63d19e;
     color: #fff;
@@ -374,10 +373,6 @@ ngb-carousel .wrapper {
 .mat-stepper-horizontal,
 .mat-stepper-vertical {
     background-color: #ffffff00;
-}
-
-.steps {
-    width: calc(18em + 2vw);
 }
 
 .post-title {
@@ -420,15 +415,6 @@ ngb-carousel .wrapper {
     width: 6em;
     font-size: 0.7em;
     padding-top: 0.7em;
-}
-
-.rightIncentivo {
-    text-align: right;
-    width: 100%;
-    color: #e20077;
-    font-family: BreeBold;
-    padding-top: 1em;
-    font-size: 1.7em;
 }
 
 .favDiv {
@@ -544,7 +530,6 @@ ngb-carousel .wrapper {
 .card-bolsa {
     font-size: calc(2rem + 0.2vw);
     font-family: BreeBold;
-    color: #e20077;
 }
 
 .cardTitleBolsa {
@@ -586,7 +571,6 @@ ngb-carousel .wrapper {
 
   .labelNodisponible{
     font-family: BreeBold;
-    color: #e20077;
     font-size: 2em;
   }
 

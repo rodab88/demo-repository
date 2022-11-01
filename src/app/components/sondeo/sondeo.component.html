@@ -1,0 +1,109 @@
+<div style="background-color:#fff;height: calc(100vh - 2em);">
+
+    <div *ngIf="divPresentacion" class="row" style="padding: 10em 0em;margin: 0em 2em;">       
+        <div class="col-12 d-flex justify-content-center" style="    text-align: center;">
+            <span class="titulo">{{sondeoArray.titulo}}</span>
+        </div>
+        <div *ngIf="sondeoArray.premio_insignia" class="col-12 d-flex justify-content-center" style="margin-top: 3em;">
+            <span class="valor">{{sondeoArray.nombre_insignia}}</span>
+        </div>
+        <div *ngIf="sondeoArray.premio_saldo" class="col-12 d-flex justify-content-center" style="margin-top: 3em;">
+            <span class="valor">Valor: {{sondeoArray.valor | currency}}</span>
+        </div>
+        <div class="col-12 d-flex justify-content-center" style="margin-top: 4em;">
+            <img alt="" style="width: 230px;" src="{{sondeoArray.imagen_portada}}" />
+        </div>
+        <div class="col-12 d-flex justify-content-center" style="margin-top: 4em;">
+            <span class="desc">{{sondeoArray.indicaciones}}</span>
+        </div>
+        <div class="col-12 d-flex justify-content-center" style="margin-top:2em">
+            <button (click)="iniciar()" class="buttonI">Iniciar</button>
+        </div>
+    </div>
+
+    <div *ngIf="divPreguntas" style="padding: 2em 0em;margin: 0em 2em;">
+        <div class="row">
+            <div class="col-3">
+                <img alt="" src="/assets/img/timer.png"><span style="    padding-left: 1em;">{{segRest}}</span>
+            </div>
+            <div class="col-9" style="padding-top: 0.5em;">
+                <mat-progress-bar mode="determinate" [value]="progressbarValue"></mat-progress-bar>
+            </div>
+        </div>
+        <div style="padding-top: 3em;">
+            <div class="row" style="padding-bottom: 1em;" *ngFor="let pregunta of sondeoArray.preguntas; let i=index">
+                <div class="col-12 preguntaCol">
+                    <span class="numConten">{{pregunta.id}}</span>
+                    <img alt="" src="/assets/img/Rectangle_red.png" class="numContenImag">
+                    <div class="row" style="padding-top: 3em;">
+                        <div class="col-12">
+                            <p class="numPregunta">Pregunta {{pregunta.id}} /<span
+                                    class="totalPreguntas">{{totalPreguntas}}</span></p>
+                        </div>
+                        <div class="col-12">
+                            <p class="pregunta">{{pregunta.pregunta}} <span *ngIf="pregunta.obligatoria">*</span></p>
+                        </div>
+                        <div class="col-12" style="padding-top: 2em;">
+                            <respuestasondeo-template [arreglo]="pregunta" (setRespuesta)="respuestas($event)">
+                            </respuestasondeo-template>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="i<sondeoArray.preguntas.length-1" class="col-12" style="padding-top: 1em;">
+                    <hr>
+                </div>                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center" style="margin-top:2em">
+                <button (click)="validacionEnvio()" class="buttonI">Enviar</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div *ngIf="divRespuestas" style="padding: 2em 0em;margin: 0em 2em;">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <span class="pregResp">Resumen de mi evaluación</span>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <span class="resumen">{{totalAciertos}}/{{totalPreguntas}} Correctas</span>
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 1em;" *ngFor="let pregunta of sondeoArray.preguntas; let i=index">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-6 d-flex justify-content-start">
+                        <span class="lblRP">Pregunta {{pregunta.id}}</span>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end">
+                        <img alt="" style="width: 20px;height: 25px;padding-top: 0.5em;" src="{{pregunta.imgsrc}}" />
+                        <span class="lblRespuesta"
+                            [ngStyle]="{'color':pregunta.status?'#77C121':'#FF0000'}">{{pregunta.lblStatus}}</span>
+                    </div>
+                    <div class="col-12">
+                        <span class="pregResp">{{pregunta.retroalimentacion}}</span>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="i<sondeoArray.preguntas.length-1" class="col-12" style="padding-top: 1em;">
+                <hr>
+            </div>
+        </div>
+
+        <div class="row" style="padding-top: 2em;">
+            <div class="col-6 d-flex justify-content-center" *ngIf="!intentarOtraVez"></div>
+            <div class="col-6 d-flex justify-content-center" *ngIf="intentarOtraVez">
+                <button (click)="accion(false)" class="buttonO">Intentar Otra vez</button>
+            </div>
+            <div class="col-6 d-flex justify-content-center">
+                <button (click)="accion(true)" class="buttonI">Salir</button>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

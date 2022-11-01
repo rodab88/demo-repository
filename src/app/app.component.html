@@ -44,10 +44,10 @@
             <a class="side-a" mat-button (click)="cerraSesion()">{{cerrar}}
                 <em style="padding-left: 0.2em;" class="material-icons">logout</em>
             </a>
-<!--             <a class="side-a" mat-button (click)="valoraApp()">
+            <a class="side-a" mat-button (click)="valoraApp()">
                 Reseñas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 {{promedio_app}}<em style="padding-left: 0.2em; font-size: 1em; padding-bottom: 0.3em;" class="material-icons">star</em>
-            </a> -->
+            </a> 
         </mat-sidenav>
         <mat-sidenav-content>
             <router-outlet></router-outlet>
@@ -58,6 +58,6 @@
     </mat-sidenav-container>
 </div>
 
-<div *ngIf="displayProgressSpinner" class="d-flex justify-content-center" style="padding-top: 70%;background-color: #f3f3f2;">
+<div *ngIf="displayProgressSpinner" class="d-flex justify-content-center" style="padding-top: 70%;background-color: #F3F3F2;">
     <img src="/assets/img/spinner.gif" alt="">
 </div>

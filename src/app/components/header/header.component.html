@@ -7,7 +7,7 @@
     </div>
     <div class="col-8" style="padding-top: 0.9em;">
       <p [style.color]="colorletra" class="saludo">Hola {{username}}</p>
-      <p *ngIf="seccionesPermitidas.me_impulsa" class="msg">Me impulsa: <span class="black">{{meimpulsa}}</span></p>
+      <p *ngIf="seccionesPermitidas.me_impulsa" class="msg">Mi sueño: <span class="black">{{meimpulsa}}</span></p>
       <p *ngIf="fechaHora!==''" class="date">Fecha actualización: <span class="black">{{fechaHora | fecha:'hora' }}</span></p>      
     </div>
   </div>

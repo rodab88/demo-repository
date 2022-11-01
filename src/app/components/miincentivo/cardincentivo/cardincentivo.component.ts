@@ -33,7 +33,7 @@ export class CardIncentivoComponent implements OnInit {
   public panelOpenState: boolean = false;
   public arreglopintar: any = [false, false, false, false, false];
   public iframeIncent: string = ''
-  public urlI!: SafeResourceUrl;
+  public url: string = ''
   public actiPDFIncent: boolean = false;
   public varibleCampanias: number = 0;
   public varibleCompo: number = 0;
@@ -44,7 +44,7 @@ export class CardIncentivoComponent implements OnInit {
   showDescription: boolean = false;
   componentNameDesc: string = "";
   componentDesc: string = "Descripción Pendiente";
-
+  colorletra:string="";
   @ViewChild('pdfTable', { static: false })
   pdfTable!: ElementRef;
 
@@ -52,7 +52,7 @@ export class CardIncentivoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.colorletra = localStorage.getItem('colorletra')!;
     console.log(this.plan);
     this.traerListaMidia();
   }
@@ -153,12 +153,12 @@ export class CardIncentivoComponent implements OnInit {
     }
 
   }
+
   public activarPdfIncentivo(obj: any) {
     if (!this.actiPDFIncent) {
-      this.iframeIncent = obj.pdf;
+      this.url = obj.pdf;
+      this.services.analitica('abrirPdfMiMiSimulador').subscribe();
       this.actiPDFIncent = true;
-
-      this.urlI = this._sanitizer.bypassSecurityTrustResourceUrl(this.iframeIncent);
     } else {
       this.actiPDFIncent = false;
     }
@@ -166,6 +166,7 @@ export class CardIncentivoComponent implements OnInit {
 
   public avtivarGrafica(_obj: any) {
     this.miincentivo.activaGraficas(_obj);
+    this.services.analitica('abrirGraficaMiIncentivo').subscribe();
   }
 
   public onExport() {

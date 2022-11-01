@@ -1,0 +1,147 @@
+<div *ngIf="!displayProgressSpinner" class="scrooll-design background-panel">
+    <header-template *ngIf="showComponents" [iconoPerfil]="iconoPerfil" [nombre]="nombre" [colorperfil]="colorperfil"
+        [colorletra]="colorletra" [meimpulsa]="meimpulsa"></header-template>    
+
+        <div style="padding: 1.5em 23px 1em 9px;">
+          <div class="segundaseccion">
+            <div class="overlay">
+              <div class="row " style="padding-left: 0.5em;">
+                  <div class="col-12" style="text-align: center; margin-top: 15px;">
+                        <span class="titulo">Ranking</span>
+                  </div>
+                  <div style="margin-top: 30px;"></div>
+                  <div class="col-6">
+                    <button (click)="filtrar()" [style.background-color]="colorFiltro" class=" button">Filtrar por
+                      <img alt="" src="/assets/img/filter.png" style="width: 15px; margin-left: 4px;">
+                    </button>
+                  </div>
+                  <div class="col-6" style="    text-align: right;">
+                    <button (click)="ordenar()" [style.background-color]="colorOrden" class=" buttonOrden"   >Ordenar por
+                      <img alt="" style="width: 15px; margin-left: 4px;" src="/assets/img/ordenar.png" />
+                    </button>
+                  </div>
+
+              </div>
+              <div class="seccionEncab"></div>
+              <div class="seccionFiltro" *ngIf="mosFiltrar">
+                <div class="row m-1">
+                  <span >Por puesto</span>
+                </div>
+                <div *ngFor="let item of arregloPuestos;">
+                  <div class="row m-1">
+                    <label class="checkeable">
+                      <input (click)="filtrarPuesto(item)" [checked]="item.status" type="checkbox" id="checkbox-{{item.id}}" />
+                       {{item.puesto}}
+                    </label>
+                  </div>
+
+                </div>
+              </div>
+              <div class="seccionOrden" *ngIf="mosOrdenar">
+                <div class="row m-1 ">
+                  <div class="col-8">
+                    <span class="colorLetraOrden">Incentivo Promedio</span>
+                  </div>
+                  <div class="col-2">
+                    <button (click)="ordenarLista(valor1.value)" #valor1 value="1" class=" buttonCheckPri"  [style.background-color]="colorFiltroProM">
+                      <img alt="" src="/assets/img/mayor.png" style="width: 10px;
+                      margin-left: -6px;
+                      margin-top: -10px;">
+                    </button>
+                  </div>
+                  <div class="col-2">
+                    <button (click)="ordenarLista(valor2.value)" #valor2 value="2" class=" buttonCheck"  [style.background-color]="colorFiltroProMa">
+                      <img alt="" src="/assets/img/menor.png" style="width: 10px;
+                      margin-left: -6px;
+                      margin-top: -10px;">
+                    </button>
+                  </div>
+                  <div class="col-8">
+                    <span class="colorLetraOrden">Incentivos Generados</span>
+                  </div>
+                  <div class="col-2">
+                    <button (click)="ordenarLista(valor3.value)" #valor3 value="3" class=" buttonCheckPri"  [style.background-color]="colorFiltroGeM">
+                      <img alt="" src="/assets/img/mayor.png" style="width: 10px;
+                      margin-left: -6px;
+                      margin-top: -10px;">
+                    </button>
+                  </div>
+                  <div class="col-2">
+                    <button (click)="ordenarLista(valor4.value)" #valor4 value="4" class=" buttonCheck"  [style.background-color]="colorFiltroGeMa">
+                      <img alt="" src="/assets/img/menor.png" style="width: 10px;
+                      margin-left: -6px;
+                      margin-top: -10px;">
+                    </button>
+                  </div>
+                  <div class="col-8">
+                    <span class="colorLetraOrden">Retos Ganados</span>
+                  </div>
+                  <div class="col-2">
+                    <button (click)="ordenarLista(valor5.value)" #valor5 value="5" class="buttonCheckPri"  [style.background-color]="colorFiltroGaM">
+                      <img alt="" src="/assets/img/mayor.png" style="width: 10px;
+                      margin-left: -6px;
+                      margin-top: -10px;">
+                    </button>
+                  </div>
+                  <div class="col-2">
+                    <button (click)="ordenarLista(valor6.value)" #valor6 value="6" class=" buttonCheck"  [style.background-color]="colorFiltroGaMa">
+                      <img alt="" src="/assets/img/menor.png" style="width: 10px;
+                      margin-left: -6px;
+                      margin-top: -10px;">
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" *ngFor="let item of arreglo;let indice = index;">
+                <div style="padding: 1.5em 3px 1em 10px;">
+                  <div class="seccionLista">
+                    <div class="overlay">
+                      <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-7" style="margin-left: -15px;">
+                          <span class="cardTitle" [style.color]="item.colorNombre+'!important'">{{item.nombre}}</span>
+                        </div>
+                        <div class="col-2 catego"  [style.background-color]="item.color_categoria+'!important'" >
+                          <div style="margin-top: -2px;">
+                            <span class="label-cat">{{item.categoria}}</span>
+                          </div>
+                        </div>
+                        <div class="row" style="margin-left: 12px;">
+                        <div class="col-1"></div>
+                        <div class="col-4" style="border-right: 2px solid #EDEDED; text-align: center; margin-top: 5px;">
+                          <article class="article-titulos" style="margin-left: 25px;">${{item.incentivo_prom |
+                            currency:'':''}}</article>
+                          <article class="article-Sub" style="margin-left: 27px;margin-top: 2px;">Incentivo Promedio</article>
+                        </div>
+                        <div class="col-4" style="border-right: 2px solid #EDEDED; text-align: center;margin-top: 5px;">
+                          <article class="article-titulos">{{item.num_incentivos}} MESES</article>
+                          <article class="article-Sub" style="margin-top: 2px;">Incentivos Generados</article>
+                        </div>
+                        
+                        <div class="col-3" >
+                          <article class="article-titulos" style="margin-left: 19px;margin-top: 5px;" >{{item.retos_ganados}}</article>
+                          <article class="article-Sub" style="margin-top: 2px; margin-left: 3px;">Retos Ganados</article>
+                        </div>  
+                        <div class="col-2" style="position: relative; margin-top: -56px; margin-left: -20px;">
+                          <span class="numConten">{{item.orden}}</span>   
+                          <img alt="" src="{{item.imarectangulo}}" class="numContenImag" >                
+                          <img (click)="perfil(item)" alt="" class="circleRank" *ngIf="item.foto" src="{{item.foto}}" [style.border]="'3px solid' + item.color_categoria" />
+                          <img (click)="perfil(item)" alt="" class="circleRank" *ngIf="!item.foto" src="/assets/img/userFondo.png" [style.border]="'3px solid' + item.color_categoria"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            
+              </div>
+
+            </div>
+          </div>
+      
+        </div>
+        <div style="margin-top: 80px;"></div>
+</div>
+<div *ngIf="displayProgressSpinner" class="d-flex justify-content-center" style="padding-top: 50%;background-color: #f3f3f2;">
+    <img src="/assets/img/spinner.gif" alt="">
+  </div>

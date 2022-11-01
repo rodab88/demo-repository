@@ -21,12 +21,7 @@ export class MiSimuladorComponent implements OnInit {
   periodoSelected: number = 0;
   puestoSelected: number = 0;
 
-  periodos: any = [
-    { "descripcion": "Mes", "id": 0 },
-    { "descripcion": "Julio", "id": 1 },
-    { "descripcion": "Agosto", "id": 2 },
-    { "descripcion": "Septiembre", "id": 3 }
-  ];
+  periodos: any = [];
 
   puestos: any = [];
   arregloGen: any = [];
@@ -54,6 +49,7 @@ export class MiSimuladorComponent implements OnInit {
     this.configPage();
     this.getPropertiesHeader();
     this.cargarDatos();
+    this.periodosActual();
   }
 
   configPage() {
@@ -71,6 +67,44 @@ export class MiSimuladorComponent implements OnInit {
 
   showProgressSpinner(value: boolean) {
     this.displayProgressSpinner = value;
+  }
+
+  periodosActual(){
+    let fecha = new Date();
+    let mesAc = fecha.getMonth() + 1;
+    let mesAnterior = mesAc -1;
+    let mesSiguiente = mesAc +1;
+
+      if (mesAnterior) {
+        fecha.setMonth(mesAnterior - 1);
+        let mess = new Intl.DateTimeFormat('es-ES', { month: 'long'}).format(fecha)
+        mess = mess.charAt(0).toUpperCase() + mess.slice(1);
+        let obj: any = {
+          id: 1,
+          descripcion: mess
+        }
+        this.periodos.push(obj);
+      }
+      if (mesAc) {
+        fecha.setMonth(mesAc - 1);
+        let mess = new Intl.DateTimeFormat('es-ES', { month: 'long'}).format(fecha)
+        mess = mess.charAt(0).toUpperCase() + mess.slice(1);
+        let obj: any = {
+          id: 2,
+          descripcion: mess
+        }
+        this.periodos.push(obj);
+      }
+      if (mesSiguiente) {
+        fecha.setMonth(mesSiguiente - 1);
+        let mess = new Intl.DateTimeFormat('es-ES', { month: 'long'}).format(fecha)
+        mess = mess.charAt(0).toUpperCase() + mess.slice(1);
+        let obj: any = {
+          id: 3,
+          descripcion: mess
+        }
+        this.periodos.push(obj);
+      }
   }
 
   cargarDatos() {
@@ -113,7 +147,6 @@ export class MiSimuladorComponent implements OnInit {
       if (item.id == this.puestoSelected) {
         this.nomina = item.tipoNominaId;
       }
-
     }
 
     let obj = { "nomina": this.nomina }
@@ -152,6 +185,8 @@ export class MiSimuladorComponent implements OnInit {
         this.arrayColaboradores[idx].nominaJefe = datos.data.nomina_jefe;
         localStorage.setItem('colaboradores', JSON.stringify(this.arrayColaboradores));
         this.componentesMiDia = true;
+
+        this.services.analitica('buscarNominaMiSimulador').subscribe();
       }
     });
   }
@@ -165,7 +200,7 @@ export class MiSimuladorComponent implements OnInit {
           itemVar.incentivo = '0.00'
           for (let itemCom of itemVar.componentes) {
             this.formatCurrency(itemCom);
-            itemCom.color = itemCom.bEditable? 'white':'#D9D9D9';            
+            itemCom.color = itemCom.bEditable ? 'white' : '#D9D9D9';
           }
         }
       }
@@ -173,20 +208,20 @@ export class MiSimuladorComponent implements OnInit {
     }
   }
 
-  formatCurrency(itemCom: any){
+  formatCurrency(itemCom: any) {
     let decimal = itemCom.tiposCampo.decimales;
-            const formatter = new Intl.NumberFormat('en-US', {
-              style: 'currency',
-              currency: 'USD',
-              minimumFractionDigits: decimal
-            })
-            if (itemCom.tiposCampo.simbolo == '$') {
-              itemCom.valor = formatter.format(itemCom.valor);
-            }
-            if (itemCom.tiposCampo.simbolo == '%') {
-              let valor = Number(itemCom.valor);
-              itemCom.valor = valor.toFixed(decimal);
-            }
+    const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: decimal
+    })
+    if (itemCom.tiposCampo.simbolo == '$') {
+      itemCom.valor = formatter.format(itemCom.valor);
+    }
+    if (itemCom.tiposCampo.simbolo == '%') {
+      let valor = Number(itemCom.valor);
+      itemCom.valor = valor.toFixed(decimal);
+    }
   }
 
   setStepsGeneral(avance: number) {
@@ -199,7 +234,6 @@ export class MiSimuladorComponent implements OnInit {
       else
         steps[i].class = "#747474";
     }
-
     return steps;
   }
 
@@ -213,37 +247,16 @@ export class MiSimuladorComponent implements OnInit {
       if (!datos.error) {
         if (datos.data.capanias) {
           this.arreglo = datos.data.capanias;
-
           if (this.arreglo) {
             for (let item of this.arreglo) {
               this.idVariableIncen = this.idVariableIncen + 1;
               item.idIncentiv = this.idVariableIncen;
-
-              let steps = [{ status: false, class: "#E00000" }, { status: false, class: "#E05100" }, { status: false, class: "#E08600" },
-              { status: false, class: "#E6CB3E" }, { status: false, class: "#BAAD35" }, { status: false, class: "#8AC60C" }, { status: false, class: "#6FA007" }];
-
-              for (let i = 0; i < steps.length; i++) {
-                if (i < item.avance + 1)
-                  steps[i].status = true;
-                else
-                  steps[i].class = "#747474";
-              }
-              item.stps = steps;
-
+              item.stps = this.setStepsGeneral(item.avance);
               if (item.variables) {
                 for (let itemVar of item.variables) {
                   this.idVariable = this.idVariable + 1;
                   itemVar.idVariable = this.idVariable;
-                  let stepsVar = [{ status: false, class: "#E00000" }, { status: false, class: "#E05100" }, { status: false, class: "#E08600" },
-                  { status: false, class: "#E6CB3E" }, { status: false, class: "#BAAD35" }, { status: false, class: "#8AC60C" }, { status: false, class: "#6FA007" }];
-
-                  for (let i = 0; i < stepsVar.length; i++) {
-                    if (i < itemVar.avance)
-                      stepsVar[i].status = true;
-                    else
-                      stepsVar[i].class = "#747474";
-                  }
-                  itemVar.stpsVar = stepsVar;
+                  itemVar.stpsVar = this.setStepsGeneral(itemVar.avance);
                 }
               }
             }
@@ -255,45 +268,12 @@ export class MiSimuladorComponent implements OnInit {
           if (this.plan.status_compromiso !== 'ACEPTADA' && this.plan.status_compromiso !== 'GUARDADA') {
             this.plan.incentivo = '0.00';
           }
-
           if (this.plan.variables) {
-
             for (let itemVar of this.plan.variables) {
-              let stepsVar = [{ status: false, class: "#E00000" }, { status: false, class: "#E05100" }, { status: false, class: "#E08600" },
-              { status: false, class: "#E6CB3E" }, { status: false, class: "#BAAD35" }, { status: false, class: "#8AC60C" }, { status: false, class: "#6FA007" }];
-
-              for (let i = 0; i < stepsVar.length; i++) {
-                if (i < itemVar.avance)
-                  stepsVar[i].status = true;
-                else
-                  stepsVar[i].class = "#747474";
-              }
-              itemVar.stpsVar = stepsVar;
-
+              itemVar.stpsVar = this.setStepsGeneral(itemVar.avance);
               for (let itemCom of itemVar.componentes) {
-
-                let decimal = itemCom.tiposCampo.decimales;
-                const formatter = new Intl.NumberFormat('en-US', {
-                  style: 'currency',
-                  currency: 'USD',
-                  minimumFractionDigits: decimal
-                })
-                if (itemCom.tiposCampo.simbolo == '$') {
-                  itemCom.valor = formatter.format(itemCom.valor);
-
-                }
-                if (itemCom.tiposCampo.simbolo == '%') {
-                  let valor = Number(itemCom.valor);
-                  itemCom.valor = valor.toFixed(decimal);
-                }
-                if (itemCom.bEditable) {
-                  itemCom.color = 'white'
-                }
-                if (!itemCom.bEditable) {
-                  itemCom.color = '#D9D9D9'
-                }
-
-
+                this.formatCurrency(itemCom);
+                itemCom.color = itemCom.bEditable ? 'white' : '#D9D9D9';
               }
             }
           }
@@ -365,7 +345,6 @@ export class MiSimuladorComponent implements OnInit {
   }
 
   datosColaboradores(nomina: string) {
-
     this.services.getDatos(nomina).subscribe(datosp => {
       if (datosp !== undefined) {
         this.services.getIncentivos().subscribe(datos => {
@@ -393,19 +372,21 @@ export class MiSimuladorComponent implements OnInit {
     this.divMiSimulador = true;
     this.divColaboradores = false;
     this.divCompromiso = false;
+    this.services.analitica('iniciarMiSimulador').subscribe();
   }
 
   abrirColaboradores() {
     this.divMiSimulador = false;
     this.divCompromiso = false;
     this.divColaboradores = true;
-
+    this.services.analitica('verBolsaLiderazgoMiSimulador').subscribe();
   }
 
   public abrirCompromisos() {
     this.divMiSimulador = false;
     this.divColaboradores = false;
     this.divCompromiso = true;
+    this.services.analitica('verCompromisosMiSimulador').subscribe();
 
   }
 

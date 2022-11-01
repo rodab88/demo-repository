@@ -10,8 +10,8 @@
 
           <div class="col-8" style="margin-top: 20px;">
             <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
-              <span class="card-incentivo centerSymbol">$</span>
-              <span class="card-incentivo centerIncentivo">{{total.incentivo | currency:'':''}}</span>
+              <span class="card-incentivo centerSymbol" [style.color]="colorletra">$</span>
+              <span class="card-incentivo centerIncentivo" [style.color]="colorletra">{{total.incentivo | currency:'':''}}</span>
             </div>
           </div>
           <div style="margin-top: 15px;"></div>
@@ -29,11 +29,11 @@
           </div>
           <div class="col-8" style="margin-top: 20px;">
             <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
-              <span class="card-incentivo centerSymbol">$</span>
-              <span class="card-incentivo centerIncentivo">{{plan.incentivo | currency:'':''}}</span>
+              <span class="card-incentivo centerSymbol" [style.color]="colorletra">$</span>
+              <span class="card-incentivo centerIncentivo" [style.color]="colorletra">{{plan.incentivo | currency:'':''}}</span>
             </div>
           </div>
-          <div class="col-12 rightIncentivo">
+          <div class="col-12 rightIncentivo" [style.color]="colorletra">
             <article *ngIf="!variablesPlan" (click)="mostrarVarPlan()" style="margin-right: 10px;margin-top: -12px;">Ver
               más
             </article>
@@ -53,8 +53,8 @@
             </div>
             <div class="col-4" style="margin-top: 13px;">
               <div style="--bs-gutter-x: 0;display: flex; width: 95%; ">
-                <span class="incentivoVar centerSymbol">$</span>
-                <span id="{{itemVar.id_variable}}" class="incentivoVar centerIncentivo">{{itemVar.incentivo |
+                <span class="incentivoVar centerSymbol" [style.color]="colorletra">$</span>
+                <span id="{{itemVar.id_variable}}" class="incentivoVar centerIncentivo" [style.color]="colorletra">{{itemVar.incentivo |
                   currency:'':''}}</span>
               </div>
             </div>
@@ -109,7 +109,7 @@
                 <br><br>
               </div>
             </div>
-            <div class="col-12 rightIncentivo">
+            <div class="col-12 rightIncentivo" [style.color]="colorletra">
               <article *ngIf="variablesPlan" (click)="mostrarVarPlan()">Ver menos
               </article>
             </div>
@@ -119,9 +119,9 @@
     </div>
     <div class="row">
       <div class="col-6">
-        <button (click)="onExport()" class="booton-descargar">Descargar Compromiso</button>
+        <button (click)="onExport()" *ngIf="total.incentivo > 0 && plan.incentivo>0 && (plan.status_compromiso == 'ACEPTADA' || plan.status_compromiso == 'GUARDADA' || plan.status_compromiso == 'EN PROCESO')" class="booton-descargar">Descargar Compromiso</button>
       </div>
-      <div class="col-6" *ngIf="plan.status_compromiso !== 'ACEPTADA'  && plan.status_compromiso !== 'GUARDADA'">
+      <div class="col-6" *ngIf="plan.status_compromiso !== 'ACEPTADA'  && plan.status_compromiso !== 'GUARDADA' && plan.status_compromiso !== 'EN PROCESO' && total.incentivo > 0 && plan.incentivo>0" >
         <button (click)="generarCompromiso()" class="booton-compromiso">Generar Mi Compromiso</button>
       </div>
     </div>
@@ -136,11 +136,11 @@
             </div>
             <div class="col-8" style="margin-top: 20px;">
               <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
-                <span class="card-incentivo centerSymbol">$</span>
-                <span class="card-incentivo centerIncentivo">{{item.incentivo | currency:'':''}}</span>
+                <span class="card-incentivo centerSymbol" [style.color]="colorletra">$</span>
+                <span class="card-incentivo centerIncentivo" [style.color]="colorletra">{{item.incentivo | currency:'':''}}</span>
               </div>
             </div>
-            <div class="col-12 rightIncentivo">
+            <div class="col-12 rightIncentivo" [style.color]="colorletra">
               <article *ngIf="item.idIncentiv !== varibleIncen" style="margin-right: 10px; margin-top: -12px;"
                 (click)="mostrarVar(item)">Ver más
               </article>
@@ -159,8 +159,8 @@
               </div>
               <div class="col-4" style="margin-top: 13px;">
                 <div style="--bs-gutter-x: 0;display: flex; width: 95%; ">
-                  <span class="incentivoVar centerSymbol">$</span>
-                  <span class="incentivoVar centerIncentivo">{{itemVar.incentivo | currency:'':''}}</span>
+                  <span class="incentivoVar centerSymbol" [style.color]="colorletra">$</span>
+                  <span class="incentivoVar centerIncentivo" [style.color]="colorletra">{{itemVar.incentivo | currency:'':''}}</span>
                 </div>
               </div>
               <div class="col-2" *ngIf="!acordion" style="margin-top: 10px;">
@@ -216,7 +216,7 @@
                   </button>
                 </div>
               </div>
-              <div class="col-12 rightIncentivo">
+              <div class="col-12 rightIncentivo" [style.color]="colorletra">
                 <article *ngIf="variables" (click)="mostrarVar(item)">Ver menos
                 </article>
               </div>

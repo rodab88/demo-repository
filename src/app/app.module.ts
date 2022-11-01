@@ -13,6 +13,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 
+//Diretive
+import { AutocompleteOffDirective } from './autocomplete-off.directive';
+
 // FIREBASE
 import { initializeApp } from "firebase/app";
 initializeApp(environment.firebase);
@@ -81,6 +84,12 @@ import { MisRetosComponent } from './components/misretos/misretos.component'
 import { TourComponent } from './components/tour/tour.component';
 import { MisRetosResumenComponent } from './components/misretos/resumen/resumen.component'
 import { DialogComponent } from './components/dialogDesc/dialog-component';
+import { CarritoComponent } from './components/misretos/carrito/carrito.component';
+import { RankingComponent } from './components/ranking/ranking.component';
+import { SondeoComponent } from './components/sondeo/sondeo.component';
+import { RespuestaSondeoComponent } from './components/sondeo/respuestasondeo/respuestasondeo.component';
+import { MSondeoComponent } from './components/sondeo/modal/msondeo.component';
+
 
 
 @NgModule({
@@ -125,7 +134,13 @@ import { DialogComponent } from './components/dialogDesc/dialog-component';
     MisRetosComponent,
     TourComponent,
     MisRetosResumenComponent,
-    DialogComponent
+    DialogComponent,
+    CarritoComponent,
+    RankingComponent,
+    SondeoComponent,
+    RespuestaSondeoComponent,
+    MSondeoComponent,
+    AutocompleteOffDirective
     ],
   imports: [
     BrowserModule,

@@ -76,7 +76,7 @@ export class DesempenioComponent {
   public categoria() {
     let objenviar =
     {
-      nomina: localStorage.getItem('nomina'),
+      nomina: localStorage.getItem('nominaColaborador'),
       empresa_id: '13'
     }
     this.services.postCategoria(objenviar).subscribe(datos => {
@@ -200,7 +200,9 @@ export class DesempenioComponent {
   }
 
   public enviarPag(){
-    window.location.href = "https://www.universidadcorporativagentera.com/";
+    this.services.analitica('accesarUcg').subscribe(datos=>{
+      window.location.href = "https://www.universidadcorporativagentera.com/";
+    });
   }
 
 }

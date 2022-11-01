@@ -161,8 +161,7 @@
 .montosTotal{
   font-size: calc(1.7rem + -1.8vw);
   font-family: BreeBold;
-  color: #e20077;
-
+  margin-left: 90px;
 }
 
 .labelHoy {
@@ -183,18 +182,11 @@
 .card-incentivo {
   font-size: calc(2.7rem + 0.2vw);
   font-family: BreeBold;
-  color: #e20077;
-}
-.card-incentivoVar {
-  font-size: calc(1.7rem + -0.8vw);
-  font-family: BreeBold;
-  color: #e20077;
 }
 
 .incentivoVar {
   font-size: calc(1.7rem + -0.8vw);
   font-family: BreeBold;
-  color: #e20077;
 }
 
 .circle {
@@ -207,7 +199,6 @@
 .rightIncentivo {
   text-align: right;
   width: 100%;
-  color: #e20077;
   font-family: BreeBold;
   padding-top: 1em;
   font-size: 1.7em;

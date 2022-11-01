@@ -1,0 +1,168 @@
+.buttonI {
+    background: rgba(0, 102, 153, 0.8);
+    border: 1px solid #006699;
+    border-radius: 100px;
+    color: #fff;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 14em;
+}
+
+.buttonO {
+    border: 1px solid #79747E;
+    border-radius: 100px;
+    color: #808080;
+    padding: 5px 20px;
+    text-align: center;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 14em;
+    display: inline-block;
+}
+
+.titulo {
+    font-family: 'BreeRegular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 34px;
+    color: #2C678D;
+    line-height: 1em;
+}
+
+.valor {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 24px;
+    color: #000000;
+}
+
+.desc {
+    font-family: 'BreeRegular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+    color: #2C678D;
+}
+
+.preguntaCol {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    position: relative;
+    padding-bottom: 1.5em;
+}
+
+.pregunta {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #49454F;
+}
+
+.numPregunta {
+    font-family: 'BreeRegular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 32px;
+    text-align: center;
+    color: #2C678D;
+}
+
+.totalPreguntas {
+    font-family: 'BreeRegular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 32px;
+    text-align: center;
+    color: #2C678D80;
+}
+
+.numConten {
+    position: absolute;
+    z-index: 2;
+    font-family: 'BreeRegular';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    text-transform: capitalize;
+    color: white;
+    top: -3px;
+    margin-left: 8px;
+}
+
+.numContenImag {
+    position: absolute;
+    height: 3.2em;
+    width: 3.2em;
+    float: left;
+    z-index: 1;
+    margin-top: -7px;
+    margin-left: -6px;
+
+}
+
+.lblRespuesta {
+    font-family: 'BreeRegular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 32px;
+    padding-left: 0.5em;
+}
+
+.lblRP {
+    font-family: 'BreeRegular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1px;
+    color: #000000;
+}
+
+.pregResp {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.5px;
+    color: #000000;
+}
+
+.resumen {
+    font-family: 'BreeRegular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 32px;
+    text-align: center;
+    color: #2C678D;
+}
+
+.aciertos {
+    font-family: 'BreeRegular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    /* or 133% */
+
+    text-align: center;
+
+    color: #2C678D;
+}

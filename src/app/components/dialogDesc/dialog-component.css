@@ -35,7 +35,32 @@
   text-align: left;
   font-family: BreeBold;
 }
+.lblSaldo{
+  color: #006699;
+  text-decoration: none;
+  font-size: 1.3em;
+  text-align: left;
+  font-family: BreeBold;
+}
+
+.lblTitle{
+  color: #006699;  
+  text-decoration: none;
+  font-family: BreeBold;
+  text-align: center;
+  padding-bottom: 2em;
+  font-size: 1.6em;
+  padding-left: 2em;
+}
 
 .mat-dialog-container {
   padding: 15px;
+}
+
+.backgroundImg{
+  /*background-image: url('/assets/img/estrellas.png');*/
+  background-image: url('/assets/img/starsgif.gif');
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 12em 9em;
 }

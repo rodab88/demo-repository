@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from "@angular/core";
+import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -33,7 +33,7 @@ export type ChartOptions = {
   styleUrls: ['./cardgraficas.component.css'],
 })
 
-export class CardGraficasComponent {
+export class CardGraficasComponent implements OnInit {
   @ViewChild("chart") chart: ChartComponent = {} as ChartComponent;
   @Input() datosGrafica: any = [];
 
@@ -51,6 +51,7 @@ export class CardGraficasComponent {
   public valoridcomponente: string = '';
   displayProgressSpinner = false;
   public color: string = '';
+  colorletra: string = "";
   constructor(public services: Services) {
 
   }
@@ -95,18 +96,18 @@ export class CardGraficasComponent {
             marker: {
               size: 5,
               fillColor: "#fff",
-              strokeColor: '#e20077',
+              strokeColor: this.colorletra,
               radius: 5,
               cssClass: "apexcharts-custom-class"
             },
             label: {
-              borderColor: '#e20077',
+              borderColor: this.colorletra,
               offsetY: 0,
               offsetX: 20,
               style: {
                 radius: 15,
                 color: "#fff",
-                background: '#e20077'
+                background: this.colorletra
               },
 
               text: this.valoridcomponente
@@ -162,7 +163,7 @@ export class CardGraficasComponent {
           offsetX: -165,
           offsetY: -10,
           style: {
-            color: '#e20077',
+            color: this.colorletra,
             fontSize: '8px',
             fontFamily: 'Helvetica, Arial, sans-serif',
             cssClass: 'apexcharts-xaxis-title',
@@ -179,6 +180,7 @@ export class CardGraficasComponent {
   }
 
   ngOnInit(): void {
+    this.colorletra = localStorage.getItem('colorletra')!;
     this.showProgressSpinner(true);
     this.obtieneDatosGrafica();
     this.configPage();
@@ -216,9 +218,9 @@ export class CardGraficasComponent {
           if (this.arreglo.componentes[1].diferencia == _e.diferencia) {
             _e.diferencia = '-' + _e.diferencia;
           }
-          this.getAvance(_e);          
+          this.getAvance(_e);
           this.proyectado[tot] = this.totAvance.valor;
-          this.getProyectado(_e);          
+          this.getProyectado(_e);
           this.cargo = true;
           let _chartOptions = this.creaGrafica(this.label, this.proyectado, this.avance, this.micompromiso, this.color);
           _e.chartOptions = _chartOptions;
@@ -228,7 +230,7 @@ export class CardGraficasComponent {
     });
   }
 
-  getProyectado(_e:any){
+  getProyectado(_e: any) {
     _e.proyectado.forEach((_proy: any) => {
       this.proyectado.push(_proy.valor);
       this.label.push(_proy.dia);
@@ -236,7 +238,7 @@ export class CardGraficasComponent {
     });
   }
 
-  getAvance(_e: any){
+  getAvance(_e: any) {
     _e.avance.forEach((_avan: any) => {
       this.avance.push(_avan.valor);
       this.label.push(_avan.dia);

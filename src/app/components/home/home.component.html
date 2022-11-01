@@ -20,8 +20,8 @@
               <div class="col-8">
                 <div class="row" style="padding-top: 1.5em;">
                   <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
-                    <span class="card-incentivo centerSymbol">$</span>
-                    <span class="card-incentivo centerIncentivo">{{incentivo | currency:'':''}}</span>
+                    <span class="card-incentivo centerSymbol" [style.color]="colorletra">$</span>
+                    <span class="card-incentivo centerIncentivo" [style.color]="colorletra">{{incentivo | currency:'':''}}</span>
                   </div>
                 </div>
                 <div class="row">
@@ -34,7 +34,7 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-12 rightIncentivo">
+                  <div class="col-12 rightIncentivo" [style.color]="colorletra">
                     Ver más
                   </div>
                 </div>
@@ -66,7 +66,9 @@
               <a href="favoritos">
                 <div class="carousel-caption">
                   <div class="favDiv" *ngFor="let favorito of fav">
-                    <img alt="" src="{{favorito.miniatura}}" class="img-responsive">
+
+                      <img alt="" src="{{favorito.miniatura}}" class="img-responsive">
+                      
                   </div>
                 </div>
               </a>
@@ -75,6 +77,38 @@
         </div>
       </div>
     </div>
+
+    <div *ngIf="rankingG.length > 0" class="container" style="padding: 1.5em 1.5em;">
+      <div class="row">
+        <div class="col-md-12 py-3 cardFavs">
+          <span class="labelFav">Ranking</span>
+          <ngb-carousel >
+            <ng-template ngbSlide *ngFor="let rank of rankingG">
+                <div class="carousel-caption">
+                  <div class="favDiv" *ngFor="let rankFin of rank">
+                    <div style="position: relative; left: 0; top: 0;">
+                      <span class="numConten">{{rankFin.orden}}</span>   
+                      <img alt="" src="{{rankFin.imarectangulo}}" class="numContenImag" >                
+                      <img alt="" (click)="perfil(rankFin)" class="circleRank" *ngIf="rankFin.foto" src="{{rankFin.foto}}" [style.border]="'3px solid' + rankFin.color_categoria" />
+                      <img alt="" (click)="perfil(rankFin)"  class="circleRank" *ngIf="!rankFin.foto" src="/assets/img/userFondo.png" [style.border]="'3px solid' + rankFin.color_categoria"/>
+                    </div>
+
+                    
+                  </div>
+                </div>
+            </ng-template>
+          </ngb-carousel>
+          <a href="ranking">
+          <div class="row">
+            <div class="col-12 rightMas" [style.color]="colorletra">
+              Ver más
+            </div>
+          </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 <div *ngIf="displayProgressSpinner" class="d-flex justify-content-center" style="padding-top: 50%;background-color: #f3f3f2;">

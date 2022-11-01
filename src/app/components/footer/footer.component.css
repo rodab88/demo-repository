@@ -1,22 +1,32 @@
 .footer {
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    line-height: 20px;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: 1;
-}
-  
-.footer a {
-    display: flex;
-    align-items: center;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  line-height: 20px;
+  padding-bottom: 1em;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 2;
+  background-color: #ffffff;
+  padding-left: 10px;
+  padding-top: 0.9em;
+  border-top-left-radius: 3em 2em;
+  border-top-right-radius: 3em 2em;
 }
 
-.colorOtros {
-    font-size: calc(0.5rem + 1.1vw);
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(149deg) brightness(107%) contrast(102%);
-  }
+.footer a {
+  display: flex;
+  align-items: center;
+}
+
+
+.filter-icon span {
+  font-size: calc(0.5rem + 1.1vw);
+  filter: invert(77%) sepia(16%) saturate(154%) hue-rotate(193deg) brightness(82%) contrast(83%);
+}
+
+.filter-active {
+  font-size: calc(0.5rem + 1.1vw);
+  filter: invert(10%) sepia(68%) saturate(6995%) hue-rotate(324deg) brightness(98%) contrast(103%);
+}

@@ -244,7 +244,6 @@ svg#clouds {
 .card-incentivo {
   font-size: calc(2.7rem + 0.2vw);
   font-family: BreeBold;
-  color: #e20077;
 }
 
 .cardTitle {
@@ -332,7 +331,7 @@ ngb-carousel .wrapper {
 
 
 .steps {
-
+  width: calc(18em + 2vw);
   display: flex;
   background-color: #63d19e;
   color: #fff;
@@ -364,10 +363,6 @@ ngb-carousel .wrapper {
   background-color: #ffffff00;
 }
 
-.steps {
-  width: calc(18em + 2vw);
-}
-
 .post-title {
   font-family: BreeBold;
 }
@@ -394,6 +389,7 @@ ngb-carousel .wrapper {
   border-radius: 1rem;
 }
 
+
 .centerSymbol {
   margin: auto;
   width: 5.3em;
@@ -412,7 +408,6 @@ ngb-carousel .wrapper {
 .rightIncentivo {
   text-align: right;
   width: 100%;
-  color: #e20077;
   font-family: BreeBold;
   padding-top: 1em;
   font-size: 1.7em;
@@ -520,4 +515,60 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
 .cmidia{
   color: #000000 !important;
+}
+
+.subCardFondo {
+  position: relative;
+      
+}
+
+.rankCar{
+  border-radius: 20px;
+  background-color: #e8e5e5;
+  height: 12em;
+  width: 100%;
+  box-shadow: rgb(108 97 103 / 38%) 2px 2px 3px 3px;
+  z-index: -2;
+}
+
+.circleRank {
+  height: 5.5em;
+  border-radius: 5.5em;
+  width: 5.5em;
+  float: left;
+  z-index: -1;
+
+
+}
+.numConten {
+  position: absolute;
+  z-index: 2;
+  font-family: 'Bree';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  text-transform: capitalize;
+  color: white;
+  top: -3px;
+  margin-left: 8px;
+}
+
+.numContenImag {
+  position: absolute;
+  height: 3.2em;
+  width: 3.2em;
+  float: left;
+  z-index: 1;
+  margin-top: -7px;
+  margin-left: -6px;
+
+}
+
+.rightMas{
+  text-align: right;
+  width: 100%;
+  font-family: BreeBold;
+  padding-top: 9px;
+  font-size: 1.7em;
 }

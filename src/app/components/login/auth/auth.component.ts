@@ -6,6 +6,7 @@ import { environment } from "src/environments/environment";
 import { getMessaging, getToken } from "firebase/messaging";
 import { AuthService } from 'src/app/services/auth.service';
 import { Services } from 'src/app/services/services';
+import { ToastService } from '../../../toast-service';
 
 declare let $: any;
 
@@ -27,6 +28,7 @@ export class AuthComponent implements OnInit {
   public sistema = ''
   public permisos: string = '';
   public seccionesPermitidas: any = [];
+  public actiVerContra: boolean = false;
 
   displayProgressSpinner = false;
 
@@ -36,7 +38,7 @@ export class AuthComponent implements OnInit {
   }
 
 
-  constructor(private rute: ActivatedRoute, public formBuilder: FormBuilder, private routerPrd: Router, public auth: AuthService, public s: CommonServiceService,  public services: Services) {
+  constructor( public toastService: ToastService,private rute: ActivatedRoute, public formBuilder: FormBuilder, private routerPrd: Router, public auth: AuthService, public s: CommonServiceService, public services: Services) {
     let obj = {};
     this.myForm = this.createMyForm(obj);
     this.params = this.rute.snapshot.queryParams;
@@ -51,9 +53,9 @@ export class AuthComponent implements OnInit {
         if (this.valNumber(num))
           this.nomina = parseInt(num);
         this.sistema = 'C'
-      }else{
-        this.nomina=Number(atob(this.params['Nomina']));
-        this.sistema='G';
+      } else {
+        this.nomina = Number(atob(this.params['Nomina']));
+        this.sistema = 'G';
       }
     } catch { }
   }
@@ -63,7 +65,7 @@ export class AuthComponent implements OnInit {
   }
 
   valNum(x: any): string {
-    let v=parseInt(x).toString() != 'NaN' ? parseInt(x).toString() : '';
+    let v = parseInt(x).toString() != 'NaN' ? parseInt(x).toString() : '';
     return this.valNumber(x) ? v : '';
   }
 
@@ -74,6 +76,9 @@ export class AuthComponent implements OnInit {
       localStorage.setItem('nomina', this.nomina.toString());
       localStorage.setItem('sistema', this.sistema);
       this.configurarPermisos(this.nomina.toString());
+      if (this.sistema !== "" && this.sistema !== undefined && this.sistema !== null) {
+        this.registrar(this.nomina);
+      }
     } else {
       this.showProgressSpinner(false);
     }
@@ -106,7 +111,7 @@ export class AuthComponent implements OnInit {
         this.services.getCalificacion().subscribe(promedio => {
           if (!promedio.error) {
             localStorage.setItem('promedio_app', promedio.data.promedio);
-          }else{
+          } else {
             console.log("error, no hay datos que mostrar.");
           }
         });
@@ -125,12 +130,12 @@ export class AuthComponent implements OnInit {
     let image: any = document.getElementById('imgContrasena');
     if (elemento.type == "password") {
       elemento.type = "text";
-      $(image.innerHTML).attr('src', 'https://cdn3.iconfinder.com/data/icons/show-and-hide-password/100/show_hide_password-10-256.png');
       $("#txtPassword").attr('type', 'text');
+      this.actiVerContra= true;
     } else {
       elemento.type = "password";
-      $(image.innerHTML).attr('src', 'https://cdn3.iconfinder.com/data/icons/show-and-hide-password/100/show_hide_password-09-256.png');
       $("#txtPassword").attr('type', 'password');
+      this.actiVerContra= false;
     }
   }
 
@@ -163,9 +168,19 @@ export class AuthComponent implements OnInit {
 
           } else {
             console.log('No permisos.');
+            let not = {
+              title: 'No permisos.',
+              body: currentToken
+            }
+            this.toastService.show(not);
           }
         }).catch((err: any) => {
           console.log('Error: . ', err);
+          let not = {
+            title: 'Error',
+            body: "No estan activas las notificaciones."
+          }
+          this.toastService.show(not);
         });
   }
 
@@ -185,31 +200,43 @@ export class AuthComponent implements OnInit {
         localStorage.setItem("seccionesPermitidas", seccionesPermitidas);
         this.seccionesPermitidas = JSON.parse(String(localStorage.getItem("seccionesPermitidas")));
         this.configTour(Number(nomina));
-      }else{
+      } else {
         this.showProgressSpinner(false);
-        this.permisos=response.message;
+        this.permisos = response.message;
       }
     });
   }
 
-  configTour(nomina: number){
+  registrar(nomina: number) {
+    let body = {
+      "Nomina": nomina,
+      "app": this.sistema
+    }
+    this.auth.registro(body).subscribe(response => {
+      console.log(response)
+    });
+  }
+
+  configTour(nomina: number) {
     let obj = {
       "nomina": nomina,
       "empresa_id": 13
     }
     this.services.getTour(obj).subscribe(response => {
       this.showProgressSpinner(false);
-      if(!response.error){
-        if(this.seccionesPermitidas.tour){
+      if (!response.error) {
+        if (this.seccionesPermitidas.tour) {
           localStorage.setItem("tours", JSON.stringify(response.data));
-          console.log(response);  
-                
+          console.log(response);
+
           this.routerPrd.navigate(['/tour']);
-        }else{
-          this.routerPrd.navigate(['/home']);
-        }  
-      }else{
-        this.routerPrd.navigate(['/home']);
+        } else {
+          this.routerPrd.navigate(['/sondeo']);
+          //this.routerPrd.navigate(['/home']);
+        }
+      } else {
+        this.routerPrd.navigate(['/sondeo']);
+        //this.routerPrd.navigate(['/home']);
       }
     });
   }

@@ -9,8 +9,8 @@
             <div class="col-6">
                 <div class="row" style="padding-top: 1.5em;">
                     <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
-                        <span class="card-bolsa centerSymbol">$</span>
-                        <span class="card-bolsa centerIncentivo">{{array.liderazgo |currency:'':''}}</span>
+                        <span class="card-bolsa centerSymbol" [style.color]="colorletra">$</span>
+                        <span class="card-bolsa centerIncentivo" [style.color]="colorletra">{{array.liderazgo |currency:'':''}}</span>
                     </div>
                 </div>
             </div>
@@ -48,15 +48,15 @@
                         <div class="col-8">
                             <div *ngIf="item.compromiso>0" class="row">
                                 <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
-                                    <span class="card-incentivo centerSymbol"
+                                    <span class="card-incentivo centerSymbol" [style.color]="colorletra"
                                         [ngClass]="item.opacity? 'opacityColor':''">$</span>
-                                    <span class="card-incentivo centerIncentivo"
+                                    <span class="card-incentivo centerIncentivo" [style.color]="colorletra"
                                         [ngClass]="item.opacity? 'opacityColor':''">{{item.incentivo |
                                         currency:'':''}}</span>
                                 </div>
                             </div>
                             <div *ngIf="item.compromiso<=0 && !item.compromiso_aceptado" class="row">
-                                <span class="labelNodisponible d-flex justify-content-center">No disponible</span>
+                                <span class="labelNodisponible d-flex justify-content-center" [style.color]="colorletra">No disponible</span>
                             </div>
                             <div class="row">
                                 <span class="label labelHoy">Hoy</span>

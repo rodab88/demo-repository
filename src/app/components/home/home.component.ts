@@ -3,6 +3,7 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Empresa, Favorito, Post } from 'src/app/models/empresa';
 import { Services } from 'src/app/services/services';
 import { HomeRequest } from 'src/app/models/home-request';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -31,19 +32,21 @@ export class HomeComponent implements OnInit {
   nombre: string="";
 
   currentIndex = 0;
+  public ranking : any = [];
 
   steps = [{ status: false, class: "#E00000" }, { status: false, class: "#E05100" }, { status: false, class: "#E08600" },
   { status: false, class: "#E6CB3E" }, { status: false, class: "#BAAD35" }, { status: false, class: "#8AC60C" }, { status: false, class: "#6FA007" }];
 
   posts: Post[] = [];
   favoritosG: any = [];
+  rankingG: any = [];
   favoritos: Favorito[] = [];
 
   seccionesPermitidas: any = [];
 
   displayProgressSpinner = false;
 
-  constructor(config: NgbCarouselConfig, public services: Services) {
+  constructor(config: NgbCarouselConfig, public services: Services, private router: Router) {
 
     config.interval = 0;
     config.showNavigationIndicators = false;
@@ -54,6 +57,8 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log(this.ranking);
+    localStorage.setItem('activa','0')
     this.showProgressSpinner(true);
     let nomina = localStorage.getItem('nomina');
     localStorage.setItem('nominaJefe','');    
@@ -100,6 +105,7 @@ export class HomeComponent implements OnInit {
         this.setCurrentIndex();
         this.showComponents = true;
         this.showProgressSpinner(false);
+        this.rankingServices();
       });
   }
 
@@ -128,6 +134,52 @@ export class HomeComponent implements OnInit {
 
       }
       this.favoritosG[iG] = array;
+      iG = iG + 1;
+    }
+  }
+  public rankingServices(){
+
+    let objenviar = {
+      nomina: localStorage.getItem('nomina'),
+      empresa_id: '13'
+      }
+
+    this.services.postRanking(objenviar).subscribe(datos => {
+      if (!datos.error) {
+        this.ranking = datos.data.colaboradores;
+        this.ranking.forEach((_e: any) => {
+          if(_e.orden !== 1){
+            _e.imarectangulo = "/assets/img/Rectangle_azul.png"
+          }else{
+            _e.imarectangulo = "/assets/img/Rectangle_red.png"
+          }
+ 
+        });
+        this.changeRanking();
+        localStorage.setItem("ranking", JSON.stringify(this.ranking));
+      }
+    });    
+
+  }
+
+  public perfil(obj:any){
+    localStorage.setItem('nominaColaborador',obj.nomina);
+    this.services.analitica('irPerfilHomeRanking').subscribe();
+    this.router.navigate(['/perfil']);
+
+}
+
+  changeRanking() {
+    let iG = 0;
+    for (let i = 0; i < this.ranking.length; i += 4) {
+      let array: Favorito[] = [];
+      for (let j = i; j < i + 4; j++) {
+        if (this.ranking[j] !== undefined) {
+          array.push(this.ranking[j]);
+        }
+
+      }
+      this.rankingG[iG] = array;
       iG = iG + 1;
     }
   }

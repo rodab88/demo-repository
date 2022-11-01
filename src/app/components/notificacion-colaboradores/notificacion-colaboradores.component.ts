@@ -46,6 +46,7 @@ export class NotificacionColaboradoresComponent {
     }
     this.services.postNotificaColaboradorLiderazgo(objenviar).subscribe(datos => {
       if (!datos.error) {
+        this.analitica('enviarMsjColaborador');
         console.log("notificación exitosa");
         this.cerrarNotificacion()
 
@@ -53,6 +54,10 @@ export class NotificacionColaboradoresComponent {
         console.log("error al enviar la notificación");
       }
     });
+  }
+
+  analitica(selector: string){    
+    this.services.analitica(selector).subscribe();
   }
 
 }

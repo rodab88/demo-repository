@@ -1,4 +1,4 @@
-<div class="background-panel m-1">
+<div class="background-panel m-1" *ngIf="verFiltros">
   <div class="row">
     <div class="col-12 d-flex justify-content-center">
       <p class="tituloAzul" style="font-size: 2em;">Mi Equipo</p>
@@ -21,7 +21,7 @@
       <li>
         <div class="row m-2">
         <div class="col-4" >
-          <select matNativeControl requerid class="deplega" (change)="activarPor()"
+          <select matNativeControl requerid class="deplega" style="border: 0;" (change)="activarPor()"
             [(ngModel)]="ordenPrincipal">
             <option value="0">Seleccionar</option>
             <option value="1">Incentivo Promedio</option>
@@ -35,15 +35,15 @@
           </select>
         </div>
         <div class="col-8">
-          <div style="border-radius: 8px;
+          <div (click)="activarPor()" style="border-radius: 8px;
           box-shadow: -2px -2px 7px #555555;
           width: 175px;
           height: 42px;
           margin-left: 38px;
           margin-top: -6px;">
-          <input [(ngModel)]="selecionadoOrden" style="    width: 150px;
+          <input [(ngModel)]="selecionadoOrden"  style="    width: 150px;
           margin-left: 13px;
-          margin-top: 8px;" type="text">
+          margin-top: 8px; border: 0;" disabled type="text">
           </div>
         </div>
       </div>
@@ -57,26 +57,26 @@
         <li>
           <div class="row m-2">
           <div *ngIf="ordenPrincipal == 4 || ordenPrincipal == 5 || ordenPrincipal == 6 || ordenPrincipal == 7 || ordenPrincipal == 8" class="input-group-sm col-12">
-              <label style="margin-top: 15px;" ><input (change)="ordenar(valor.value)" #valor value="0"  type="checkbox">
+              <label style="margin-top: 15px; border: 0;" ><input (change)="ordenar(valor.value)" #valor value="0"  type="checkbox">
                 Alfabéticamente A-Z
               </label>
-              <label style="margin-top: 15px;" ><input (change)="ordenar(valor1.value)" #valor1 value="1" type="checkbox">
+              <label style="margin-top: 15px; border: 0;" ><input (change)="ordenar(valor1.value)" #valor1 value="1" type="checkbox">
                 Alfabéticamente Z-A
             </label>
           </div>
           <div *ngIf="ordenPrincipal == 3" class="input-group-sm col-12">
-            <label style="margin-top: 15px;" ><input (change)="ordenar(valor2.value)" #valor2 value="2"  type="checkbox">
+            <label style="margin-top: 15px; border: 0;" ><input (change)="ordenar(valor2.value)" #valor2 value="2"  type="checkbox">
               Muy Alto a Muy Bajo
             </label>
-            <label style="margin-top: 15px;" ><input (change)="ordenar(valor3.value)" #valor3 value="3" type="checkbox">
+            <label style="margin-top: 15px; border: 0;" ><input (change)="ordenar(valor3.value)" #valor3 value="3" type="checkbox">
               Muy Bajo a Muy Alto
           </label>
         </div>
         <div *ngIf="ordenPrincipal == 1 || ordenPrincipal == 2" class="input-group-sm col-12">
-          <label style="margin-top: 15px;" ><input (change)="ordenar(valor4.value)" #valor4 value="4"  type="checkbox">
+          <label style="margin-top: 15px; border: 0;" ><input (change)="ordenar(valor4.value)" #valor4 value="4"  type="checkbox">
             Mayor a Menor
           </label>
-          <label style="margin-top: 15px;" ><input (change)="ordenar(valor5.value)" #valor5 value="5" type="checkbox">
+          <label style="margin-top: 15px; border: 0;" ><input (change)="ordenar(valor5.value)" #valor5 value="5" type="checkbox">
             Menor a Mayor
         </label>
       </div>
@@ -95,7 +95,7 @@
       <ng-container>
         <li>
           <span>
-            <select matNativeControl style="border: white;font-size: 0.7em;" [(ngModel)]="filtroselected"
+            <select matNativeControl style="border: 0;font-size: 0.7em;"  [(ngModel)]="filtroselected"
               (click)="changeFiltros()">
               <option *ngFor="let f of filtros" [value]="f.id" style="font-size: 1.2em;">
                 {{ f.value }}
@@ -114,9 +114,9 @@
     margin-left: -30px;
     margin-top: 10px;">
     <select matNativeControl [(ngModel)]="tipo" style="margin-top: 11px;
-    margin-left: 3px;" (click)="onChangePromedio()">
+    margin-left: 3px; border: 0;" (click)="onChangePromedio()">
       <option value="menor">Menor o igual a</option>
-      <option value="mayor">Meyor o igual a</option>
+      <option value="mayor">Mayor o igual a</option>
     </select>
     </div>
   </div>
@@ -130,7 +130,7 @@
     margin-top: 10px;">
     <input type="text" [(ngModel)]="promedio" style="    width: 70px;
     margin-left: 5px;
-    margin-top: 7px;" (ngModelChange)="onChangePromedio()"
+    margin-top: 7px; border: 0;" (ngModelChange)="onChangePromedio()"
       (keypress)="keyPressNumbers($event)" />
     </div>  
   </div>
@@ -191,7 +191,7 @@
           <div class="subCardFondo" >
 
             <img alt="" class="foto" *ngIf="item.userCarDefault" src="{{item.foto}}" [style.border]="'7px solid' + item.color_categoria" (click)="activarMenuCol(item);" />
-            <img alt="" class="foto" *ngIf="!item.userCarDefault" src="/assets/img/userFondo.png" [style.border]="'4px solid' + item.color_categoria" (click)="activarMenuCol(item);" />
+            <img alt="" class="foto" *ngIf="!item.userCarDefault" src="/assets/img/userFondo.png" [style.border]="'7px solid' + item.color_categoria" (click)="activarMenuCol(item);" />
 
           </div>
         </div>

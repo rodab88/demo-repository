@@ -1,0 +1,212 @@
+.background-panel{
+  background-color: #F3F3F2 !important;
+  padding-bottom: 1px;
+
+}
+  
+
+ .titulo {
+    font-family: 'BreeBold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    color: #006699;
+ } 
+
+
+.label {
+  font-family: 'Bree';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+ .overlay {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 0.5em;
+  }
+
+ 
+  .segundaseccion{
+    padding-bottom: 1px;
+    padding-top: -2px;
+    border-radius: 2em;
+    width: 102%;
+    background-color: white !important;
+    box-shadow: 0px 1px 1px rgb(0 0 0 / 15%);
+    position: relative;
+  }
+
+  .seccionEncab{
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 20%);
+    width: 101.5%;
+    height: 5px;
+    background-color: white !important;
+    margin-left: -7px;
+  }
+
+  .seccionLista{
+    padding-bottom: 1px;
+    padding-top: -2px;
+    border-radius: 2em;
+    width: 95%;
+    background-color: white !important;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-left: 2px;
+  }
+
+  .catego{
+    border-radius: 6px;
+    height: 19px;
+    width: 16%;
+    background-color: rgba(255, 204, 36, 0.849) !important;
+    text-align: center;
+  }
+  
+  
+  .title {
+    font-size: 1.5em;
+    font-family: BreeBold;
+    padding-bottom: 0.4em;
+  
+  }
+  
+  .label-cat{
+    font-family: 'BreeRegular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 8.5px;
+    line-height: 16px;
+    color: #FFFFFF;
+
+  }
+  
+  .article-titulos{
+    font-family: 'BreeRegular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    text-transform: capitalize;
+    color: #252A2D;
+  }
+
+  .article-Sub{
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 11px;
+    text-transform: capitalize;
+    color: #9EA0AA;
+  }
+  
+  
+  .cardPorPrincipal {
+    justify-content: center;
+    height: 20px !important;
+    width: 30%;
+    background: rgba(178, 178, 178, 0.7);
+    border-radius: 4px;
+  }
+
+  .cardTitle{
+    font-family: 'BreeRegular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    text-transform: capitalize;
+    color: #000000;
+  }
+
+  .button {
+    border: 0;
+    background-color: #FFFFFF;
+    height: 36px;
+  }
+  .buttonOrden {
+    margin-right: 8px;
+    border: 0;
+    background-color: #FFFFFF;
+    height: 36px;
+  }
+
+  .buttonCheck {
+    background-color: #D1D5DB;
+    border: 1.71429px solid #D1D5DB;
+    border-radius: 3px;
+    width: 15px;
+    height: 15px;
+  }
+  .buttonCheckPri {
+    background-color: #D1D5DB;
+    border: 1.71429px solid #D1D5DB;
+    border-radius: 3px;
+    width: 15px;
+    height: 15px;
+    margin-left: 15px;
+  }
+  .circleRank {
+    height: 3.7em;
+    border-radius: 3.7em;
+    width: 3.7em;
+    float: left;
+    z-index: -1;
+    margin-left: 17px;
+   
+  }
+  .numConten {
+    position: absolute;
+    z-index: 2;
+    font-family: 'BreeBold';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 25px;
+    text-transform: capitalize;
+    color: white;
+    top: -8px;
+  }
+  
+  .numContenImag {
+    position: absolute;
+    height: 4em;
+    width: 4em;
+    float: left;
+    z-index: 1;
+    margin-top: -14px;
+    margin-left: -16px;
+  }
+  
+  .seccionFiltro{
+    position: absolute;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    margin-left: -6px;
+    z-index: 3;
+    border-radius: 0px 0px 15px 15px;
+    margin-top: 5px;
+    font-family: 'BreeBold';
+    font-size: 14px;
+  }
+
+  .seccionOrden{
+    position: absolute;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    margin-left: 143px;
+    z-index: 3;
+    border-radius: 0px 0px 15px 15px;
+    margin-top: 5px;
+    font-family: 'BreeBold';
+    font-size: 14px;
+  }
+  
+  
+  
+  

@@ -1,0 +1,39 @@
+<div>
+    <div mat-dialog-content>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center" style="padding-bottom:1em">
+                <img src="{{data.img}}" alt="" />
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <span class="lbl1">{{data.etiqueta}}</span>
+            </div>
+            <div *ngIf="data.aprobado && data.insignia">
+                <div class="col-12 d-flex justify-content-center" style="padding-bottom:1.5em">
+                    <span class="lbl5">Una insignia desbloqueada</span>
+                </div>                
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <span class="lbl2">Total de respuestas correctas</span>
+            </div>
+            <div class="col-12 d-flex justify-content-center" style="padding-bottom:1em">
+                <span class="lbl1">{{data.respuestas}}</span>
+            </div>
+            <div *ngIf="data.aprobado && data.premio">
+                <div class="col-12 d-flex justify-content-center">
+                    <span class="lbl2">Saldo abonado</span>
+                </div>
+                <div class="col-12 d-flex justify-content-center cuadro">
+                    <span class="lbl3">{{data.saldo | currency}}</span>
+                </div>
+            </div>
+            <div *ngIf="!data.aprobado">
+                <div class="col-12 d-flex justify-content-center" style="padding-top: 1em;">
+                    <span class="lbl4">No se abono saldo, ni insignia</span>
+                </div>                
+            </div>
+            <div class="col-12 d-flex justify-content-center" style="padding-top: 2em;">
+                <button (click)="siguiente()" class="buttonI">Siguiente</button>
+            </div>
+        </div>
+    </div>
+</div>

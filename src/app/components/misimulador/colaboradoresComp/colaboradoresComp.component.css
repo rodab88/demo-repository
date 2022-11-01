@@ -42,16 +42,16 @@ svg.material-icons:not(:last-child) {
     width: 99%;
     background-color: #e8e5e5 !important;
     box-shadow: 5px 5px 7px #949494;
-    margin-bottom: 1em !important;    
+    margin-bottom: 1em !important;
 }
 
-.cardOpacity{
+.cardOpacity {
     pointer-events: none;
     opacity: 0.4;
     color: gray !important;
 }
 
-.opacityColor{
+.opacityColor {
     color: gray !important;
 }
 
@@ -256,7 +256,6 @@ svg#clouds {
 .card-incentivo {
     font-size: calc(2.7rem + 0.2vw);
     font-family: BreeBold;
-    color: #e20077;
 }
 
 .cardTitle {
@@ -344,7 +343,7 @@ ngb-carousel .wrapper {
 
 
 .steps {
-
+    width: calc(18em + 2vw);
     display: flex;
     background-color: #63d19e;
     color: #fff;
@@ -376,10 +375,6 @@ ngb-carousel .wrapper {
     background-color: #ffffff00;
 }
 
-.steps {
-    width: calc(18em + 2vw);
-}
-
 .post-title {
     font-family: BreeBold;
 }
@@ -406,12 +401,11 @@ ngb-carousel .wrapper {
     border-radius: 1rem;
 }
 
-.circleTab{
+.circleTab {
     display: inline-block;
     width: 0.7rem;
     height: 0.7rem;
     border-radius: 1rem;
-    background-color: #e20077;
     margin-top: -20px;
     margin-left: 40px;
 }
@@ -430,15 +424,6 @@ ngb-carousel .wrapper {
     width: 6em;
     font-size: 0.7em;
     padding-top: 0.7em;
-}
-
-.rightIncentivo {
-    text-align: right;
-    width: 100%;
-    color: #e20077;
-    font-family: BreeBold;
-    padding-top: 1em;
-    font-size: 1.7em;
 }
 
 .favDiv {
@@ -551,12 +536,6 @@ ngb-carousel .wrapper {
     color: #000000 !important;
 }
 
-.card-bolsa {
-    font-size: calc(2rem + 0.2vw);
-    font-family: BreeBold;
-    color: #e20077;
-}
-
 .cardTitleBolsa {
     font-size: 1.3em;
     font-family: BreeBold;
@@ -577,17 +556,18 @@ ngb-carousel .wrapper {
     font-size: 2em;
     font-family: BreeBold;
 }
+
 .status {
     font-size: 12px;
     font-family: BreeBold;
 }
 
-.puesto{
+.puesto {
     font-size: 17px;
     font-family: BreeBold;
 }
 
-.labelflotantemenu{
+.labelflotantemenu {
     position: fixed;
     right: 80px;
     background: white;
@@ -597,23 +577,18 @@ ngb-carousel .wrapper {
     border-radius: 24px;
     box-shadow: -2px -2px 2px #cbc9c9;
     top: 360px;
-  }
+}
 
-  .labelNodisponible{
+.labelNodisponible {
     font-family: BreeBold;
-    color: #e20077;
     font-size: 2em;
-  }
+}
 
-  .carOverLay{
-    position: fixed;   
-    background-color: rgba(0,0,0,0.5);
+.carOverLay {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 2;
     border-radius: 2em;
     height: 13em !important;
-    width: 90%;        
-  }
-
-  .cmidia{
-    color: #000000 !important;
-  }
+    width: 90%;
+}

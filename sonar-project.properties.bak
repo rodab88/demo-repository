@@ -1,0 +1,8 @@
+sonar.projectKey=ent-incentivos-app-front-angular
+sonar.sources=src
+sonar.language=js
+sonar.python.coverage.reportPaths=coverage.xml
+sonar.python.xunit.reportPath=pyresults.xml
+sonar.javascript.lcov.reportPaths=coverage/lcov.info
+sonar.test.inclusions=src/**/*.spec.ts
+sonar.testExecutionReportPaths=test-report.xml

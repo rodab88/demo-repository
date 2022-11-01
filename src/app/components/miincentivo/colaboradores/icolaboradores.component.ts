@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Services } from 'src/app/services/services';
 import { MiIncentivoComponent } from '../miincentivo.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,63 +13,69 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './icolaboradores.component.html',
   styleUrls: ['./icolaboradores.component.css'],
 })
-export class MiIncentivoColaboradoresComponent {
+export class MiIncentivoColaboradoresComponent implements OnInit {
   showComponents: boolean = false;
 
 
   displayProgressSpinner = false;
   @Input() array: any;
 
-  item:any;
+  item: any;
   user: string = "";
 
   seleccionamenuCol: boolean = false;
-
+  colorletra: string = "";
   constructor(public services: Services, public miIncentivo: MiIncentivoComponent, private matDialog: MatDialog, public auth: AuthService) { }
 
-  activarMenuCol(item:any) {    
-    this.item=item;
+  ngOnInit(): void {
+    this.colorletra = localStorage.getItem('colorletra')!;
+  }
+
+  activarMenuCol(item: any) {
+    this.item = item;
     this.seleccionamenuCol = !this.seleccionamenuCol;
   }
 
-  nuevoperfil(){
-    let colaboradores:any[]= JSON.parse(localStorage.getItem('colaboradores')!);
-    let colab={"nominaColaborador": String(this.item.nomina), "nominaJefe": "", "nombreColaborador": this.item.nombre};
+  nuevoperfil() {
+    let colaboradores: any[] = JSON.parse(localStorage.getItem('colaboradores')!);
+    let colab = { "nominaColaborador": String(this.item.nomina), "nominaJefe": "", "nombreColaborador": this.item.nombre };
     colaboradores.push(colab);
     localStorage.setItem('colaboradores', JSON.stringify(colaboradores));
+    this.services.analitica('irPerfilMiIncentivo').subscribe();
     this.miIncentivo.cargarDatos();
   }
 
-    //Para notificaciones al colaborador
+  //Para notificaciones al colaborador
 
-    modalNotificacion(){
-      this.seleccionamenuCol= false;
-      localStorage.setItem('nominaColaboradorLiderazgo', String(this.item.nomina))
-      this.matDialog.open(NotificacionLiderazgoComponent, {
-        width: '80%',
-        height: '60%',
-        autoFocus: false,
-        disableClose: true
-        // panelClass: 'custom-modalbox'
-      });
-    }
-  
+  modalNotificacion() {
+    this.seleccionamenuCol = false;
+    localStorage.setItem('nominaColaboradorLiderazgo', String(this.item.nomina))
+    this.matDialog.open(NotificacionLiderazgoComponent, {
+      width: '80%',
+      height: '60%',
+      autoFocus: false,
+      disableClose: true
+      // panelClass: 'custom-modalbox'
+    });
+  }
+
   //Para abrir chat de Teams
 
-  chatTeams(){
-    this.seleccionamenuCol= false;
+  chatTeams() {
+    this.seleccionamenuCol = false;
     let nominaTipo = {
       "nominas": [String(this.item.nomina)]
     }
     //Mandar a llamar un segundo servicio para obtener el ID de la empresa para la url de TEAMS
-      this.auth.idTipoEmpresa(nominaTipo).subscribe(resp => {
-        if(resp[0].empresaId == 1){
-         this.user = resp[0].nombreUsuario+"@gentera.com.mx";
-        }else if(resp[0].empresaId == 4){
-         this.user = resp[0].nombreUsuario+"@compartamos.com";
-        }
-        window.open(environment.urlTeams+this.user)
-      });
+    this.auth.idTipoEmpresa(nominaTipo).subscribe(resp => {
+      this.services.analitica('iniciarTeamsIncentivo').subscribe();
+      if (resp[0].empresaId == 1) {
+        this.user = resp[0].nombreUsuario + "@gentera.com.mx";
+      } else if (resp[0].empresaId == 4) {
+        this.user = resp[0].nombreUsuario + "@compartamos.com";
+      }
+      window.open(environment.urlTeams + this.user)
+    });
   }
 
 }

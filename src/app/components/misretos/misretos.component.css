@@ -1,65 +1,55 @@
-.background-panel{
+.background-panel {
   background-color: #F3F3F2 !important;
   padding-bottom: 1px;
-
 }
-  
-  .segundaseccion{
 
-    padding-bottom: 1px;
-    padding-top: -2px;
-    border-radius: 2em;
-    width: 103%;
-    background-color: white !important;
-    box-shadow: 1px 6px 5px #949494;
-    position: relative;
+.modal-content {
+  border-radius: 50px;
+}
 
-  }
+.imgPost {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border-radius: 20px;
+  height: 12em;
+  width: 100%;
+}
 
-  .modal-content{
-    border-radius: 50px;
-  }
-  .imgPost {
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    border-radius: 20px;
-    height: 12em;
-    width: 100%;
-  }
-  .imgPostDesembol {
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    border-radius: 20px;
-    height: 8em;
-    width: 60%;
-  }
-  
+.imgPostDesembol {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border-radius: 20px;
+  height: 8em;
+  width: 60%;
+}
 
- .titulo {
-    font-family: 'BreeBold';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    letter-spacing: 0.5px;
- } 
- .tituloReto {
+
+.titulo {
+  font-family: 'BreeBold';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+.tituloReto {
   font-family: 'BreeBold';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
   letter-spacing: 0.5px;
   color: #EEB343;
-} 
+}
+
 .tituloDesmbol {
   font-family: 'BreeBold';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
   letter-spacing: 0.5px;
-  color: #CA005D;
-} 
+}
 
 .labelNeg {
   font-family: 'BreeBold';
@@ -76,175 +66,167 @@
   font-size: 13px;
   letter-spacing: 0.5px;
 }
- 
- .retoTer {
-    font-family: 'BreeBold';
-    font-style: normal;
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: 0.5px;
-    color: #EEB343;
- }
- .desembolTer {
-    font-family: 'BreeBold';
-    font-style: normal;
-    letter-spacing: 0.5px;
-    color: #808080;
- }
 
- .overlay {
-    padding: 1rem;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    padding-left: 0.5em;
-  }
+.retoTer {
+  font-family: 'BreeBold';
+  font-style: normal;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  color: #EEB343;
+}
 
- .rightIncentivo {
-    text-align: right;
-    width: 100%;
-    color: #e20077;
-    font-family: BreeBold;
-    padding-top: 1em;
-    font-size: 1.7em;
-  }
-  .background-panel{
-    background-color: #F3F3F2 !important;
-    padding-bottom: 1px;
-  }
-  
-  
-  .segundaseccion{
-    padding-bottom: 1px;
-    padding-top: -2px;
-    border-radius: 2em;
-    width: 102%;
-    background-color: white !important;
-    box-shadow: 1px 6px 4px #949494;
-    position: relative;
-  }
-  
-  .overlay {
-    padding-left: 0.5em;
-  }
-  
-  .title {
-    font-size: 1.5em;
-    font-family: BreeBold;
-    padding-bottom: 0.4em;
-  
-  }
-  .titleInter {
-    font-size: 14px;
-    font-family: BreeBold;
-    padding-bottom: 0.4em;
-  
-  }
-  .titleFin {
-    font-weight: 700;
-    font-size: 19px;
-    line-height: 20px;
-    text-align: center;
-    letter-spacing: 0.5px;
-    color: #006699;
-  }
-  
-  .label-Fomula {
-    font-size: 10px;
-    font-family: Bree;
-    color: #252A2D;
-  }
-  
-  .label-FomulaDet {
-    font-size: 11px;
-    font-family: BreeBold;
-    color: #252A2D;
-  }
-  
-  
-  .formula {
-    border-radius: 9px;
-    justify-content: center;
-    height: 3em !important;
-    width: 100%;
-    background-color: #D9D9D9 !important;
-  }
-  .cardPorcentajes {
-      justify-content: center;
-      background-color: #F9F9FA;
-    
-  }
-  
-  .cardPorPrincipal {
-    justify-content: center;
-    height: 20px !important;
-    width: 30%;
-    background: rgba(178, 178, 178, 0.7);
-    border-radius: 4px;
-  }
-  
-  
-  .montosTotal{
-    font-size: calc(1.7rem + -1.8vw);
-    font-family: BreeBold;
-    color: #e20077;
-  
-  }
-  .circle {
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 1rem;
-  }
-  
-  .rightIncentivo {
-    text-align: right;
-    width: 100%;
-    color: #e20077;
-    font-family: BreeBold;
-    padding-top: 1em;
-    font-size: 1.7em;
-  }
-  
-  .booton-inicio{
-    border-radius: 30px;
-    height: 37px;
-    width: 37px;
-    font-size: 24px;
-    color: white;
-    border: 0;
-    background: rgba(0, 0, 0, 0.15);
-  
-  }
-  
-  .retosPrincipal{
-    position: fixed;
-    background: white;
-    width: 94%;
-    height: 81%;
-    list-style-type: none;
-    padding: 0.5em 1em 1em 1em;
-    border-radius: 24px;
-    box-shadow: 0px 4px 1px #555555;
-    top: 0;
-    margin-left: 12px;
-    margin-top: 63px;
-    z-index: 1;
-  }
-  
-  .retos{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    list-style-type: none;
-    padding: 0.5em 1em 1em 1em;
-    top: 0;
-    background: rgba(0, 0, 0, 0.15);
-  }
-  .stepsClass {
-    --bs-gutter-x: 0;
-    border-bottom: 1px solid #9d9c9c;
-    height: 1.1em;
-    display: flex;
-    justify-content: space-between;
-    width: 95%;
-  }
+.desembolTer {
+  font-family: 'BreeBold';
+  font-style: normal;
+  letter-spacing: 0.5px;
+  color: #808080;
+}
+
+.overlay {
+  padding: 1rem;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 0.5em;
+}
+
+.segundaseccion {
+  padding-bottom: 1px;
+  padding-top: -2px;
+  border-radius: 2em;
+  width: 103%;
+  background-color: white !important;
+  box-shadow: 1px 6px 4px #949494;
+  position: relative;
+}
+
+.title {
+  font-size: 1.5em;
+  font-family: BreeBold;
+  padding-bottom: 0.4em;
+
+}
+
+.titleInter {
+  font-size: 14px;
+  font-family: BreeBold;
+  padding-bottom: 0.4em;
+
+}
+
+.titleFin {
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  color: #006699;
+}
+
+.label-Fomula {
+  font-size: 10px;
+  font-family: Bree;
+  color: #252A2D;
+}
+
+.label-FomulaDet {
+  font-size: 11px;
+  font-family: BreeBold;
+  color: #252A2D;
+}
+
+
+.formula {
+  border-radius: 9px;
+  justify-content: center;
+  height: 3em !important;
+  width: 100%;
+  background-color: #D9D9D9 !important;
+}
+
+.cardPorcentajes {
+  justify-content: center;
+  background-color: #F9F9FA;
+
+}
+
+.cardPorPrincipal {
+  justify-content: center;
+  height: 20px !important;
+  width: 30%;
+  background: rgba(178, 178, 178, 0.7);
+  border-radius: 4px;
+}
+
+.circle {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+}
+
+.booton-inicio {
+  border-radius: 30px;
+  height: 37px;
+  width: 37px;
+  font-size: 24px;
+  color: white;
+  border: 0;
+  background: rgba(0, 0, 0, 0.15);
+
+}
+
+.retosPrincipal {
+  position: fixed;
+  background: white;
+  width: 94%;
+  height: 81%;
+  list-style-type: none;
+  padding: 0.5em 1em 1em 1em;
+  border-radius: 24px;
+  box-shadow: 0px 4px 1px #555555;
+  top: 0;
+  margin-left: 12px;
+  margin-top: 63px;
+  z-index: 1;
+}
+
+.retos {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  list-style-type: none;
+  padding: 0.5em 1em 1em 1em;
+  top: 0;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.stepsClass {
+  --bs-gutter-x: 0;
+  border-bottom: 1px solid #9d9c9c;
+  height: 1.1em;
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+}
+
+.tienda {
+  padding: 1em;
+  background-color: #fff;
+  margin: 1em;
+  border-radius: 2em;
+}
+
+.btnTienda {
+  background-color: #006699;
+  color: #fff;
+  width: 100%;
+  border-radius: 1em;
+}
+
+.saldo {
+  padding-bottom: 0.2em;
+  font-family: 'BreeBold';
+  font-size: 2.5em;
+  text-align: center;
+}

@@ -4,7 +4,7 @@
         <mat-tab style="z-index: -1; " >
             <ng-template mat-tab-label>
                 <span>ACTUAL</span>
-                <div class="circleTab" *ngIf="activaActual"></div>
+                <div class="circleTab" [style.background-color]="colorletra" *ngIf="activaActual"></div>
             </ng-template>
             <div *ngFor="let item of actual">
                 <a class="cmidia" >
@@ -38,15 +38,15 @@
                                 <div class="col-8" style="    margin-top: 28px;">
                                     <div *ngIf="item.monto>0" class="row">
                                         <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
-                                            <span class="card-incentivo centerSymbol"
+                                            <span class="card-incentivo centerSymbol" [style.color]="colorletra"
                                                 [ngClass]="item.opacity? 'opacityColor':''">$</span>
-                                            <span class="card-incentivo centerIncentivo"
+                                            <span class="card-incentivo centerIncentivo" [style.color]="colorletra"
                                                 [ngClass]="item.opacity? 'opacityColor':''">{{item.monto_sugerido |
                                                 currency:'':''}}</span>
                                         </div>
                                     </div>
                                     <div *ngIf="item.monto<=0" class="row">
-                                        <span class="labelNodisponible d-flex justify-content-center">No disponible</span>
+                                        <span class="labelNodisponible d-flex justify-content-center" [style.color]="colorletra">No disponible</span>
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +60,7 @@
         <mat-tab >
             <ng-template mat-tab-label>
                 <span>HISTORIAL</span>   
-                <div class="circleTab" *ngIf="activaHist"></div>
+                <div class="circleTab" [style.background-color]="colorletra" *ngIf="activaHist"></div>
             </ng-template>
             <div *ngFor="let item of historial">
                     <a class="cmidia" >
@@ -91,15 +91,15 @@
                                     <div class="col-8">
                                         <div *ngIf="item.monto>0" class="row">
                                             <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
-                                                <span class="card-incentivo centerSymbol"
+                                                <span class="card-incentivo centerSymbol" [style.color]="colorletra"
                                                     [ngClass]="item.opacity? 'opacityColor':''">$</span>
-                                                <span class="card-incentivo centerIncentivo"
+                                                <span class="card-incentivo centerIncentivo" [style.color]="colorletra"
                                                     [ngClass]="item.opacity? 'opacityColor':''">{{item.monto |
                                                     currency:'':''}}</span>
                                             </div>
                                         </div>
                                         <div *ngIf="item.monto<=0" class="row">
-                                            <span class="labelNodisponible d-flex justify-content-center">No disponible</span>
+                                            <span class="labelNodisponible d-flex justify-content-center" [style.color]="colorletra">No disponible</span>
                                         </div>
                                     </div>
                                 </div>

@@ -15,6 +15,8 @@ import { ValoraAppComponent } from './components/valora-app/valora-app.component
 import { ErrorComponent } from './components/error/error.component';
 import { MisRetosComponent } from './components/misretos/misretos.component'
 import { TourComponent } from './components/tour/tour.component';
+import { RankingComponent } from './components/ranking/ranking.component'
+import { SondeoComponent } from './components/sondeo/sondeo.component';
 
 const routes: Routes = [
   { path: '', component: AuthComponent},
@@ -31,6 +33,8 @@ const routes: Routes = [
   { path: 'misretos', component: MisRetosComponent, canActivate: [AuthGuard]},
   { path: 'encuesta', component: ValoraAppComponent, canActivate: [AuthGuard]},
   { path: 'tour', component: TourComponent, canActivate: [AuthGuard]},
+  { path: 'ranking', component: RankingComponent, canActivate: [AuthGuard]},
+  { path: 'sondeo', component: SondeoComponent, canActivate: [AuthGuard]},
   { path: 'error', component: ErrorComponent},
   { path: '**', component: AuthComponent }
 

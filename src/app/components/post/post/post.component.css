@@ -28,19 +28,6 @@ span {
     border-width: thin  !important;
     border-style: solid !important;
     border-color: #006699 !important;
-    width: 100px;
-    text-align: center;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.notifica {
-    color: #006699 !important;
-    background-color: #ebf3f7 !important;
-    border-width: thin  !important;
-    border-style: solid !important;
-    border-color: #006699 !important;
     width: 150px;
     text-align: center;
     display: block;

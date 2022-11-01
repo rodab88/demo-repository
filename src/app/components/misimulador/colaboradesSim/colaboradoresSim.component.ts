@@ -25,11 +25,12 @@ export class MiSimuladorColaboradoresComponent implements OnInit {
   public id: number = 0;
   public montoSim: string = '';
   public montoTotalAceptados: number = 0;
-
+  colorletra: string = "";
   constructor(public services: Services, public miSimulador: MiSimuladorComponent, public toastService: ToastService) { }
 
 
   ngOnInit(): void {
+    this.colorletra = localStorage.getItem('colorletra')!;
     this.datosColaboradores(String(localStorage.getItem('nomina')));
   }
 
@@ -83,6 +84,7 @@ export class MiSimuladorColaboradoresComponent implements OnInit {
     }
     this.services.postActualizaCompromiso(objCompromiso, this.id).subscribe(datos => {
       if (!datos.error) {
+        this.services.analitica('actualizarCompromisoColaborador').subscribe();
         this.datosColaboradores(String(localStorage.getItem('nomina')));
         if (this.aceptaCom) {
           let not = {
@@ -154,7 +156,7 @@ export class MiSimuladorColaboradoresComponent implements OnInit {
     });
   }
 
-  getAceptados(datos: any){
+  getAceptados(datos: any) {
     if (datos.data.aceptados.length > 0) {
       this.aceptados = datos.data.aceptados;
       for (let item of this.aceptados) {
@@ -164,7 +166,7 @@ export class MiSimuladorColaboradoresComponent implements OnInit {
     }
   }
 
-  getPendientes(datos: any){
+  getPendientes(datos: any) {
     if (datos.data.pendientes.length > 0) {
       this.pendientes = datos.data.pendientes;
       for (let item of this.pendientes) {

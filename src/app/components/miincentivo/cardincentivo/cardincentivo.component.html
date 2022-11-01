@@ -13,8 +13,8 @@
           <div class="col-4"></div>
           <div class="col-8" style="margin-top: 13px;">
             <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
-              <span class="card-incentivo centerSymbol">$</span>
-              <span class="card-incentivo centerIncentivo">{{total.incentivo | currency:'':''}}</span>
+              <span class="card-incentivo centerSymbol" [style.color]="colorletra">$</span>
+              <span class="card-incentivo centerIncentivo" [style.color]="colorletra">{{total.incentivo | currency:'':''}}</span>
             </div>
           </div>
           <div class="col-4" style="margin-top: -13px">
@@ -37,7 +37,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12 rightIncentivo">
+          <div class="col-12 rightIncentivo" [style.color]="colorletra">
             <article *ngIf="!variablesTot" (click)="mostrarVarTot()" style="margin-right: 10px;margin-top: -12px;">Ver
               más
             </article>
@@ -54,12 +54,12 @@
               <span class="label-Fomula">{{itemPla.nombre}}</span>
             </div>
             <div class="col-4 ">
-              <span class="montosTotal" style="margin-left: 90px;">${{itemPla.monto}}</span>
+              <span class="montosTotal" [style.color]="colorletra">${{itemPla.monto}}</span>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-10 rightIncentivo">
+      <div class="col-10 rightIncentivo" [style.color]="colorletra">
         <article *ngIf="variablesTot" style="margin-right: 1em;padding-bottom: 0.3em;" (click)="mostrarVarTot()">Ver
           menos
         </article>
@@ -84,8 +84,8 @@
           </div>
           <div class="col-8">
             <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
-              <span class="card-incentivo centerSymbol">$</span>
-              <span class="card-incentivo centerIncentivo">{{plan.incentivo | currency:'':''}}</span>
+              <span class="card-incentivo centerSymbol" [style.color]="colorletra">$</span>
+              <span class="card-incentivo centerIncentivo" [style.color]="colorletra">{{plan.incentivo | currency:'':''}}</span>
             </div>
           </div>
           <div class="col-4"></div>
@@ -107,7 +107,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12 rightIncentivo">
+          <div class="col-12 rightIncentivo" [style.color]="colorletra">
             <article *ngIf="!variablesPlan" (click)="mostrarVarPlan()" style="margin-right: 10px;margin-top: -12px;">Ver
               más
             </article>
@@ -129,8 +129,8 @@
             </div>
             <div class="col-4">
               <div style="--bs-gutter-x: 0;display: flex; width: 120%; ">
-                <span class="incentivoVar centerSymbol">$</span>
-                <span class="incentivoVar centerIncentivo">{{itemVar.incentivo | currency:'':''}}</span>
+                <span class="incentivoVar centerSymbol" [style.color]="colorletra">$</span>
+                <span class="incentivoVar centerIncentivo" [style.color]="colorletra">{{itemVar.incentivo | currency:'':''}}</span>
               </div>
             </div>
             <div class="col-2" *ngIf="!itemVar.acordion">
@@ -214,8 +214,8 @@
             </div>
             <div class="col-8">
               <div style="--bs-gutter-x: 0;display: flex; width: 95%;">
-                <span class="card-incentivo centerSymbol">$</span>
-                <span class="card-incentivo centerIncentivo">{{item.incentivo | currency:'':''}}</span>
+                <span class="card-incentivo centerSymbol" [style.color]="colorletra">$</span>
+                <span class="card-incentivo centerIncentivo" [style.color]="colorletra">{{item.incentivo | currency:'':''}}</span>
               </div>
             </div>
             <div class="col-4"></div>
@@ -258,8 +258,8 @@
               </div>
               <div class="col-4">
                 <div style="--bs-gutter-x: 0;display: flex; width: 95%; ">
-                  <span class="incentivoVar centerSymbol">$</span>
-                  <span class="incentivoVar centerIncentivo">{{itemVar.incentivo | currency:'':''}}</span>
+                  <span class="incentivoVar centerSymbol" [style.color]="colorletra">$</span>
+                  <span class="incentivoVar centerIncentivo" [style.color]="colorletra">{{itemVar.incentivo | currency:'':''}}</span>
                 </div>
               </div>
               <div class="col-2" *ngIf="!acordion">
@@ -312,7 +312,7 @@
                     Ver gráfica de tendencia y proyección</button>
                 </div>
               </div>
-              <div class="col-12 rightIncentivo">
+              <div class="col-12 rightIncentivo" [style.color]="colorletra">
                 <article *ngIf="variables" (click)="mostrarVar(item)">Ver menos
                 </article>
               </div>
@@ -327,7 +327,13 @@
     <img alt="" style="width: 30px;
           margin-left: 92%;" (click)="activarPdfIncentivo(undefined)" src="/assets/img/close.png" />
 
-    <iframe title="" [src]="urlI" style="width: 101%;
-          height: 96%;" allowfullscreen></iframe>
+    <div id="outerContainer" style="margin-top: 3px;">
+      <div class="pdf-container">
+        <pdf-viewer [src]="url" [rotation]="0" [original-size]="false" [show-all]="true" [fit-to-page]="false"
+          [zoom]="1" [zoom-scale]="'page-fit'" [stick-to-page]="false" [render-text]="true"
+          [external-link-target]="'blank'" [autoresize]="true" [show-borders]="false"
+          style="width: 100%; height: 770px;"></pdf-viewer>
+      </div>
+    </div>
   </div>
 </div>

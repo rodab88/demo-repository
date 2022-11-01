@@ -1,0 +1,109 @@
+<div class="row tienda">
+    <div class="col-6" style="margin:auto">
+        <span class="lblRtn" (click)="volverMisRetos()">&#60; Mis retos</span>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <span class="saldo">{{saldoDisponible | currency}}</span>
+        </div>
+        <div class="row">
+            <span style="text-align: center;">SALDO DISPONIBLE</span>
+        </div>
+    </div>
+</div>
+<div *ngIf="!resumen">
+    <div class="row saldocarritoDiv">
+        <div class="col-6" style="margin:auto">
+            <div class="row">
+                <div class="col-7" style="margin: auto;">
+                    <span (click)="verResumen(true)" class="lblVr" [style.color]="colorletra">Ver Carrito</span>
+                </div>
+                <div class="col-4 cart">
+                    <span (click)="verResumen(true)" class="lenCart" [style.color]="colorletra">{{cantProductos}}</span>
+                </div>
+                <div class="col-1"></div>
+            </div>
+        </div>
+        <div class="col-6" style="text-align: end !important;margin: auto !important;padding-right: 0em;">
+            <span class="saldoCarrito">{{saldoCarrito | currency}}</span>
+        </div>
+    </div>
+    
+    <div class="row carrito">
+        <div class="col-12" class="lblCarrito">
+            <span>Selecciona el múltiplo de saldo</span>
+            <span>de las opciones a canjear.</span>
+        </div>
+        <div class="col-12" style="margin: 1em;"></div>
+        <div style="padding-left:0em;">
+            <div *ngFor="let p of productos" class="col-6 item justify-content-center">
+                <img class="imgCarrito" alt="" src="{{p.imagen}}" />
+                <span class="valorItem">{{p.valor | currency}}</span>
+                <div class="row" class="btnes">
+                    <button (click)="ajustarCarrito(true,p)" class="btnCart">-</button>
+                    <span style="margin: 0em 1em;">{{p.cantidad}}</span>
+                    <button (click)="ajustarCarrito(false,p)" class="btnCart">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12" style="margin: 1em;"></div>
+    </div>
+</div>
+<div *ngIf="resumen" class="canje">
+    <div class="row">
+        <div class="col-8">
+            <span class="lblRsm">Resumen de Canje</span>
+        </div>
+        <div class="col-4 d-flex justify-content-end">
+            <span *ngIf="btnAcept" (click)="verResumen(false)" class="lblV">Vaciar Carrito</span>
+        </div>
+        <div class="col-12">
+            <p>Fecha de la transacción: <span class="fch"> {{fecha | fecha:'hora'}}</span></p>
+        </div>
+    </div>
+    <div class="row" *ngFor="let item of cart" style="margin-top: 2em;">
+        <div class="col-2">
+            <img class="imgResumen" alt="" src="{{item.imagen}}" />
+        </div>
+        <div class="col-6" style="display: inline-grid;">
+            <span class="lblitemResumen">{{item.nombre}}</span>
+            <span> (Cant. {{item.cantidad}} / Valor {{item.valor | currency}})</span>
+        </div>
+        <div class="col-4 costoResumen">
+            <span class="lblitemResumen">{{item.costo | currency}}</span>
+        </div>
+        <div class="col-12 btnResumen" *ngIf="btnAcept">
+            <button (click)="ajustarCarrito(true,item)" class="btnCart"
+                [ngClass]="item.cantidad==1?'btnTrash':''">-</button>
+            <span style="margin: 0em 1em;">{{item.cantidad}}</span>
+            <button (click)="ajustarCarrito(false,item)" class="btnCart">+</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12" style="margin-top: 2em;margin-bottom: 0.3em;">
+            <hr>
+        </div>
+        <div class="col-8" style="    font-family: 'BreeBold';">
+            <span> Total de Saldo Canjeado</span>
+        </div>
+        <div class="col-4 totalResumen">
+            {{saldoCarrito | currency}}
+        </div>
+        <div class="col-12">
+            <hr>
+        </div>
+        <div class="col-12" style="text-align:center;margin-bottom: 1em;">
+            <span>Al dar clic en Aceptar, tu solicitud será enviada y no podrás cambiar tu selección o modificar tu
+                canje.</span>
+        </div>
+        <div class="col-6" style="text-align: center;">
+            <button class="btnSeguir" (click)="verResumen(true)">Seguir comprando</button>
+        </div>
+        <div class="col-6" style="text-align: center;">
+            <button *ngIf="btnAcept" class="btnAcept" (click)="canjear()">Aceptar</button>
+            <button *ngIf="!btnAcept" (click)="imprimirComprobante()" class="btnAcept">Guardar Recibo</button>
+        </div>
+    </div>
+
+
+</div>

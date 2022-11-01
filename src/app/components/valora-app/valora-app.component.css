@@ -82,8 +82,8 @@
 }
 
 .perfil{
-  width: 4.5em;
-  height: 4.5em;
+  width: 3.3em;
+  height: 3.3em;
   border-radius: 50% !important;
 }
 
@@ -109,12 +109,6 @@ top: 2.5em !important;
 /****************************/
 
 /***Foto Perfil*************/
-
-.perfil{
-  width: 3.3em;
-  height: 3.3em;
-  border-radius: 50% !important;
-}
 
 .opacity{
   filter: grayscale(100%);
@@ -293,4 +287,9 @@ top: 2.5em !important;
   border: none;
   color: gray;
   font-size: 1em;
+}
+
+.imgCalif {
+  width: 15.5px;
+  height: 15px;
 }

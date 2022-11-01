@@ -31,7 +31,6 @@ export class ValoraAppComponent implements OnInit {
   shadowCard = "";
   boxshadow = "";
   displayProgressSpinner = false;
-  starRating = 4;
   starRatingCom = 5;
   seccionesPermitidas: any = [];
   comentarios: any = [];
@@ -46,6 +45,7 @@ export class ValoraAppComponent implements OnInit {
   total: number = 0;
   index: number = 0;
   coment: any;
+  estrellas: any[] = [];
 
   constructor(public services: Services, public s: CommonServiceService, private matDialog: MatDialog, private router: Router) { }
 
@@ -65,6 +65,14 @@ export class ValoraAppComponent implements OnInit {
         this.valor5 = datos.data.cinco;
         this.promedio = datos.data.promedio;
         this.total = datos.data.total;
+
+        for (let i = 0; i < 5; i++) {
+          let decimal = this.promedio % 1;
+          let entero = this.promedio - decimal;
+          let ruta = "/assets/img/";
+          ruta = ruta + (i < entero ? "fill" : (entero == i && decimal > 0 ? (decimal > 0.5 ? "cfill" : "half") : "empty")) + "_star.png";
+          this.estrellas.push({ ruta: ruta });
+        }
       } else {
         console.log("error, no hay datos que mostrar.");
       }
@@ -134,6 +142,7 @@ export class ValoraAppComponent implements OnInit {
       "comentario_id": id,
       "nomina": localStorage.getItem('nomina')
     }
+    this.services.analitica('megustaComentarioValorar').subscribe();
     this.megustaNomegusta('si/calificacion/megusta/', body);
   }
 
@@ -142,6 +151,7 @@ export class ValoraAppComponent implements OnInit {
       "comentario_id": id,
       "nomina": localStorage.getItem('nomina')
     }
+    this.services.analitica('nomegustaComentarioValorar').subscribe();
     this.megustaNomegusta('si/calificacion/nomegusta/', body);
   }
 
