@@ -1,6 +1,4 @@
-#  Template N
-image: node:16
-
+#  Templ
 image: node:16
 
 pipelines:
@@ -11,9 +9,8 @@ pipelines:
             caches:
               - node
             script:
-              - npm install -g npm@latest
+              - npm install 
               - npm audit fix --force
-              #- npm test
               -npm install react@17.0.1
 
         
