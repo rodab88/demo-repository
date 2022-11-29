@@ -11,9 +11,10 @@ pipelines:
             caches:
               - node
             script:
-              - npm install  --force
+              - npm install -g npm@latest
               - npm audit fix --force
               #- npm test
+              -npm install react@17.0.1
               -npm-force-resolutions
         
             caches:
