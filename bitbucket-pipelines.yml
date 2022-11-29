@@ -1,5 +1,4 @@
-#  Templ
-image: node:16
+#  Temimage: node:16
 
 pipelines:
   default:
@@ -9,10 +8,21 @@ pipelines:
             caches:
               - node
             script:
-              - npm install 
-              - npm audit fix --force
-              -npm install react@17.0.1
-
-        
+              - npm install
+              - npm test
+        - step:
+            name: Code linting
+            script:
+              - npm install eslint
+              - npx eslint .
             caches:
               - node
+#- pipe: atlassian/firebase-deploy:3.0.0
+ # variables:
+  #  KEY_FILE: '<string>'
+   # FIREBASE_TOKEN: '<string>'
+    # PROJECT_ID: '<string>' # Optional.
+    # MESSAGE: '<string>' # Optional.
+    # EXTRA_ARGS: '<string>' # Optional.
+    # MULTI_SITES_CONFIG: '<json>' # Optional
+    # DEBUG: '<boolean>' # Optional.
